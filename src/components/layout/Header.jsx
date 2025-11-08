@@ -3,19 +3,16 @@ import { NavLink, useLocation } from "react-router-dom";
 import { Menu, X, ShoppingCart, Search } from "lucide-react";
 import { useCart } from "../cart/CartContext";
 
-/**
- * Header
- * - reads reactive `totalItems` from CartContext
- * - accessible mobile menu
- */
-
 export default function Header() {
-  // READ reactive totalItems directly (NOT a function)
   const { totalItems = 0 } = useCart();
   const [open, setOpen] = useState(false);
+
+  // NEW: search state + ref
+  const [searchOpen, setSearchOpen] = useState(false);
+  const searchInputRef = useRef(null);
+
   const location = useLocation();
 
-  // Refs for focus management
   const firstMobileLinkRef = useRef(null);
   const menuButtonRef = useRef(null);
 
@@ -24,29 +21,36 @@ export default function Header() {
     setOpen(false);
   }, [location.pathname]);
 
-  // Prevent body scroll when mobile menu is open
+  // Prevent body scroll when mobile menu is open OR search is open
   useEffect(() => {
-    if (open) {
-      const prev = document.body.style.overflow;
+    const shouldFreeze = open || searchOpen;
+    const prev = document.body.style.overflow;
+    if (shouldFreeze) {
       document.body.style.overflow = "hidden";
       return () => {
         document.body.style.overflow = prev;
       };
     }
     return;
-  }, [open]);
+  }, [open, searchOpen]);
 
-  // Handle Escape key to close menu
+  // Handle Escape key to close menu OR search
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === "Escape" && open) {
-        setOpen(false);
-        menuButtonRef.current?.focus();
+      if (e.key === "Escape") {
+        if (searchOpen) {
+          setSearchOpen(false);
+          return;
+        }
+        if (open) {
+          setOpen(false);
+          menuButtonRef.current?.focus();
+        }
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [open]);
+  }, [open, searchOpen]);
 
   // Focus the first mobile link when menu opens
   useEffect(() => {
@@ -58,15 +62,24 @@ export default function Header() {
     }
   }, [open]);
 
-  // NavLink active class helper
+  // Focus search input when search opens
+  useEffect(() => {
+    if (searchOpen) {
+      const id = setTimeout(() => {
+        searchInputRef.current?.focus();
+      }, 80);
+      return () => clearTimeout(id);
+    }
+  }, [searchOpen]);
+
   const navLinkClass = ({ isActive }) =>
     `text-white/85 hover:text-white transition text-sm font-medium ${isActive ? "text-white underline" : ""}`;
 
   return (
     <header className="w-full fixed top-0 left-0 z-50">
-      <div className="backdrop-blur-sm bg-black/50 border-b border-white/6">
+      <div className="backdrop-blur-sm bg-black/90 border-b border-white/6 transition">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-18">
             {/* Left: logo */}
             <div className="flex items-center gap-4">
               <NavLink to="/" end className="flex items-center gap-3 no-underline" aria-label="Tawari home">
@@ -102,10 +115,12 @@ export default function Header() {
 
             {/* Right: actions */}
             <div className="flex items-center gap-3 relative z-20">
+              {/* Search button now toggles searchOpen */}
               <button
                 type="button"
                 aria-label="Search"
                 className="hidden md:inline-flex items-center justify-center p-2 rounded-md hover:bg-white/6 transition"
+                onClick={() => setSearchOpen(true)}
               >
                 <Search className="h-4 w-4 text-white/80" />
               </button>
@@ -176,6 +191,47 @@ export default function Header() {
             </div>
           </div>
         </div>
+
+        {/* Search overlay */}
+        {searchOpen && (
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Search"
+            className="fixed inset-0 z-40 flex items-start justify-center pt-20 px-4"
+            onClick={() => setSearchOpen(false)} // click outside closes
+          >
+            <div
+              className="w-full max-w-2xl bg-black/90 border border-white/8 rounded-md p-4 shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center gap-2">
+                <input
+                  ref={searchInputRef}
+                  type="search"
+                  placeholder="Search..."
+                  aria-label="Search site"
+                  className="flex-1 bg-transparent outline-none text-white text-base px-2 py-2"
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      // implement search submit logic here (navigate, call API, etc.)
+                      console.log("Search for:", e.currentTarget.value);
+                      setSearchOpen(false);
+                    }
+                  }}
+                />
+                <button
+                  type="button"
+                  aria-label="Close search"
+                  className="p-2 rounded hover:bg-white/6 transition"
+                  onClick={() => setSearchOpen(false)}
+                >
+                  <X className="h-5 w-5 text-white" />
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );

@@ -72,7 +72,8 @@ function App() {
                     path="/resend-email"
                     element={<ResendEmailVerificationPage />}
                   />
-                  <Route path="/cart" element={<CartPage />} />
+                   <Route path="/" element={<HomePage />} />
+                   <Route path="/cart" element={<CartPage />} />
                   <Route path="/checkout" element={<CheckoutPage />} />
                   <Route path="/checkout/:id" element={<CheckoutPage />} />
                   <Route path="/account/*" element={<AccountPage />} />

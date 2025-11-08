@@ -1,87 +1,84 @@
-import React, { createContext, useContext, useEffect, useState, useCallback } from "react";
+import React, { createContext, useContext, useState, useMemo } from "react";
 
-/**
- * CartContext.jsx
- * Provides a simple cart implementation with localStorage persistence.
- * Exports:
- *  - CartProvider: wrap your app with this
- *  - useCart: hook to access cart APIs
- *
- * Data shape (cart array): [{ id, name, price, quantity, image, metadata }]
- */
-
-const CartContext = createContext(null);
+// ============================================================================
+// CART CONTEXT
+// ============================================================================
+const CartContext = createContext();
 
 export const useCart = () => {
-  const ctx = useContext(CartContext);
-  if (!ctx) throw new Error("useCart must be used within a CartProvider");
-  return ctx;
+  const context = useContext(CartContext);
+  if (!context) {
+    throw new Error("useCart must be used within CartProvider");
+  }
+  return context;
 };
 
-const CART_STORAGE_KEY = "app_cart_v1";
+export function CartProvider({ children }) {
+  const [items, setItems] = useState([]);
 
-export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState(() => {
-    try {
-      const raw = localStorage.getItem(CART_STORAGE_KEY);
-      return raw ? JSON.parse(raw) : [];
-    } catch (e) {
-      console.warn("Failed to parse cart from localStorage:", e);
-      return [];
-    }
-  });
+  const addItem = (product, quantity = 1, selectedColor = null, selectedStorage = null) => {
+    setItems((prev) => {
+      const existing = prev.find(
+        (it) =>
+          it.product_id === product.id &&
+          it.selectedColor === selectedColor &&
+          it.selectedStorage === selectedStorage
+      );
 
-  // Persist cart to localStorage whenever it changes
-  useEffect(() => {
-    try {
-      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
-    } catch (e) {
-      console.warn("Failed to persist cart to localStorage:", e);
-    }
-  }, [cart]);
-
-  const findIndex = useCallback((id) => cart.findIndex((i) => String(i.id) === String(id)), [cart]);
-
-  const addItem = (item, quantity = 1) => {
-    setCart((prev) => {
-      const idx = prev.findIndex((i) => String(i.id) === String(item.id));
-      if (idx > -1) {
-        const next = [...prev];
-        next[idx] = { ...next[idx], quantity: next[idx].quantity + quantity };
-        return next;
+      if (existing) {
+        return prev.map((it) =>
+          it.product_id === product.id &&
+          it.selectedColor === selectedColor &&
+          it.selectedStorage === selectedStorage
+            ? { ...it, quantity: it.quantity + quantity }
+            : it
+        );
       }
-      return [{ ...item, quantity }, ...prev];
+
+      return [
+        ...prev,
+        {
+          product_id: product.id,
+          name: product.name,
+          slug: product.slug,
+          price: product.sale_price || product.price,
+          image: product.primary_image?.image,
+          quantity,
+          selectedColor,
+          selectedStorage,
+          category: product.category_name,
+        },
+      ];
     });
   };
 
-  const removeItem = (id) => {
-    setCart((prev) => prev.filter((i) => String(i.id) !== String(id)));
+  const updateItem = (productId, updates) => {
+    setItems((prev) =>
+      prev.map((it) => (it.product_id === productId ? { ...it, ...updates } : it))
+    );
   };
 
-  const updateQuantity = (id, quantity) => {
-    if (quantity <= 0) return removeItem(id);
-    setCart((prev) => prev.map((i) => (String(i.id) === String(id) ? { ...i, quantity } : i)));
+  const removeItem = (productId) => {
+    setItems((prev) => prev.filter((it) => it.product_id !== productId));
   };
 
-  const clearCart = () => setCart([]);
+  const clear = () => setItems([]);
 
-  const getTotalItems = () => cart.reduce((s, i) => s + Number(i.quantity || 0), 0);
+  const subtotal = useMemo(
+    () => items.reduce((sum, it) => sum + it.price * it.quantity, 0),
+    [items]
+  );
 
-  const getSubTotal = () => cart.reduce((s, i) => s + Number(i.quantity || 0) * Number(i.price || 0), 0);
+  const totalItems = useMemo(
+    () => items.reduce((sum, it) => sum + it.quantity, 0),
+    [items]
+  );
 
-  const setCartDirect = (nextCart) => setCart(Array.isArray(nextCart) ? nextCart : []);
-
-  const value = {
-    cart,
-    addItem,
-    removeItem,
-    updateQuantity,
-    clearCart,
-    getTotalItems,
-    getSubTotal,
-    setCart: setCartDirect,
-    findIndex,
-  };
-
-  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
-};
+  return (
+    <CartContext.Provider
+      value={{ items, addItem, updateItem, removeItem, clear, subtotal, totalItems }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
+}
