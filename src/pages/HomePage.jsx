@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { servicesAPI, productsAPI } from "../services/api";
 
+
 /**
  * HomePage with:
  * - HeroSlider (autoplay, keyboard/touch controls)
@@ -47,16 +48,16 @@ export default function HomePage() {
       name: "SoundLab",
       gallery: ["/Images/vedio1.mp4", "/Images/vedio2.mp4"],
     },
-    // {
-    //   id: "c4",
-    //   name: "SkyTech",
-    //   gallery: ["/Images/vedio2.mp4", "/samples/sky-2.jpg"],
-    // },
-    // {
-    //   id: "c5",
-    //   name: "CamCorp",
-    //   gallery: ["/samples/cam-1.jpg", "/samples/cam-2.jpg"],
-    // },
+    {
+      id: "c4",
+      name: "SkyTech",
+      gallery: ["/Images/image4.jpeg", "/Images/vedio3.mp4"],
+    },
+    {
+      id: "c5",
+      name: "CamCorp",
+      gallery: ["/Images/vedio4.mp4", "/Images/image5.jpeg"],
+    },
   ]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -102,7 +103,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen w-full">
+    <div className="flex flex-col min-h-screen w-full ">
       <HeroSlider />
 
       {/* Services */}
@@ -266,7 +267,7 @@ function HeroSlider({ interval = 4000, startIndex = 0 }) {
     {
       id: "hero-1",
       bgImage:
-        "https://specials-images.forbesimg.com/imageserve/61086ec373551e86331910e3/The-mystique-of-the-MacBook-Air/960x0.jpg?fit=scale&format=jpg&width=960",
+        "https://www.apple.com/v/iphone-17-pro/c/images/overview/welcome/hero_endframe__xdzisdq1ppem_xlarge.jpg style=\"object-fit: cover; object-position: center;\"",
       tagline: "Premium • Repairs • Training",
       title: "Apple Device Specialists",
       desc:

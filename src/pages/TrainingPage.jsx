@@ -148,7 +148,7 @@ export default function TrainingPage() {
             </div>
             <div className="relative lg:ml-auto">
               <img
-                src={AppleRepairTrainingImage}
+                src={"https://imagedelivery.net/xaKlCos5cTg_1RWzIu_h-A/6bc2693d-1ca1-4f11-b61a-2e572b046800/public"}
                 width={500}
                 height={500}
                 alt="Apple repair training"

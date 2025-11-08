@@ -713,28 +713,16 @@ export default function ServicesPage() {
                 />
               </Link>
 
-              {/* actions overlay */}
-              <div className="p-3 md:p-4 flex items-center justify-between gap-3 w-[320px] md:w-auto">
-                <Link
-                  to={`/shop/${encodeURIComponent(p.slug)}`}
-                  className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-black text-white text-sm font-medium shadow-md hover:opacity-95 transition"
-                  aria-label={`View ${p.name} details`}
-                >
-                  View
-                </Link>
-
-                <button
-                  type="button"
-                  onClick={() => handleAddToCart(p)}
-                  disabled={isAdding === p.id}
-                  className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-gray-200 bg-white text-sm font-medium text-gray-700 hover:shadow-md transition disabled:opacity-50"
-                  aria-label={`Add ${p.name} to cart`}
-                >
-                  <ShoppingCart className="h-4 w-4" />
-                  {isAdding === p.id ? "Adding..." : "Add to cart"}
-                </button>
-              </div>
-
+              {<div className="p-3 md:p-4 flex items-center justify-between gap-3 w-[320px] md:w-auto">
+  {/* Link to product details page */}
+  <Link
+    to={`/product/${encodeURIComponent(p.slug)}`}
+    className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-black text-white text-sm font-medium shadow-md hover:opacity-95 transition"
+    aria-label={`View ${p.name} details`}
+  >
+    View
+  </Link> 
+</div>}
               {/* optional brand badge (kept small) */}
               <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 text-xs font-semibold text-gray-700 shadow-sm">
                 Apple
