@@ -131,7 +131,56 @@ const FULL_ARTICLES = {
       <h2>Prevention Tips</h2>
       <p>Regular backups (iCloud, Time Machine) and the 3-2-1 backup rule are the best defenses against data loss.</p>
     `
-  }
+  },
+
+"apple-watch-charging-issues-after-unauthorized-repair": {
+  title: "Why Your Apple Watch May Misbehave After an Unauthorized Repair",
+  slug: "apple-watch-charging-issues-after-unauthorized-repair",
+  content: `
+    <h2>Understanding the Problem</h2>
+    <p>Apple Watches are engineered with extreme precision, and even minor tampering can lead to unexpected behaviour. If your watch has been opened by an unqualified technician or glue was applied near key components, you may notice charging problems, overheating, power-offs, or inconsistent performance — even if the battery health appears normal.</p>
+
+    <h3>Battery Health Doesn’t Tell the Whole Story</h3>
+    <p>A battery health reading of 87% is generally very good and unlikely to cause severe issues on its own. However, internal obstructions or damage caused during a previous repair can interfere with how the watch charges and operates, making the battery appear to be the problem even when it isn’t.</p>
+
+    <h3>How Glue Affects Internal Components</h3>
+    <p>Applying glue inside an Apple Watch — especially around the charging coil or connectors — can cause serious complications. The adhesive may block contacts, restrict proper alignment of components, or interfere with the charging system. Because the internal layout is extremely tight, even a small amount of misplaced glue can disrupt normal operation.</p>
+    <p>These issues may lead to:</p>
+    <ul>
+      <li>Inconsistent charging</li>
+      <li>Unexpected shutdowns</li>
+      <li>Overheating during use or charging</li>
+      <li>Failure to power on</li>
+      <li>Erratic behaviour despite good battery health</li>
+    </ul>
+
+    <h3>Why Professional Diagnostics Are Necessary</h3>
+    <p>To identify the root cause, the watch needs to be carefully opened by a qualified technician. The process includes:</p>
+    <ul>
+      <li>Removing excess glue from the charging and connector areas</li>
+      <li>Inspecting flex cables and charging components for damage</li>
+      <li>Testing the charging system after cleaning</li>
+      <li>Checking for hidden damage caused by previous repairs</li>
+    </ul>
+    <p>Because Apple Watches are delicate and high-risk to open, a diagnostic fee of KSh 3,500 applies. This covers the time, precision, and expertise required to safely inspect the device.</p>
+
+    <h2>What Happens After the Diagnostic?</h2>
+    <p>Once the watch is opened and thoroughly examined, we will update you with the exact issue and the recommended repair. No work proceeds without your approval, and we ensure transparency in both the diagnosis and pricing.</p>
+
+    <h2>Protecting Your Apple Watch in the Future</h2>
+    <p>Apple Watches require specialized tools and skills. To avoid long-term damage:</p>
+    <ul>
+      <li>Always choose certified or highly experienced technicians</li>
+      <li>Avoid quick-fix shops that use glue or makeshift solutions</li>
+      <li>Never attempt to open the watch yourself</li>
+      <li>Seek professional help as soon as you notice unusual behaviour</li>
+    </ul>
+
+    <h2>Schedule a Diagnostic Today</h2>
+    <p>If your Apple Watch is overheating, charging inconsistently, or shutting down unexpectedly after a previous repair, don’t wait. Book a diagnostic appointment today, and we’ll help restore your watch to proper working condition with safe, professional care.</p>
+  `
+}
+
 }
 
 // Dummy posts that reference the full articles above
@@ -183,7 +232,19 @@ const DUMMY_POSTS = [
     category_slug: "data",
     author_name: "Recovery Lab",
     read_time: "9 min read"
-  }
+  },
+  {
+  id: 5,
+  slug: "apple-watch-charging-issues-after-unauthorized-repair",
+  title: "Why Your Apple Watch May Misbehave After an Unauthorized Repair",
+  excerpt: "Learn why glue or improper handling during previous repairs can cause charging issues, overheating, and shutdowns — and why a proper diagnostic is essential.",
+  featured_image: "https://www.apple.com/v/watch/bt/images/meta/apple-watch__ywfuk5wnf1u2_og.png",
+  published_at: "2025-11-18T15:30:00Z",
+  category_name: "Apple Watch",
+  category_slug: "apple-watch",
+  author_name: "Tech Repair Lab",
+  read_time: "7 min read"
+}
 ]
 
 const CATEGORIES = [

@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
 import { Calendar, ChevronLeft, Loader, MessageSquare, Tag, ThumbsUp, User } from "lucide-react"
-import { blogAPI } from "../services/api"
-import { useAuth } from "../components/auth/AuthContext"
+// import { blogAPI } from "../services/api"
+import { useAuth } from "../contexts/AuthContext"
 import { useToast } from "../components/ui/use-toast"
 import DOMPurify from "dompurify"
 

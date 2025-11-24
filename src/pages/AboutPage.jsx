@@ -166,7 +166,7 @@ export function JourneyTimeline() {
                   {/* Content */}
                   <div className="bg-white rounded-xl p-5 shadow-md border border-gray-100">
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="px-3 py-1 bg-gradient-to-r from-gray-400 via-gray-900 to-gray-950 rounded-full text-xs font-bold">
+                      <span className="px-3 py-1 bg-gradient-to-r from-gray-400 via-gray-400 to-gray-400 rounded-full text-xs font-bold">
                         {item.year}
                       </span>
                       <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
@@ -214,15 +214,15 @@ export default function AboutPage() {
       bio: "Cate leads our repair team with 7+ years experience in Apple repairs, specialising in logic board and display repairs. Passionate about quality and customer service.",
     },
     brighette: {
-      id: "brighette",
-      name: "Brighette",
+      id: "Amina",
+      name: "Amina",
       role: "Marketing Specialist",
       img: "/Images/femaleAvater.jpg",
       bio: "Brighette manages our communications and helps customers find the right service for their needs.",
     },
     robert: {
-      id: "robert",
-      name: "Robert",
+      id: "Keith",
+      name: "Keith",
       role: "Repair Specialist",
       img: "/Images/maleAvater.jpg",
       bio: "Robert focuses on diagnostics and fast, reliable repairs — screens, batteries and water damage.",
@@ -306,7 +306,7 @@ export default function AboutPage() {
       <JourneyTimeline />
 
       {/* VALUES */}
-      <section className="w-full py-12 md:py-20 lg:py-24 bg-gray-50">
+      <section className="w-full py-12 md:py-20 lg:py-24 bg-gray-100">
         <div className="w-full max-w-[1400px] mx-auto px-4 md:px-6">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold sm:text-4xl">Our Values</h2>
