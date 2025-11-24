@@ -1,6 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { AuthProvider } from "./components/auth/AuthContext";
+import { AuthProvider } from "./contexts/AuthContext";
 import { CartProvider } from "./components/cart/CartContext";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
@@ -31,6 +30,20 @@ import ScrollToTop from "./components/ScrollToTop";
 import ProductManager from "./components/admin/product-manager";
 import ProductForm from "./components/admin/product-form";
 import WhatsAppWidget from "./pages/WhatsAppWidget";
+import GoogleCallbackPage from "./pages/GoogleCallbackPage";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import AuthCallback from './pages/AuthCallBackPage';
+
+
+// Helper to check auth
+const isAuthenticated = () => {
+  return !!localStorage.getItem("user") || !!localStorage.getItem("userToken")
+}
+
+// Protected route wrapper
+function PrivateRoute({ children }) {
+  return isAuthenticated() ? children : <Navigate to="/login" />
+}
 
 function App() {
   return (
@@ -53,7 +66,7 @@ function App() {
                   />
                   <Route path="/services" element={<ServicesPage />} />
                   <Route path="/training" element={<TrainingPage />} />
-                 <Route path="/shop" element={<ShopPage />} />
+                  <Route path="/shop" element={<ShopPage />} />
                   <Route path="/product/:slug" element={<ProductDetail />} />
                   <Route path="/blog" element={<BlogPage />} />
                   <Route path="/blog/:slug" element={<BlogPostPage />} />
@@ -64,19 +77,35 @@ function App() {
                   />
                   <Route path="/contact" element={<ContactPage />} />
                   <Route path="/orders" element={<OrdersPage />} />
-                  <Route path="/orders/:orderId" element={<OrderDetailPage />} />
+                  <Route
+                    path="/orders/:orderId"
+                    element={<OrderDetailPage />}
+                  />
                   <Route path="/login" element={<LoginPage />} />
-                  <Route path="/register" element={<RegisterPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/auth/callback" element={<AuthCallback />} />
                   <Route path="/verify-email" element={<VerifyEmailPage />} />
                   <Route
                     path="/resend-email"
                     element={<ResendEmailVerificationPage />}
                   />
-                   <Route path="/" element={<HomePage />} />
-                   <Route path="/cart" element={<CartPage />} />
-                  <Route path="/checkout" element={<CheckoutPage />} />
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/cart" element={<CartPage />} />
+                  <Route
+                    path="/checkout"
+                    element={
+                      <PrivateRoute>
+                        <CheckoutPage />
+                      </PrivateRoute>
+                    }
+                  />
+                  <Route path="*" element={<Navigate to="/checkout" />} />{" "}
                   <Route path="/checkout/:id" element={<CheckoutPage />} />
                   <Route path="/account/*" element={<AccountPage />} />
+                  <Route
+                    path="/google/callback"
+                    element={<GoogleCallbackPage />}
+                  />
                 </Routes>
               </main>
 

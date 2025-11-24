@@ -24,8 +24,8 @@ import {
   Laptop,
 } from "lucide-react"
 import { useToast } from "../components/ui/use-toast"
-import { useAuth } from "../components/auth/AuthContext"
-import { authAPI, addressesAPI, ordersAPI, servicesAPI } from "../services/api"
+import { useAuth } from "../contexts/AuthContext"
+// import { authAPI, addressesAPI, ordersAPI, servicesAPI } from "../services/api"
 
 // Format date function
 const formatDate = (dateString) => {

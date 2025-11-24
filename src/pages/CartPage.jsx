@@ -4,7 +4,8 @@ import { useCart } from "../components/cart/CartContext";
 import { Plus, Minus, Trash, ShoppingCart, X } from "lucide-react";
 
 export default function CartPage() {
-  const { items, updateItem, removeItem, clear, subtotal, totalItems } = useCart();
+  const { items, updateItem, removeItem, clear, subtotal, totalItems } =
+    useCart();
   const navigate = useNavigate();
 
   if (!items || items.length === 0) {
@@ -15,7 +16,9 @@ export default function CartPage() {
             <ShoppingCart className="h-24 w-24 mx-auto text-gray-300" />
           </div>
           <h2 className="text-3xl font-semibold mb-4">Your cart is empty</h2>
-          <p className="text-gray-500 mb-8">Looks like you haven't added any items yet.</p>
+          <p className="text-gray-500 mb-8">
+            Looks like you haven't added any items yet.
+          </p>
           <Link
             to="/shop"
             className="inline-block bg-black text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition"
@@ -105,12 +108,18 @@ export default function CartPage() {
                       <div className="flex gap-4 mb-3 text-sm text-gray-600">
                         {item.selectedColor && (
                           <span>
-                            Color: <span className="font-medium">{item.selectedColor}</span>
+                            Color:{" "}
+                            <span className="font-medium">
+                              {item.selectedColor}
+                            </span>
                           </span>
                         )}
                         {item.selectedStorage && (
                           <span>
-                            Storage: <span className="font-medium">{item.selectedStorage}</span>
+                            Storage:{" "}
+                            <span className="font-medium">
+                              {item.selectedStorage}
+                            </span>
                           </span>
                         )}
                       </div>
@@ -186,7 +195,15 @@ export default function CartPage() {
               </div>
 
               <button
-                onClick={() => navigate("/checkout")}
+                onClick={() => {
+                  // Check if user is authenticated
+                  const token = localStorage.getItem("auth_token");
+                  if (token) {
+                    navigate("/checkout");
+                  } else {
+                    navigate("/login?redirect=/checkout");
+                  }
+                }}
                 className="w-full bg-black text-white py-4 rounded-lg font-semibold hover:bg-gray-800 transition mb-4"
               >
                 Proceed to Checkout

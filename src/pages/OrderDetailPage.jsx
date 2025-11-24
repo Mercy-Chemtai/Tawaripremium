@@ -14,8 +14,8 @@ import {
   XCircle,
   Truck,
 } from "lucide-react"
-import { ordersAPI } from "../services/api"
-import { useAuth } from "../components/auth/AuthContext"
+// import { ordersAPI } from "../services/api"
+import { useAuth } from "../contexts/AuthContext"
 import { useToast } from "../components/ui/use-toast"
 
 // Format date function

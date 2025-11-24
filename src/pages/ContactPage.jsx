@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom"
 import { useToast } from "../components/ui/use-toast" // <--- restored import
 import { Loader, Mail, Phone, MapPin, Send, GraduationCap, Calendar } from "lucide-react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs"
-import { trainingAPI, contactAPI } from "../services/api"
+// import { trainingAPI, contactAPI } from "../services/api"
 
 export default function ContactPage() {
   const { toast } = useToast()
@@ -470,7 +470,7 @@ export default function ContactPage() {
                         className="w-full p-2 border rounded-md"
                         required
                       >
-                        <option value="">Select a course</option>
+                        <option value="Select Course">Apple Device Training</option>
                         {loadingCourses ? (
                           <option disabled>Loading courses...</option>
                         ) : (

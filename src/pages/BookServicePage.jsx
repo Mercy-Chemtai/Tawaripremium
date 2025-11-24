@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { servicesAPI } from "../services/api"
-import { useAuth } from "../components/auth/AuthContext"
+// import { servicesAPI } from "../services/api"
+import { useAuth } from "../contexts/AuthContext"
 import { useToast } from "../components/ui/use-toast"
 import { Loader, AlertTriangle, Calendar, ChevronDown, ChevronUp } from "lucide-react"
 

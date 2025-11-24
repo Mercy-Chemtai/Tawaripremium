@@ -104,13 +104,13 @@ export default function Header() {
 
             {/* Center: desktop nav */}
             <nav role="navigation" aria-label="Main navigation" className="hidden md:flex items-center gap-6 relative z-20">
-              <NavLink to="/" end className={navLinkClass}>Home</NavLink>
-              <NavLink to="/services" className={navLinkClass}>Services</NavLink>
-              <NavLink to="/about" className={navLinkClass}>About</NavLink>
-              <NavLink to="/shop" className={navLinkClass}>Shop</NavLink>
-              <NavLink to="/training" className={navLinkClass}>Training</NavLink>
-              <NavLink to="/contact" className={navLinkClass}>Contact</NavLink>
-              <NavLink to="/blog" className={navLinkClass}>Blog</NavLink>
+              <NavLink to="/" end className={navLinkClass}>HOME</NavLink>
+              <NavLink to="/services" className={navLinkClass}>SERVICES</NavLink>
+              <NavLink to="/about" className={navLinkClass}>ABOUT</NavLink>
+              <NavLink to="/shop" className={navLinkClass}>SHOP</NavLink>
+              <NavLink to="/training" className={navLinkClass}>TRAINING</NavLink>
+              <NavLink to="/contact" className={navLinkClass}>CONTACT</NavLink>
+              <NavLink to="/blog" className={navLinkClass}>BLOG</NavLink>
             </nav>
 
             {/* Right: actions */}

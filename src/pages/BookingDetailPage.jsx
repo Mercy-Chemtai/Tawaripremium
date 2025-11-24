@@ -17,8 +17,8 @@ import {
   MessageSquare,
   FileText,
 } from "lucide-react"
-import { servicesAPI } from "../services/api"
-import { useAuth } from "../components/auth/AuthContext"
+// import { servicesAPI } from "../services/api"
+import { useAuth } from "../contexts/AuthContext"
 import { useToast } from "../components/ui/use-toast"
 
 // Format date function

@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { Loader, RefreshCw, AlertTriangle, Package, ChevronRight, Clock, CheckCircle, XCircle } from "lucide-react"
-import { ordersAPI } from "../services/api"
-import { useAuth } from "../components/auth/AuthContext"
+// import { ordersAPI } from "../services/api"
+import { useAuth } from "../contexts/AuthContext"
 
 // Format date function
 const formatDate = (dateString) => {
