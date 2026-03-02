@@ -1,29 +1,34 @@
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+
 from orders.views import OrderViewSet
-from payments.views import MpesaStkPushView, MpesaCallbackView
 from contact.views import ContactMessageView
 from training.views import TrainingEnrollmentView
+from blog.views import subscribe_newsletter
+
 router = DefaultRouter()
 router.register(r'orders', OrderViewSet, basename='order')
+# No products/services — those use dummy data on the frontend
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    
-    # All accounts/auth routes under /api/
+
+    # Auth
     path("api/", include("accounts.urls")),
-     
-    # Orders
-    path('api/', include(router.urls)),
-    
-    # Payments
-    path('api/payments/mpesa/stk-push/', MpesaStkPushView.as_view(), name='mpesa-stk-push'),
-    path('api/payments/mpesa/callback/', MpesaCallbackView.as_view(), name='mpesa-callback'),
-    
+
+    # Products, Services, Orders (via router)
+    path("api/", include(router.urls)),
+
+    # M-Pesa
+    path("api/mpesa/", include("mpesa.urls")),
+
     # Contact
-    path('api/contact/send/', ContactMessageView.as_view(), name='contact-send'),
-    
+    path("api/contact/send/", ContactMessageView.as_view(), name="contact-send"),
+
     # Training
-    path('api/training/enroll/', TrainingEnrollmentView.as_view(), name='training-enroll'),
+    path("api/training/enroll/", TrainingEnrollmentView.as_view(), name="training-enroll"),
+
+    # Newsletter
+    path("api/newsletter/subscribe/", subscribe_newsletter),
 ]

@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 from datetime import timedelta
 from corsheaders.defaults import default_headers, default_methods
+from decouple import config
+
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -49,9 +51,10 @@ INSTALLED_APPS = [
     # Local apps
    'accounts',
    'orders',
-   'payments',
    'contact',
    'training',
+   'blog',
+   'mpesa',
 ]
 
 # ======================
@@ -79,7 +82,7 @@ MIDDLEWARE = [
 CORS_ALLOW_ALL_ORIGINS = False
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
+    "http://localhost:5175",
     "http://localhost:3000",
 
 ]
@@ -151,17 +154,29 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'chemtailodite@gmail.com'  # Your business email
-EMAIL_HOST_PASSWORD = 'ynzu lotc sguz iofp'  # Gmail app password
-DEFAULT_FROM_EMAIL = 'Tawari Digital <your-email@gmail.com>'
-ADMIN_EMAIL = 'your-email@gmail.com'
+EMAIL_HOST_USER = 'tawaridigital@gmail.com'  # Your business email
+EMAIL_HOST_PASSWORD = 'actpitefzyhnreoe'
+DEFAULT_FROM_EMAIL = 'Tawari Digital <tawaridigital@gmail.com>'
+ADMIN_EMAIL = 'tawaridigital@gmail.com'  # For receiving contact form messages
+
+#News subscriber
 
 # M-Pesa Configuration
-MPESA_CONSUMER_KEY = 'your-consumer-key'
-MPESA_CONSUMER_SECRET = 'your-consumer-secret'
-MPESA_SHORTCODE = 'your-shortcode'
-MPESA_PASSKEY = 'your-passkey'
-SITE_URL = 'https://yourdomain.com'  # For callbacks
+MPESA_ENVIRONMENT = "sandbox"
+
+MPESA_CONSUMER_KEY = 'APXjSGGVpRUtznrhRXG84QPQ3bwkR9M9GqBHcoGzVSIoBY5s'
+MPESA_CONSUMER_SECRET = 'EAmBpnpDkMsZ6qoHnaDuU7AGoGblTN35riAkWtJQLqfamD1o4pmGbRqVTAYKRddw'  # ← get this from Daraja, NOT WooCommerce
+
+MPESA_SHORTCODE = '174379'
+MPESA_PASSKEY = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
+
+MPESA_CALLBACK_URL = 'https://abc123.ngrok-free.app/api/mpesa/callback/'  # ← renamed from SITE_URL
+
+MPESA_BASE_URL = (
+    "https://api.safaricom.co.ke"
+    if MPESA_ENVIRONMENT == "production"
+    else "https://sandbox.safaricom.co.ke"
+)
 
 # ======================
 # URLS / TEMPLATES
@@ -190,8 +205,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # ======================
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'tawari_digital_db',
+        'USER': 'tawari_admin',
+        'PASSWORD': config('DB_PASSWORD'),  # Use decouple to manage sensitive data# 'PASSWORD
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 

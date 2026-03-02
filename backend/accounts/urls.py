@@ -10,6 +10,7 @@ from .views import (
     EditUserView,
     DeleteUserView,
 )
+from rest_framework_simplejwt.views import TokenRefreshView
 
 router = DefaultRouter()
 router.register(r"users", UserViewSet, basename="user")
@@ -23,6 +24,8 @@ urlpatterns = [
     path("auth/profile/", ProfileView.as_view(), name="profile"),
     path("auth/forgot-password/", ForgotPasswordView.as_view(), name="forgot-password"),
     path("auth/reset-password/", ResetPasswordView.as_view(), name="reset-password"),
+    path("auth/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+
     
     # User management endpoints (admin only)
     path("", include(router.urls)),
