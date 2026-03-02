@@ -1,178 +1,260 @@
 // src/services/api.js
 
-/**
- * Base URL for API requests
- */
-const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000"
+// ⚠️  VITE_API_URL in your .env must be:  VITE_API_URL=http://localhost:8000
+// The /api prefix is appended here — do NOT put /api in the .env value
+const API_BASE_URL = (import.meta.env.VITE_API_URL || "http://localhost:8000") + "/api";
 
-/**
- * Get CSRF token from cookies
- */
-const getCSRFToken = () => {
-  const name = "csrftoken="
-  const decodedCookie = decodeURIComponent(document.cookie)
-  const cookieArray = decodedCookie.split(";")
+// ============================================
+// Core fetch wrapper with auto token refresh
+// ============================================
 
-  for (let i = 0; i < cookieArray.length; i++) {
-    const cookie = cookieArray[i].trim()
-    if (cookie.indexOf(name) === 0) {
-      return cookie.substring(name.length, cookie.length)
-    }
+// Attempt to get a new access token using the refresh token
+async function refreshAccessToken() {
+  const refreshToken = localStorage.getItem("refreshToken");
+  if (!refreshToken) throw new Error("No refresh token available.");
+
+  const response = await fetch(`${API_BASE_URL}/auth/token/refresh/`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ refresh: refreshToken }),
+  });
+
+  if (!response.ok) {
+    // Refresh token itself is expired — force user to log in again
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("user");
+    window.location.href = "/login";
+    throw new Error("Session expired. Please log in again.");
   }
-  return null
+
+  const data = await response.json();
+  localStorage.setItem("accessToken", data.access);
+  return data.access;
 }
 
-/**
- * Generic fetch function with error handling
- */
-async function fetchAPI(endpoint, options = {}) {
-  const url = `${API_URL}${endpoint}`
-  const headers = {
-    "Content-Type": "application/json",
-    ...options.headers,
-  }
+async function fetchAPI(endpoint, options = {}, isRetry = false) {
+  const token = localStorage.getItem("accessToken");
 
-  const csrfToken = getCSRFToken()
-  if (csrfToken && ["POST", "PUT", "DELETE", "PATCH"].includes(options.method?.toUpperCase())) {
-    headers["X-CSRFToken"] = csrfToken
+  const config = {
+    method: options.method || "GET",
+    headers: {
+      "Content-Type": "application/json",
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      ...options.headers,
+    },
+  };
+
+  if (options.body && !["GET", "HEAD"].includes(config.method)) {
+    config.body =
+      typeof options.body === "string"
+        ? options.body
+        : JSON.stringify(options.body);
   }
 
   try {
-    console.log(`🌐 API Call: ${options.method || "GET"} ${url}`, options.body ? { body: options.body } : "")
-    const response = await fetch(url, {
-      ...options,
-      headers,
-      credentials: "include", // important for session cookies
-    })
+    const response = await fetch(`${API_BASE_URL}${endpoint}`, config);
 
-    console.log(`🌐 API Response: ${response.status} ${response.statusText}`)
+    // ── Auto-refresh on 401 ──────────────────────────────────────────────
+    // If the access token is expired and we haven't already retried,
+    // get a fresh token and try the request one more time automatically.
+    if (response.status === 401 && !isRetry) {
+      try {
+        await refreshAccessToken();
+        return fetchAPI(endpoint, options, true); // retry once with new token
+      } catch {
+        throw new Error("Session expired. Please log in again.");
+      }
+    }
+
+    let data = null;
+    const contentType = response.headers.get("content-type");
+
+    if (contentType && contentType.includes("application/json")) {
+      data = await response.json();
+    } else {
+      const text = await response.text();
+      if (text) {
+        try {
+          data = JSON.parse(text);
+        } catch {
+          data = { message: text };
+        }
+      }
+    }
 
     if (!response.ok) {
-      let errorData
-      try {
-        errorData = await response.json()
-      } catch {
-        errorData = { error: `HTTP ${response.status}: ${response.statusText}` }
-      }
-      const errorMessage = errorData.detail || errorData.error || errorData.message || `API error: ${response.status}`
-      console.error("🌐 API Error:", errorMessage, errorData)
-      throw new Error(errorMessage)
+      const errorMessage =
+        data?.error ||
+        data?.detail ||
+        data?.message ||
+        `Request failed with status ${response.status}`;
+      throw new Error(errorMessage);
     }
 
-    if (response.status === 204) {
-      return { success: true }
-    }
-
-    const contentType = response.headers.get("content-type")
-    if (contentType && contentType.includes("application/json")) {
-      const data = await response.json()
-      console.log("🌐 API Success Data:", data)
-      return data
-    } else {
-      return { success: true, status: response.status }
-    }
-  } catch (err) {
-    console.error("🌐 API Fetch Error:", err)
-    throw err
+    return data;
+  } catch (error) {
+    console.error(`API Error [${endpoint}]:`, error);
+    throw error;
   }
 }
 
-/**
- * Authentication API
- */
+// ============================================
+// AUTH API
+// ============================================
 export const authAPI = {
-  getCSRFToken: async () => {
-    try {
-      await fetch(`${API_URL}/`, { method: "GET", credentials: "include" })
-      const csrfToken = getCSRFToken()
-      console.log("🔐 CSRF Token:", csrfToken ? "Found" : "Not found")
-      return { success: true, csrfToken }
-    } catch (err) {
-      console.error("🔐 CSRF Token Error:", err)
-      throw err
-    }
+  login: (credentials) =>
+    fetchAPI("/auth/login/", { method: "POST", body: credentials }),
+
+  register: (userData) =>
+    fetchAPI("/auth/register/", { method: "POST", body: userData }),
+
+  getProfile: () => fetchAPI("/auth/profile/"),
+
+  updateProfile: (profileData) =>
+    fetchAPI("/auth/profile/", { method: "PATCH", body: profileData }),
+
+  forgotPassword: (payload) =>
+    fetchAPI("/auth/forgot-password/", { method: "POST", body: payload }),
+
+  resetPassword: (payload) =>
+    fetchAPI("/auth/reset-password/", { method: "POST", body: payload }),
+
+  logout: () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("user");
   },
+};
 
-  login: async (usernameOrEmail, password) => {
-    await authAPI.getCSRFToken()
-    const data = await fetchAPI("/api/auth/login/", {
-      method: "POST",
-      body: JSON.stringify({ usernameOrEmail, password }),
-    })
-    if (data.user) localStorage.setItem("user", JSON.stringify(data.user))
-    return data
-  },
+// ============================================
+// PRODUCTS API — dummy data, no backend call
+// Replace the items array with your real products
+// ============================================
+const DUMMY_PRODUCTS = [
+  { id: 1, name: "Product 1", price: 1000, image: "/placeholder.svg", is_active: true },
+  { id: 2, name: "Product 2", price: 2000, image: "/placeholder.svg", is_active: true },
+  { id: 3, name: "Product 3", price: 3500, image: "/placeholder.svg", is_active: true },
+];
 
-  logout: async () => {
-    const data = await fetchAPI("/api/auth/logout/", { method: "POST" })
-    localStorage.removeItem("user")
-    return data
-  },
+export const productsAPI = {
+  getProducts: () => Promise.resolve(DUMMY_PRODUCTS),
+  getProduct: (id) =>
+    Promise.resolve(DUMMY_PRODUCTS.find((p) => p.id === Number(id)) || null),
+};
 
-  register: async (registrationData) => {
-    return fetchAPI("/api/auth/register/", { method: "POST", body: JSON.stringify(registrationData) })
-  },
+// ============================================
+// SERVICES API — dummy data, no backend call
+// Replace the items array with your real services
+// ============================================
+const DUMMY_SERVICES = [
+  { id: 1, name: "Service 1", description: "Description here", price: 500, is_active: true },
+  { id: 2, name: "Service 2", description: "Description here", price: 1500, is_active: true },
+];
 
-  getProfile: async () => fetchAPI("/api/auth/profile/"),
+export const servicesAPI = {
+  getServices: () => Promise.resolve(DUMMY_SERVICES),
+  getService: (id) =>
+    Promise.resolve(DUMMY_SERVICES.find((s) => s.id === Number(id)) || null),
+};
 
-  updateProfile: async (profileData) =>
-    fetchAPI("/api/auth/profile/", { method: "PUT", body: JSON.stringify(profileData) }),
-}
-
-/**
- * Cart API
- */
-export const cartAPI = {
-  getCart: async () => {
-    try {
-      return await fetchAPI("/api/cart/")
-    } catch (err) {
-      console.error("🛒 Get Cart error:", err)
-      return { items: [], total: 0 }
-    }
-  },
-
-  addToCart: async (productData) => {
-    if (!productData?.product_id) throw new Error("Invalid product data: Missing product_id")
-    const payload = {
-      product_id: parseInt(productData.product_id, 10),
-      quantity: parseInt(productData.quantity || 1, 10),
-      ...(productData.variant && { variant: productData.variant }),
-    }
-    return fetchAPI("/api/cart/items/", { method: "POST", body: JSON.stringify(payload) })
-  },
-
-  updateCartItem: async (itemId, updateData) => {
-    const validItemId = parseInt(itemId, 10)
-    if (isNaN(validItemId)) throw new Error("Invalid cart item ID")
-    return fetchAPI(`/api/cart/items/${validItemId}/`, { method: "PATCH", body: JSON.stringify(updateData) })
-  },
-
-  removeCartItem: async (itemId) => {
-    const validItemId = parseInt(itemId, 10)
-    if (isNaN(validItemId)) throw new Error("Invalid cart item ID")
-    return fetchAPI(`/api/cart/items/${validItemId}/`, { method: "DELETE" })
-  },
-}
-
-/**
- * Addresses API
- */
-export const addressesAPI = {
-  getAddresses: () => fetchAPI("/api/addresses/"),
-  createAddress: (addressData) => fetchAPI("/api/addresses/", { method: "POST", body: JSON.stringify(addressData) }),
-  updateAddress: (id, addressData) => fetchAPI(`/api/addresses/${id}/`, { method: "PUT", body: JSON.stringify(addressData) }),
-  deleteAddress: (id) => fetchAPI(`/api/addresses/${id}/`, { method: "DELETE" }),
-}
-
-/**
- * Orders API
- */
+// ============================================
+// ORDERS API
+// ============================================
 export const ordersAPI = {
-  createOrder: (orderData) => fetchAPI("/api/orders/", { method: "POST", body: JSON.stringify(orderData) }),
-  getOrder: (id) => fetchAPI(`/api/orders/${id}/`),
-  listOrders: () => fetchAPI("/api/orders/"),
-}
+  createOrder: (orderData) =>
+    fetchAPI("/orders/", { method: "POST", body: orderData }),
 
-// Export main fetch function
-export { fetchAPI }
+  getUserOrders: () => fetchAPI("/orders/"),
+
+  getOrderById: (orderId) => fetchAPI(`/orders/${orderId}/`),
+
+  updateOrderStatus: (orderId, status) =>
+    fetchAPI(`/orders/${orderId}/`, { method: "PATCH", body: { status } }),
+
+  cancelOrder: (orderId) =>
+    fetchAPI(`/orders/${orderId}/cancel/`, { method: "POST" }),
+};
+
+// ============================================
+// PAYMENTS API (M-Pesa)
+// Matches Django:  api/mpesa/stk-push/
+//                  api/mpesa/status/<id>/
+//                  api/mpesa/callback/
+// ============================================
+export const paymentsAPI = {
+  // Initiate STK Push
+  initiateMpesa: ({ phone, amount, accountRef, description, orderId }) =>
+    fetchAPI("/mpesa/stk-push/", {
+      method: "POST",
+      body: {
+        phone,
+        amount,
+        account_ref: accountRef || `ORDER-${orderId}`,
+        description: description || `Payment for Order #${orderId}`,
+      },
+    }),
+
+  // Poll payment status using the transaction ID returned by initiateMpesa
+  checkMpesaStatus: (transactionId) =>
+    fetchAPI(`/mpesa/status/${transactionId}/`),
+};
+
+// ============================================
+// CONTACT API
+// ============================================
+export const contactAPI = {
+  sendContactMessage: (messageData) =>
+    fetchAPI("/contact/send/", { method: "POST", body: messageData }),
+
+  getContactMessages: () => fetchAPI("/contact/messages/"),
+};
+
+// ============================================
+// TRAINING API
+// ============================================
+export const trainingAPI = {
+  getCourses: () => fetchAPI("/training/courses/"),
+
+  getCourse: (slug) => fetchAPI(`/training/courses/${slug}/`),
+
+  enrollCourse: (enrollmentData) =>
+    fetchAPI("/training/enroll/", { method: "POST", body: enrollmentData }),
+
+  getUserEnrollments: () => fetchAPI("/training/my-enrollments/"),
+};
+
+// ============================================
+// USERS API
+// ============================================
+export const usersAPI = {
+  list: () => fetchAPI("/users/"),
+  get: (id) => fetchAPI(`/users/${id}/`),
+  create: (payload) => fetchAPI("/users/", { method: "POST", body: payload }),
+  update: (id, payload) =>
+    fetchAPI(`/users/${id}/`, { method: "PUT", body: payload }),
+  delete: (id) => fetchAPI(`/users/${id}/`, { method: "DELETE" }),
+};
+
+// ============================================
+// NEWSLETTER API
+// ============================================
+export const newsletterAPI = {
+  subscribe: (email) =>
+    fetchAPI("/newsletter/subscribe/", { method: "POST", body: { email } }),
+};
+
+// ============================================
+// Default export
+// ============================================
+export default {
+  authAPI,
+  productsAPI,
+  servicesAPI,
+  ordersAPI,
+  paymentsAPI,
+  contactAPI,
+  trainingAPI,
+  usersAPI,
+  newsletterAPI,
+};

@@ -22,7 +22,7 @@
     "clsx": "^2.1.1",
     "dompurify": "^3.2.5",
     "dotenv": "^16.5.0",
-    "framer-motion": "^12.16.0",
+    "framer-motion": "^12.29.0",
     "i": "^0.3.7",
     "install": "^0.13.0",
     "lucide-react": "^0.487.0",

@@ -16,24 +16,11 @@ import {
 } from "lucide-react"
 import { useCart } from "../components/cart/CartContext" // adjust path if needed
 
-const PLACEHOLDER = "https://via.placeholder.com/500x400?text=No+Image"
-
 function normalizeImage(url) {
   if (!url) return PLACEHOLDER
   if (typeof url !== "string") return PLACEHOLDER
   if (url.startsWith("http://") || url.startsWith("https://")) return url
   return url.startsWith("/") ? url : `/${url}`
-}
-
-const appleDemoImageMap = {
-  "iphone-15": "https://www.apple.com/v/iphone-15/h/images/overview/hero/hero_static__e0m3w5x4z6qe_large.jpg",
-  "macbook-air-m2": "https://www.apple.com/v/macbook-air-m2/j/images/overview/hero/hero_endframe__b6r4j7v9mq6e_large.jpg",
-  "ipad-air": "https://www.apple.com/v/ipad-air/l/images/overview/hero/hero__f8qk2n8v6i6u_large.jpg",
-  "apple-watch-series-9": "https://www.apple.com/newsroom/images/product/watch/standard/Apple_watch-series9-hero-202309/Apple_watch-series9-hero-202309_medium.jpg",
-  "airpods-pro-2": "https://www.apple.com/v/airpods-pro/j/images/overview/hero/hero__dvs1y8m7pr6i_large.jpg",
-  "apple-pencil-2": "https://www.apple.com/v/apple-pencil/l/images/hero/hero__f7t7k8y3b2qe_large.jpg",
-  "magsafe-case": "https://via.placeholder.com/800x600?text=Magsafe+Case",
-  "magic-keyboard": "https://via.placeholder.com/800x600?text=Magic+Keyboard",
 }
 
 /* Mock data */
@@ -48,49 +35,6 @@ const MOCK_CATEGORIES = [
   { id: "c2", name: "Laptops" },
   { id: "c3", name: "Tablets" },
   { id: "c4", name: "Wearables" },
-]
-
-const MOCK_PRODUCTS = [
-  {
-    id: "p1",
-    name: "iPhone 15",
-    slug: "iphone-15",
-    price: 120000,
-    sale_price: null,
-    primary_image: null,
-    images: ["https://techlandbd.com/cache/images/uploads/products/P0082506598/cover_cache_optimize-50.webp"],
-    category: { name: "Phones" },
-  },
-  {
-    id: "p2",
-    name: "MacBook Air M2",
-    slug: "macbook-air-m2",
-    price: 180000,
-    sale_price: 170000,
-    primary_image: null,
-    images: ["https://cdn.mos.cms.futurecdn.net/ARvrYFQbVMYp3PPgngHYh8.jpg"],
-    category: { name: "Laptops" },
-  },
-  {
-    id: "p3",
-    name: "iPad Air",
-    slug: "ipad-air",
-    price: 90000,
-    sale_price: null,
-    primary_image: null,
-    images: ["https://cdn.mos.cms.futurecdn.net/36z7GhShPyp2cHotJVmZBC.jpg"],
-    category: { name: "Tablets" },
-  },
-  {
-    id: "p4",
-    name: "Apple Watch Series 9",
-    slug: "apple-watch-series-9",
-    price: 50000,
-    sale_price: null,
-    primary_image: null,
-    images: ["https://phonesstorekenya.com/wp-content/uploads/2022/05/Apple-Watch-Series-8-5.jpg"],
-    category: { name: "Wearables" },
-  },
 ]
 
 /* ---------------------------
@@ -250,7 +194,7 @@ function PersistentAutoStepper({
   }, [])
 
   return (
-    <div className="space-y-6" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
+    <div className="space-y-12 " onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
       <div className="relative">
         <div className="hidden md:block absolute left-12 right-12 top-7 h-1 bg-gray-200 rounded-full" />
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -328,7 +272,7 @@ function PersistentAutoStepper({
           Next
         </button>
 
-        <Link to="/book-service" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-black to-stone-800 text-white shadow-md">
+        <Link to="/contact" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-black to-stone-800 text-white shadow-md">
           Book Now <ArrowRight className="w-4 h-4" />
         </Link>
       </div>
@@ -373,25 +317,6 @@ export default function ServicesPage() {
   const carouselRef = useRef(null)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(false)
-
-  useEffect(() => {
-    let mounted = true
-    const load = async () => {
-      try {
-        setLoading(true)
-        await new Promise((r) => setTimeout(r, 150))
-        if (!mounted) return
-        setProducts(MOCK_PRODUCTS)
-      } catch (err) {
-        console.error(err)
-        if (mounted) setError("Failed to load products")
-      } finally {
-        if (mounted) setLoading(false)
-      }
-    }
-    load()
-    return () => (mounted = false)
-  }, [])
 
   const pickProductImage = (p) => {
     if (p.primary_image && typeof p.primary_image === "string" && p.primary_image.trim()) {
@@ -459,46 +384,46 @@ export default function ServicesPage() {
 
   const fallbackPricing = [
     {
+  title: "Service Repairs",
+  startingPrice: 2500,
+  features: [
+    "Full device diagnostics",
+    "Logic board & motherboard repairs",
+    "Charging port replacement",
+    "Speaker & microphone repairs",
+    "Biometric repair (Face ID / Touch ID)",
+    "Software troubleshooting & OS restore",
+    "Data recovery & backup support",
+    "Water & liquid damage treatment"
+  ],
+},
+    {
       title: "iPhone Repairs",
-      startingPrice: 6000,
+      startingPrice: 4000,
       features: ["Screen replacement", "Battery replacement", "Camera repairs", "Water damage recovery"],
+    },
+     {
+      title: "iPad Repairs",
+      startingPrice: 5000,
+      features: ["Screen replacement", "Battery replacement", "Charging port repair", "Button replacement"],
     },
     {
       title: "MacBook Repairs",
-      startingPrice: 12500,
+      startingPrice: 8000,
       features: ["Screen replacement", "Logic board repair", "Battery replacement", "Performance upgrades"],
       featured: true,
-    },
-    {
-      title: "iPad Repairs",
-      startingPrice: 8000,
-      features: ["Screen replacement", "Battery replacement", "Charging port repair", "Button replacement"],
-    },
+    }
   ]
   const displayPricing = pricing.length ? pricing : fallbackPricing
 
-  if (loading) {
-    return (
-      <div className="py-12 flex justify-center items-center min-h-[50vh]">
-        <div className="text-gray-500">Loading…</div>
-      </div>
-    )
-  }
-
-  if (error) {
-    return (
-      <div className="py-12 text-center text-red-500">Error loading data: {error}</div>
-    )
-  }
-
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen min-w-screen ">
       {/* HERO */}
       <section
         className="w-full py-12 md:py-24 lg:py-32 bg-black text-white bg-cover bg-center bg-no-repeat relative"
         style={{
           backgroundImage:
-            "url('https://www.rockitrepairs.com/wp-content/uploads/apple-products-macbook-iphone-airpods-2048x1365.jpeg')",
+            "url('/Images/services-hero.png')",
         }}
       >
         <div className="absolute inset-0 bg-black/60" />
@@ -524,7 +449,7 @@ export default function ServicesPage() {
 
       {/* SERVICES SUMMARY */}
       <section className="w-full py-12 md:py-16 bg-white">
-        <div className="w-full max-w-[1200px] mx-auto px-4 md:px-6">
+        <div className="w-full max-w-[1400px] mx-auto px-4 md:px-6">
           <div className="flex flex-col lg:flex-row items-center gap-8">
             <div className="flex-1">
               <h2 className="text-3xl font-bold text-black">Comprehensive Repair Services</h2>
@@ -579,7 +504,7 @@ export default function ServicesPage() {
 
             <div className="w-full max-w-[420px] mx-auto lg:mx-0">
               <img
-                src="https://i.ebayimg.com/images/g/qLAAAOSwYTpkgjuv/s-l1600.webp"
+                src="/Images/services-summary.png"
                 width={420}
                 height={420}
                 alt="Apple device repair"
@@ -591,10 +516,10 @@ export default function ServicesPage() {
       </section>
 
       {/* DEVICES WE SERVICE - redesigned as big icon tiles */}
-      <section className="w-full py-12 md:py-20 bg-gray-50">
-        <div className="w-full max-w-[1200px] mx-auto px-4 md:px-6">
+      <section className="w-screen py-12 md:py-20 bg-gray-50">
+        <div className="w-full max-w-[1400px] mx-auto px-4 md:px-6">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-black">Devices We Service</h2>
+            <h2 className="text-3xl font-bold text-black">Devices We Repair</h2>
             <p className="text-gray-600 mt-2">Expert repair for your entire Apple ecosystem</p>
           </div>
 
@@ -647,8 +572,8 @@ export default function ServicesPage() {
       </section>
 
       {/* REPAIR PROCESS — stepper / time-wizard with auto-advance + persistence */}
-      <section className="w-full py-12 md:py-16 bg-white">
-        <div className="w-full max-w-[1200px] mx-auto px-4 md:px-6">
+      <section className="w-screen py-12 md:py-16 bg-gray-100">
+        <div className="w-full max-w-[1400px] mx-auto px-4 md:px-6">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-extrabold text-black">Our Repair Process</h2>
             <p className="text-gray-600 mt-2">Simple, transparent, and efficient — follow the steps from booking to return.</p>
@@ -658,98 +583,15 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* PRODUCTS (carousel on mobile, grid on desktop) */}
-<section className="w-full py-12 md:py-20 bg-gray-50">
-  <div className="w-full max-w-[1200px] mx-auto px-4 md:px-6">
-    <div className="flex items-center justify-between mb-6">
-      <div>
-        <h2 className="text-3xl font-extrabold text-gray-900">Products & Accessories</h2>
-        <p className="text-gray-600 mt-1">Genuine Apple devices and accessories — curated for performance and style.</p>
-      </div>
-
-      <div className="hidden md:flex items-center gap-2">
-        <button
-          onClick={() => scrollCarousel("left")}
-          disabled={!canScrollLeft}
-          className="p-2 bg-white rounded-full shadow disabled:opacity-40"
-          aria-label="Scroll left"
-        >
-          <ChevronLeft className="h-5 w-5" />
-        </button>
-        <button
-          onClick={() => scrollCarousel("right")}
-          disabled={!canScrollRight}
-          className="p-2 bg-white rounded-full shadow disabled:opacity-40"
-          aria-label="Scroll right"
-        >
-          <ChevronRight className="h-5 w-5" />
-        </button>
-      </div>
-    </div>
-
-    <div ref={carouselRef} className="relative">
-      <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory py-3 px-1 md:grid md:grid-cols-4 md:gap-6 md:overflow-visible md:snap-none">
-        {products.map((p) => {
-          const imgSrc = pickProductImage(p);
-          return (
-            <article
-              key={p.id}
-              className="snap-start md:snap-none min-w-[80%] md:min-w-0 md:w-auto bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 relative"
-            >
-              {/* clickable image -> product page */}
-              <Link
-                to={`/product/${encodeURIComponent(p.slug)}`}
-                className="block w-[320px] md:w-full h-48 md:h-52 bg-gray-100 flex items-center justify-center overflow-hidden"
-                aria-label={`View ${p.name}`}
-              >
-                <img
-                  src={imgSrc}
-                  alt={p.name}
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.currentTarget.onerror = null;
-                    e.currentTarget.src = PLACEHOLDER;
-                  }}
-                />
-              </Link>
-
-              {<div className="p-3 md:p-4 flex items-center justify-between gap-3 w-[320px] md:w-auto">
-  {/* Link to product details page */}
-  <Link
-    to={`/product/${encodeURIComponent(p.slug)}`}
-    className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-black text-white text-sm font-medium shadow-md hover:opacity-95 transition"
-    aria-label={`View ${p.name} details`}
-  >
-    View
-  </Link> 
-</div>}
-              {/* optional brand badge (kept small) */}
-              <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 text-xs font-semibold text-gray-700 shadow-sm">
-                Apple
-              </div>
-            </article>
-          );
-        })}
-      </div>
-    </div>
-
-    <div className="mt-6 flex justify-center">
-      <Link to="/shop" className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-black to-stone-800 text-white font-semibold shadow-lg hover:opacity-95 transition">
-        Browse all products
-      </Link>
-    </div>
-  </div>
-</section>
-
       {/* PRICING */}
-      <section className="w-full py-12 md:py-20 bg-white">
-        <div className="w-full max-w-[1200px] mx-auto px-4 md:px-6">
+      <section className="w-screen py-12 md:py-20 bg-gray-200">
+        <div className="w-screen max-w-[1400px] mx-auto px-4 md:px-6">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-black">Transparent Pricing</h2>
             <p className="text-gray-600 mt-2">Competitive rates with no hidden fees</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {displayPricing.map((plan, idx) => (
               <div
                 key={idx}
@@ -787,8 +629,8 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="w-full py-12 md:py-20 bg-black text-white">
-        <div className="w-full max-w-[1200px] mx-auto px-4 md:px-6">
+      <section className="w-screen py-12 md:py-20 bg-black text-white">
+        <div className="w-full max-w-[1400px] mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center gap-4 text-center">
             <h2 className="text-3xl font-bold">Need a Repair?</h2>
             <p className="text-gray-300 max-w-[700px]">Book your service appointment today and get your device fixed fast</p>
