@@ -4,6 +4,7 @@ import React, { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../components/cart/CartContext";
 import { Plus } from "lucide-react";
+import { motion } from "framer-motion";
 
 export const dummyProducts = [
   {
@@ -12,31 +13,31 @@ export const dummyProducts = [
     slug: "iphone-17-pro-max",
     category_name: "iPhone",
     price: 250000,
-    sale_price: 248000,
+    sale_price: 210000,
     primary_image: {
       image:
-        "https://www.novelty.co.ke/wp-content/uploads/2025/09/iPhone-17-Pro-2.jpg",
+        "/Images/iPhone-17-Pro-Max.png",
     },
     colors: [
       {
-        name: "Natural Titanium",
+        name: "Orange Titanium",
         hex: "#8B7355",
         images: [
-          "https://www.novelty.co.ke/wp-content/uploads/2025/09/iPhone-17-Pro-2.jpg",
+          "/Images/iPhone-17-Pro-Max.png",
         ],
       },
       {
-        name: "Black",
+        name: "Blue Titanium",
         hex: "#1a1a1a",
         images: [
-          "https://www.novelty.co.ke/wp-content/uploads/2025/09/iPhone-17-Pro-2.jpg",
+          "/Images/iPhone-17-Pro-Max-Titanium.png",
         ],
       },
       {
-        name: "White",
+        name: "White Titanium",
         hex: "#f5f5f5",
         images: [
-          "https://www.novelty.co.ke/wp-content/uploads/2025/09/iPhone-17-Pro-2.jpg",
+          "/Images/iPhone-17-Pro-Max-White.png",
         ],
       },
     ],
@@ -62,7 +63,7 @@ export const dummyProducts = [
       "Crash Detection",
     ],
     gallery: [
-      "https://www.novelty.co.ke/wp-content/uploads/2025/09/iPhone-17-Pro-2.jpg",
+      "/Images/iPhone-17-Pro-Max.png",
     ],
     availability: "In Stock",
     rating: 4.9,
@@ -79,28 +80,29 @@ export const dummyProducts = [
     sale_price: 179999,
     primary_image: {
       image:
-        "https://alephksa.com/cdn/shop/files/iPhone_16_Pro_Max_Natural_Titanium_PDP_Image_Position_1__en-ME_a46d3e5e-dad7-4584-9581-342342e640bc.jpg?v=1750067799",
+        "/Images/iPhone-16-Pro-Max.png",
     },
     colors: [
       {
         name: "Natural Titanium",
         hex: "#8B7355",
-        images: ["https://alephksa.com/cdn/...jpg"],
+        images: [
+          "/Images/iPhone-16-Pro-Max.png",
+        ],
       },
       {
         name: "Blue Titanium",
         hex: "#4A5A6A",
-        images: ["https://alephksa.com/cdn/...jpg"],
-      },
-      {
-        name: "White Titanium",
-        hex: "#E5E5E5",
-        images: ["https://alephksa.com/cdn/...jpg"],
+        images: [
+          "/Images/iPhone-16-Pro-Max-Blue.png",
+        ],
       },
       {
         name: "Black Titanium",
         hex: "#2C2C2C",
-        images: ["https://alephksa.com/cdn/...jpg"],
+        images: [
+          "/Images/iPhone-16-Pro-Max-Black.png",
+        ],
       },
     ],
     description:
@@ -129,10 +131,6 @@ export const dummyProducts = [
       "Crash Detection",
       "Face ID",
     ],
-    gallery: [
-      "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-16-pro-max-titanium-1",
-      "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-16-pro-max-titanium-2",
-    ],
     availability: "In Stock",
     rating: 4.9,
     reviews_count: 327,
@@ -141,27 +139,27 @@ export const dummyProducts = [
 
   {
     id: 2,
-    name: "MacBook Air M3 (2024)",
+    name: "MacBook Air M3 (2024) 15-inch",
     slug: "macbook-air-m3-2024",
     category_name: "MacBook",
-    price: 199999,
-    sale_price: 189999,
+    price: 164000,
+    sale_price: 155000,
     primary_image: {
       image:
-        "https://www.phoneplacekenya.com/wp-content/uploads/2024/04/13-inch-MacBook-Air-M3.webp",
+        "/Images/MacBook-Air-M3.png",
     },
     colors: [
       {
         name: "Midnight",
         hex: "#191E29",
         images: [
-          "https://www.phoneplacekenya.com/wp-content/uploads/2024/04/13-inch-MacBook-Air-M3.webp",
+          "/Images/MacBook-Air-M3.png",
         ],
       },
       {
         name: "Starlight",
         hex: "#F2E9DC",
-        images: ["https://www.phoneplacekenya.com/...webp"],
+        images: ["/Images/MacBook-Air-M3-Starlight.png"],
       },
     ],
     description:
@@ -176,7 +174,7 @@ export const dummyProducts = [
     },
     features: ["Touch ID", "1080p FaceTime HD", "MagSafe 3", "Wi-Fi 6E"],
     gallery: [
-      "https://www.phoneplacekenya.com/wp-content/uploads/2024/04/13-inch-MacBook-Air-M3.webp",
+      "/Images/MacBook-Air-M3-Starlight.png",
     ],
     availability: "In Stock",
     rating: 4.8,
@@ -186,14 +184,14 @@ export const dummyProducts = [
 
   {
     id: 3,
-    name: "iPad Pro M4 (2024)",
+    name: "iPad Pro M4 (2024) 13-inch",
     slug: "ipad-pro-m4",
     category_name: "iPad",
-    price: 159999,
+    price: 160000,
     sale_price: 149999,
     primary_image: {
       image:
-        "https://noypigeeks.gumlet.io/wp-content/uploads/2024/05/iPad-Pro-M4.jpg",
+        "/Images/iPad-Pro-M4.png",
     },
     description: "iPad Pro M4 — power and portability with the M4 chip.",
     specifications: {
@@ -206,7 +204,7 @@ export const dummyProducts = [
     },
     features: ["Apple Pencil Pro support", "ProMotion 120Hz"],
     gallery: [
-      "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/ipad-pro-m4-1",
+      "/Images/iPad-Pro-M4.png",
     ],
     availability: "In Stock",
     rating: 4.9,
@@ -219,11 +217,11 @@ export const dummyProducts = [
     name: "Apple Watch Ultra 2",
     slug: "apple-watch-ultra-2",
     category_name: "Apple Watch",
-    price: 119999,
-    sale_price: 114999,
+    price: 149000,
+    sale_price: 116000,
     primary_image: {
       image:
-        "https://www.androidauthority.com/wp-content/uploads/2024/09/Apple-Watch-Ultra-2-in-Black-featured-image-scaled.jpg",
+        "/Images/Apple-Watch-Ultra-2.png",
     },
     description: "Engineered for endurance athletes and adventurers.",
     specifications: {
@@ -235,7 +233,7 @@ export const dummyProducts = [
     },
     features: ["Action Button", "Dual-frequency GPS", "Dive-ready"],
     gallery: [
-      "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/apple-watch-ultra-2-1",
+      "/Images/Apple-Watch-Ultra-2.png",
     ],
     availability: "In Stock",
     rating: 4.9,
@@ -247,10 +245,10 @@ export const dummyProducts = [
     name: "AirPods Pro (2nd Gen)",
     slug: "airpods-pro-2",
     category_name: "AirPods",
-    price: 39999,
-    sale_price: 37999,
+    price: 28000,
+    sale_price: 26000,
     primary_image: {
-      image: "https://applecenter.co.ke/wp-content/uploads/2023/11/MTJV3.jpeg",
+      image: "/Images/AirPods-Pro-2.png",
     },
     description: "AirPods Pro (2nd Gen) with Adaptive Audio and ANC.",
     specifications: {
@@ -260,7 +258,7 @@ export const dummyProducts = [
     },
     features: ["Active Noise Cancellation", "Adaptive Transparency"],
     gallery: [
-      "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/airpods-pro-2-1",
+      "/Images/AirPods-Pro-2.png",
     ],
     availability: "In Stock",
     rating: 4.8,
@@ -272,11 +270,10 @@ export const dummyProducts = [
     name: "Apple Pencil (2nd Gen)",
     slug: "apple-pencil-2",
     category_name: "Accessories",
-    price: 19999,
-    sale_price: 17999,
+    price: 18500,
+    sale_price: 17500,
     primary_image: {
-      image:
-        "https://mightyape.co.ke/public/uploads/all/MDhOiqV5A41K6szVExXk199dK4PUU6YFbj2EcWvO.png",
+      image: "/Images/Apple-Pencil-2.png",
     },
     description: "Apple Pencil (2nd Gen) for precision input.",
     specifications: {
@@ -298,7 +295,7 @@ export const dummyProducts = [
     sale_price: 8999,
     primary_image: {
       image:
-        "https://mac-more.co.ke/wp-content/uploads/2025/07/MagSafe_Charger_1m_Coiled_Screen__USEN.jpg",
+        "/Images/MagSafe-Charger.png",
     },
     description: "MagSafe Charger — magnetic wireless charging up to 15W.",
     specifications: {
@@ -311,7 +308,6 @@ export const dummyProducts = [
     rating: 4.6,
     reviews_count: 212,
   },
-
   {
     id: 8,
     name: "iPhone 15 Silicone Case with MagSafe",
@@ -320,7 +316,7 @@ export const dummyProducts = [
     price: 7999,
     sale_price: 6999,
     primary_image: {
-      image: "https://i.ebayimg.com/images/g/I98AAOSwNbNlprtg/s-l1200.jpg",
+      image: "/Images/iPhone-15-Silicone-Case.png",
     },
     description: "Silicone Case with MagSafe for iPhone 15.",
     specifications: {
@@ -333,6 +329,184 @@ export const dummyProducts = [
     rating: 4.8,
     reviews_count: 154,
   },
+  {
+  id: 9,
+  name: "Mac mini (M2, 2023)",
+  slug: "mac-mini-m2",
+  category_name: "mac mini",
+  price: 99999,
+  sale_price: 94999,
+  primary_image: {
+    image: "/Images/Mac-mini-M2.png",
+  },
+  description: "Apple Mac mini powered by the M2 chip delivers impressive performance in a compact design, perfect for work, creativity, and everyday use.",
+  specifications: {
+    Processor: "Apple M2 chip",
+    CPU: "8-core CPU",
+    GPU: "10-core GPU",
+    Memory: "8GB Unified Memory",
+    Storage: "256GB SSD",
+    Connectivity: "Wi-Fi 6E, Bluetooth 5.3, Ethernet",
+    Ports: "2x Thunderbolt 4, HDMI, 2x USB-A, Ethernet, Headphone jack",
+    OperatingSystem: "macOS",
+  },
+  features: [
+    "Compact aluminum design",
+    "Energy efficient performance",
+    "Support for up to two displays",
+    "High-speed SSD storage",
+  ],
+  availability: "In Stock",
+  rating: 4.9,
+  reviews_count: 312,
+},
+
+  {
+    id: 10,
+    name: "Magic Keyboard for iPad 10th Generation",
+    slug: "magic-keyboard-ipad-10th-gen",
+    category_name: "Accessories",
+    price: 38000,
+    sale_price: 38000,
+    primary_image: {
+      image:
+        "/Images/Magic-Keyboard-iPad-10th-Gen.png",
+    },
+    description: "Magic Keyboard with trackpad for iPad 10th generation.",
+    specifications: { Compatibility: "iPad 10th Gen", Trackpad: "Yes" },
+    features: ["Backlit keys", "Magnetic attachment", "Smooth typing"],
+    availability: "In Stock",
+    rating: 4.6,
+    reviews_count: 64,
+  },
+
+  {
+    id: 13,
+    name: "iPad 10th Generation 256GB 11-inch with Magic Keyboard",
+    slug: "ipad-10th-gen-256gb-magic-keyboard",
+    category_name: "iMac",
+    price: 98000,
+    sale_price: 98000,
+    primary_image: {
+      image:
+        "/Images/iPad-10th-Gen-Magic-Keyboard.png",
+    },
+    description:
+      "11-inch iPad 10th gen with 256GB storage bundled with Magic Keyboard.",
+    specifications: {
+      Storage: "256GB",
+      Display: "11-inch Liquid Retina",
+      Included: "Magic Keyboard",
+    },
+    features: ["Large display", "Keyboard + trackpad", "Fast performance"],
+    availability: "In Stock",
+    rating: 4.7,
+    reviews_count: 73,
+  },
+  {
+    id: 11,
+    name: "iPhone 15 128GB",
+    slug: "iphone-15-128gb",
+    category_name: "iPhone",
+    price: 75000,
+    sale_price: 75000,
+    primary_image: {
+      image:
+        "/Images/iPhone-15-128GB.png",
+    },
+    description: "iPhone 15 with A16 Bionic chip and 128GB storage.",
+    specifications: {
+      Storage: "128GB",
+      Display: "6.1-inch OLED",
+      Connectivity: "5G",
+    },
+    features: ["Face ID", "Fast charging", "48MP camera"],
+    availability: "In Stock",
+    rating: 4.9,
+    reviews_count: 211,
+  },
+
+  {
+    id: 12,
+    name: "iPhone 14 128GB",
+    slug: "iphone-14-128gb",
+    category_name: "iPhone",
+    price: 58000,
+    sale_price: 58000,
+    primary_image: {
+      image:
+        "/Images/iPhone-14-128GB.png",
+    },
+    description:
+      "iPhone 14 with advanced safety features and great performance.",
+    specifications: {
+      Storage: "128GB",
+      Display: "6.1-inch OLED",
+      Connectivity: "5G",
+    },
+    features: ["Crash detection", "Face ID", "All-day battery life"],
+    availability: "In Stock",
+    rating: 4.8,
+    reviews_count: 187,
+  },
+  {
+  id: 14,
+  name: "Apple 30W USB-C Power Adapter Charger",
+  slug: "apple-30w-usb-c-power-adapter charger",
+  category_name: "Accessories",
+  price: 7499,
+  sale_price: 5999,
+  primary_image: {
+    image: "/Images/Apple-30W-USB-C-Power-Adapter.png",
+  },
+  description: "Apple 30W USB-C Power Adapter for fast, efficient charging of compatible Apple devices like iPhone, iPad, and MacBook Air.",
+  specifications: {
+    PowerOutput: "30W",
+    PortType: "USB-C (1 port)",
+    Compatibility: "iPhone, iPad, MacBook Air and other USB-C devices",
+    ChargingTechnology: "USB Power Delivery (PD)",
+    InputVoltage: "100–240 V AC",
+    CableIncluded: "No",
+  },
+  features: [
+    "Compact, portable design",
+    "Fast charging with USB Power Delivery",
+    "Built-in safety protections (over-voltage, over-current, temperature)",
+    "Minimalist Apple aesthetic",
+  ],
+  availability: "In Stock",
+  rating: 4.7,
+  reviews_count: 86,
+},
+{
+  id: 15,
+  name: "Apple Magic Mouse 2",
+  slug: "apple-magic-mouse-2",
+  category_name: "Accessories",
+  price: 10999,
+  sale_price: 9999,
+  primary_image: {
+    image: "/Images/Apple-Magic-Mouse-2.png",
+  },
+  description: "The Apple Magic Mouse 2 is a wireless, rechargeable mouse with a sleek design and multi-touch surface for intuitive navigation.",
+  specifications: {
+    Connectivity: "Bluetooth 4.0",
+    Charging: "Lightning cable (included)",
+    Compatibility: "Mac, iPad (Bluetooth supported devices)",
+    Battery: "Built-in rechargeable battery",
+    ColorOptions: "Silver / Space Gray / White",
+    Weight: "99 grams approx.",
+  },
+  features: [
+    "Multi-touch surface for swipe and gesture controls",
+    "No need for batteries — rechargeable",
+    "Lightweight ergonomic design",
+    "Pairs automatically with your device",
+  ],
+  availability: "In Stock",
+  rating: 4.6,
+  reviews_count: 228,
+}
 ];
 
 export default function ShopPage() {
@@ -397,6 +571,71 @@ export default function ShopPage() {
             </p>
           </div>
         </section>
+
+        <motion.section
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, ease: "easeOut" }}
+  viewport={{ once: true }}
+  className="mt-8 mb-10 relative overflow-hidden rounded-2xl 
+  bg-gradient-to-r from-neutral-950 via-neutral-900 to-neutral-800 
+  text-white shadow-xl border border-white/10"
+>
+  {/* floating glows */}
+  <motion.div
+    animate={{ x: [0, 40, 0], y: [0, -30, 0], opacity: [0.15, 0.3, 0.15] }}
+    transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+    className="absolute -top-24 -right-24 w-72 h-72 bg-white/10 rounded-full blur-3xl"
+  />
+  <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-white/10" />
+
+  <div className="relative z-10 px-8 py-8 md:py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ delay: 0.2, duration: 0.6 }}
+      viewport={{ once: true }}
+    >
+      {/* 🔁 Circular moving badge */}
+      <div className="relative w-28 h-12 mb-3">
+        <motion.span
+  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
+  inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/20 
+  text-x text-green-400 font-semibold whitespace-nowrap"
+>
+  ♻️ Trade-In
+</motion.span>
+      </div>
+
+      <h2 className="text-2xl md:text-3xl font-bold">
+        Trade in your old Apple device. Save instantly.
+      </h2>
+
+      <p className="mt-2 text-white/70 text-sm max-w-xl">
+        Get instant credit for your iPhone, iPad, MacBook or Watch and upgrade today.
+      </p>
+    </motion.div>
+
+    <motion.div
+      initial={{ opacity: 0, x: 20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ delay: 0.35, duration: 0.6 }}
+      viewport={{ once: true }}
+      className="flex gap-3"
+    >
+      <motion.button
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => navigate("/contact")}
+        className="px-6 py-3 rounded-xl bg-white text-black font-semibold shadow-lg"
+      >
+        Start Trade-In
+      </motion.button>
+    </motion.div>
+
+  </div>
+</motion.section>
 
         {/* Search + Filters */}
         <div className="mt-4 mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -498,7 +737,7 @@ export default function ShopPage() {
                 looking for reliable and efficient Apple phone repairs!"
               </p>
               <p className="mt-3 font-medium text-sm text-gray-600">
-                – Collins Onyango
+                ~ Collins Onyango
               </p>
             </div>
             <div className="p-6 bg-gray-50 rounded-lg shadow">
@@ -510,7 +749,7 @@ export default function ShopPage() {
                 this is it!"
               </p>
               <p className="mt-3 font-medium text-sm text-gray-600">
-                – Sadiqahmed Jilaow
+                ~ Sadiqahmed Jilaow
               </p>
             </div>
             <div className="p-6 bg-gray-50 rounded-lg shadow">
@@ -524,7 +763,7 @@ export default function ShopPage() {
                 recommend visiting tawari digital limited for you tech needs!!"
               </p>
               <p className="mt-3 font-medium text-sm text-gray-600">
-                – Peter Mwaura
+                ~ Peter Mwaura
               </p>
             </div>
           </div>

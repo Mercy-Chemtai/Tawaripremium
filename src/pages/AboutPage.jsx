@@ -210,28 +210,12 @@ export default function AboutPage() {
       id: "cate",
       name: "Cate Adiwa",
       role: "Lead Technician",
-      img: "/Images/femaleAvater.jpg",
       bio: "Cate leads our repair team with 7+ years experience in Apple repairs, specialising in logic board and display repairs. Passionate about quality and customer service.",
-    },
-    brighette: {
-      id: "Amina",
-      name: "Amina",
-      role: "Marketing Specialist",
-      img: "/Images/femaleAvater.jpg",
-      bio: "Brighette manages our communications and helps customers find the right service for their needs.",
-    },
-    robert: {
-      id: "Keith",
-      name: "Keith",
-      role: "Repair Specialist",
-      img: "/Images/maleAvater.jpg",
-      bio: "Robert focuses on diagnostics and fast, reliable repairs — screens, batteries and water damage.",
     },
     mitchelle: {
       id: "mitchelle",
       name: "Mitchelle",
       role: "Technical Advisor",
-      img: "/Images/femaleAvater.jpg",
       bio: "Mitchelle advises on complex repairs and quality assurance, ensuring each device leaves in perfect condition.",
     },
   };
@@ -291,7 +275,7 @@ export default function AboutPage() {
               className="relative lg:ml-auto"
             >
               <img
-                src="https://imagedelivery.net/xaKlCos5cTg_1RWzIu_h-A/dffa28af-ca8c-4f6e-22a2-e7debdfcf400/public"
+                src="/Images/our-story.png"
                 width={500}
                 height={600}
                 alt="Tawari Digital team"
@@ -365,111 +349,99 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* TEAM */}
-      <section id="team" className="py-16 lg:py-20 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-8">
-            <h2 className="text-3xl lg:text-4xl font-bold">Meet the Team</h2>
-            <p className="mt-3 text-base text-gray-600">
-              Skilled technicians and friendly faces — the people who bring your devices back to life.
-            </p>
-          </div>
+     {/* TEAM */}
+<section id="team" className="py-16 lg:py-20 bg-gray-200">
+  <div className="container mx-auto px-6">
+    {/* Section Header */}
+    <div className="text-center max-w-3xl mx-auto mb-12">
+      <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">Meet the Team</h2>
+      <p className="mt-3 text-base text-gray-600">
+        Skilled professionals dedicated to delivering excellence and innovation.
+      </p>
+    </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {Object.values(profiles).map((p) => (
-              <motion.div
-                key={p.id}
-                variants={fadeUp}
-                whileHover={cardHover}
-                className="relative group bg-white rounded-2xl p-6 shadow hover:shadow-2xl transition"
-              >
-                <img src={p.img} alt={p.name} className="mx-auto mb-4 h-28 w-28 rounded-full object-cover" />
-                <h3 className="text-xl font-semibold text-center">{p.name}</h3>
-                <p className="text-center text-gray-600">{p.role}</p>
+    {/* Team Grid */}
+    <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-2">
+      {Object.values(profiles).map((p) => (
+        <motion.div
+          key={p.id}
+          variants={fadeUp}
+          whileHover={cardHover}
+          className="group bg-gray-50 rounded-2xl p-6 shadow hover:shadow-lg transition"
+        >
+          <h3 className="text-xl font-semibold text-center text-gray-900">{p.name}</h3>
+          <p className="text-center text-gray-500 mt-1">{p.role}</p>
 
-                <div className="mt-4 flex justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all">
-                  <button
-                    onClick={() => setSelectedProfile(p.id)}
-                    className="px-3 py-2 rounded bg-black text-white text-sm"
-                    aria-haspopup="dialog"
-                  >
-                    View Profile
-                  </button>
-                  <a href="tel:+254710130021" className="px-3 py-2 rounded border border-gray-300 text-sm">
-                    Call
-                  </a>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Modal */}
-        <AnimatePresence>
-          {selectedProfile && profiles[selectedProfile] && (
-            <motion.div
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="profile-title"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          <div className="mt-4 flex justify-center group-hover:opacity-100 transition-opacity">
+            <button
+              onClick={() => setSelectedProfile(p.id)}
+              className="px-4 py-2 rounded bg-black text-white text-sm font-medium hover:bg-gray-800"
             >
-              <motion.div
-                className="absolute inset-0 bg-black/50"
-                onClick={() => setSelectedProfile(null)}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-              />
-              <motion.div
-                className="relative max-w-2xl w-full bg-white rounded-2xl p-6 z-10 shadow-lg"
-                initial={{ y: 20, scale: 0.98 }}
-                animate={{ y: 0, scale: 1 }}
-                exit={{ y: 12, opacity: 0 }}
-              >
-                <button
-                  className="absolute right-4 top-4 p-2 rounded-full hover:bg-gray-100"
-                  onClick={() => setSelectedProfile(null)}
-                  aria-label="Close profile"
-                >
-                  <X className="h-5 w-5" />
-                </button>
+              View Bio
+            </button>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
 
-                <div className="flex gap-6 items-center">
-                  <img
-                    src={profiles[selectedProfile].img}
-                    alt={profiles[selectedProfile].name}
-                    className="w-32 h-32 rounded-full object-cover"
-                  />
-                  <div>
-                    <h3 id="profile-title" className="text-2xl font-semibold">
-                      {profiles[selectedProfile].name}
-                    </h3>
-                    <p className="text-sm text-gray-600">{profiles[selectedProfile].role}</p>
-                    <p className="mt-3 text-gray-600">{profiles[selectedProfile].bio}</p>
-                    <div className="mt-4 flex gap-3">
-                      <a
-                        className="inline-flex items-center px-4 py-2 rounded bg-black text-white"
-                        href="tel:+254710130021"
-                      >
-                        Call
-                      </a>
-                      <Link
-                        className="inline-flex items-center px-4 py-2 rounded border border-gray-200"
-                        to="/contact"
-                      >
-                        Contact
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </section>
+  {/* Modal */}
+  <AnimatePresence>
+    {selectedProfile && profiles[selectedProfile] && (
+      <motion.div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="profile-title"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50"
+        onClick={() => setSelectedProfile(null)}
+      >
+        <motion.div
+          className="relative max-w-xl w-full bg-white rounded-2xl p-8 z-10 shadow-lg"
+          initial={{ y: 20, scale: 0.95 }}
+          animate={{ y: 0, scale: 1 }}
+          exit={{ y: 20, opacity: 0 }}
+          onClick={(e) => e.stopPropagation()} // Prevent closing modal when clicking inside
+        >
+          {/* Close Button */}
+          <button
+            className="absolute right-4 top-4 text-gray-500 hover:text-gray-700 font-bold text-lg"
+            onClick={() => setSelectedProfile(null)}
+            aria-label="Close profile"
+          >
+            ×
+          </button>
+
+          {/* Profile Content */}
+          <h3 id="profile-title" className="text-2xl font-semibold text-gray-900 mb-2">
+            {profiles[selectedProfile].name}
+          </h3>
+          <p className="text-gray-500 mb-4">{profiles[selectedProfile].role}</p>
+          <p className="text-gray-700">{profiles[selectedProfile].bio}</p>
+
+          {/* Optional Actions */}
+          <div className="mt-6 flex gap-3">
+            <a
+              href="tel:+254710130021"
+              className="px-4 py-2 rounded bg-black text-white font-medium hover:bg-gray-800"
+            >
+              Call
+            </a>
+            <Link
+              to="/contact"
+              className="px-4 py-2 rounded border border-gray-300 text-gray-700 font-medium hover:bg-gray-50"
+            >
+              Contact
+            </Link>
+          </div>
+        </motion.div>
+      </motion.div>
+    )}
+  </AnimatePresence>
+</section>
+
 
       {/* CTA */}
       <motion.section

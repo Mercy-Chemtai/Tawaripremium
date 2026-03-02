@@ -199,7 +199,7 @@ export default function TrainingPage() {
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-black" />
-                <p className="text-gray-700">Job placement assistance</p>
+                <p className="text-gray-700">Learn from industry</p>
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-5 w-5 text-black" />
@@ -211,7 +211,7 @@ export default function TrainingPage() {
             <div className="relative lg:ml-auto">
               <img
                 src={
-                  "https://imagedelivery.net/xaKlCos5cTg_1RWzIu_h-A/6bc2693d-1ca1-4f11-b61a-2e572b046800/public"
+                  "/Images/training-overview.png"
                 }
                 width={500}
                 height={500}

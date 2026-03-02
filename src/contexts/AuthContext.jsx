@@ -1,94 +1,129 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+// src/contexts/AuthContext.jsx
+import { createContext, useContext, useState, useEffect } from "react";
+import { authAPI } from "../services/api";
+import axios from "axios";
 
-const AuthContext = createContext();
+const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Initialize user from localStorage on mount
   useEffect(() => {
-    checkAuth();
+    const initAuth = () => {
+      try {
+        const storedUser = localStorage.getItem("user");
+        const accessToken = localStorage.getItem("accessToken");
+        
+        if (storedUser && accessToken) {
+          setUser(JSON.parse(storedUser));
+        }
+      } catch (error) {
+        console.error("Failed to initialize auth:", error);
+        logout();
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    initAuth();
   }, []);
 
-  const checkAuth = async () => {
+  const login = async (email, password) => {
     try {
-      const token = localStorage.getItem('auth_token');
-      if (!token) {
-        setLoading(false);
-        return;
-      }
+      const data = await authAPI.login({ email, password });
 
-      const response = await fetch('http://localhost:5000/api/auth/profile', {
-        headers: { 'Authorization': `Bearer ${token}` }
-      });
-
-      if (response.ok) {
-        const userData = await response.json();
-        setUser(userData);
+      if (data?.tokens?.access && data?.user) {
+        localStorage.setItem("accessToken", data.tokens.access);
+        localStorage.setItem("refreshToken", data.tokens.refresh);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        
+        setUser(data.user);
+        return true;
       } else {
-        localStorage.removeItem('auth_token');
+        throw new Error("Invalid response format from server");
       }
     } catch (error) {
-      console.error('Auth check failed:', error);
-    } finally {
-      setLoading(false);
+      console.error("Login error:", error);
+      throw new Error(error.message || "Login failed");
     }
   };
 
-  const login = async (email, password) => {
-    const response = await fetch('http://localhost:5000/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password })
-    });
 
-    if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.message || 'Login failed');
-    }
+const register = async (name, email, password, confirmPassword) => {
+  if (password !== confirmPassword) throw new Error("Passwords do not match");
 
-    const data = await response.json();
-    localStorage.setItem('auth_token', data.token);
-    setUser(data.user);
-    return data;
-  };
+  try {
+    const res = await axios.post(
+      "http://localhost:8000/api/auth/register/",
+      { name, email, password, confirmPassword },
+      { headers: { "Content-Type": "application/json" } }
+    );
+    // You may want to handle the response here, e.g., setUser or return res.data
+    return res.data;
+  } catch (error) {
+    console.error("Registration error:", error);
+    throw new Error(error.response?.data?.message || error.message || "Registration failed");
+  }
+};
 
-  const register = async (name, email, password) => {
-    const response = await fetch('http://localhost:5000/api/auth/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, password })
-    });
-
-    if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.message || 'Registration failed');
-    }
-
-    const data = await response.json();
-    localStorage.setItem('auth_token', data.token);
-    setUser(data.user);
-    return data;
-  };
-
-  const loginWithGoogle = () => {
-    window.location.href = 'http://localhost:5000/api/auth/google';
-  };
 
   const logout = () => {
-    localStorage.removeItem('auth_token');
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("user");
     setUser(null);
   };
 
+  const loginWithGoogle = async () => {
+    console.warn("Google login not yet implemented");
+    // TODO: Implement Google OAuth
+  };
+
+  const getProfile = async () => {
+    try {
+      const data = await authAPI.getProfile();
+      setUser(data);
+      localStorage.setItem("user", JSON.stringify(data));
+      return data;
+    } catch (error) {
+      console.error("Get profile error:", error);
+      logout();
+      throw error;
+    }
+  };
+
+  const value = {
+    user,
+    loading,
+    login,
+    register,
+    logout,
+    loginWithGoogle,
+    getProfile,
+    isAuthenticated: !!user,
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-black"></div>
+      </div>
+    );
+  }
+
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, loginWithGoogle, logout }}>
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );
 }
 
-export function useAuth() {
+export const useAuth = () => {
   const context = useContext(AuthContext);
-  if (!context) throw new Error('useAuth must be used within AuthProvider');
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
   return context;
-}
+};

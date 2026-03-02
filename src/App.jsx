@@ -31,99 +31,109 @@ import ProductManager from "./components/admin/product-manager";
 import ProductForm from "./components/admin/product-form";
 import WhatsAppWidget from "./pages/WhatsAppWidget";
 import GoogleCallbackPage from "./pages/GoogleCallbackPage";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import AuthCallback from './pages/AuthCallBackPage';
+import { Routes, Route, Navigate } from "react-router-dom";
+import AuthCallback from "./pages/AuthCallBackPage";
+import { useLocation } from "react-router-dom";
+import PrivacyTermsPage from "./pages/PrivacyAndPolicyTermsAndServices";
 
 
 // Helper to check auth
 const isAuthenticated = () => {
-  return !!localStorage.getItem("user") || !!localStorage.getItem("userToken")
-}
+  return !!localStorage.getItem("user") || !!localStorage.getItem("userToken");
+};
 
 // Protected route wrapper
 function PrivateRoute({ children }) {
-  return isAuthenticated() ? children : <Navigate to="/login" />
+  const location = useLocation(); // Import from react-router-dom
+  
+  if (!isAuthenticated()) {
+    // Redirect to login with the current path as redirect parameter
+    return <Navigate to={`/login?redirect=${location.pathname}`} />;
+  }
+  
+  return children;
 }
 
 function App() {
   return (
-    <Router>
-      <AuthProvider>
-        <CartProvider>
-          <ToastProvider>
-            <div className="flex flex-col min-h-screen">
-              <Header />
-              <main className="flex-1 pt-16">
-                <ScrollToTop />
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/about" element={<AboutPage />} />
-                  <Route path="/admin/products" element={<ProductManager />} />
-                  <Route path="/admin/products/new" element={<ProductForm />} />
-                  <Route
-                    path="/admin/products/:productId/edit"
-                    element={<ProductForm />}
-                  />
-                  <Route path="/services" element={<ServicesPage />} />
-                  <Route path="/training" element={<TrainingPage />} />
-                  <Route path="/shop" element={<ShopPage />} />
-                  <Route path="/product/:slug" element={<ProductDetail />} />
-                  <Route path="/blog" element={<BlogPage />} />
-                  <Route path="/blog/:slug" element={<BlogPostPage />} />
-                  <Route path="/book-service" element={<BookServicePage />} />
-                  <Route
-                    path="/account/bookings/:bookingId"
-                    element={<BookingDetailPage />}
-                  />
-                  <Route path="/contact" element={<ContactPage />} />
-                  <Route path="/orders" element={<OrdersPage />} />
-                  <Route
-                    path="/orders/:orderId"
-                    element={<OrderDetailPage />}
-                  />
-                  <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/auth/callback" element={<AuthCallback />} />
-                  <Route path="/verify-email" element={<VerifyEmailPage />} />
-                  <Route
-                    path="/resend-email"
-                    element={<ResendEmailVerificationPage />}
-                  />
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/cart" element={<CartPage />} />
-                  <Route
-                    path="/checkout"
-                    element={
-                      <PrivateRoute>
-                        <CheckoutPage />
-                      </PrivateRoute>
-                    }
-                  />
-                  <Route path="*" element={<Navigate to="/checkout" />} />{" "}
-                  <Route path="/checkout/:id" element={<CheckoutPage />} />
-                  <Route path="/account/*" element={<AccountPage />} />
-                  <Route
-                    path="/google/callback"
-                    element={<GoogleCallbackPage />}
-                  />
-                </Routes>
-              </main>
+    <AuthProvider>
+      <CartProvider>
+        <ToastProvider>
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-1 pt-16">
+              <ScrollToTop />
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/admin/products" element={<ProductManager />} />
+                <Route path="/admin/products/new" element={<ProductForm />} />
+                <Route
+                  path="/admin/products/:productId/edit"
+                  element={<ProductForm />}
+                />
+                <Route path="/services" element={<ServicesPage />} />
+                <Route path="/training" element={<TrainingPage />} />
+                <Route path="/shop" element={<ShopPage />} />
+                <Route path="/product/:slug" element={<ProductDetail />} />
+                <Route path="/blog" element={<BlogPage />} />
+                <Route path="/blog/:slug" element={<BlogPostPage />} />
+                <Route path="/book-service" element={<BookServicePage />} />
+                <Route
+                  path="/account/bookings/:bookingId"
+                  element={<BookingDetailPage />}
+                />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/orders" element={<OrdersPage />} />
+                <Route path="/orders/:orderId" element={<OrderDetailPage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route
+                  path="/checkout"
+                  element={
+                    <PrivateRoute>
+                      <CheckoutPage />
+                    </PrivateRoute>
+                  }
+                />{" "}
+                <Route path="/checkout/:id" element={<CheckoutPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/auth/callback" element={<AuthCallback />} />
+                <Route path="/verify-email" element={<VerifyEmailPage />} />
+                <Route
+                  path="/resend-email"
+                  element={<ResendEmailVerificationPage />}
+                />
+                <Route path="/cart" element={<CartPage />} />
+                <Route path="/PrivacyAndPolicyTermsAndServices" element={<PrivacyTermsPage/>} />
+                <Route
+                  path="/account/*"
+                  element={
+                    <PrivateRoute>
+                      <AccountPage />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path="/google/callback"
+                  element={<GoogleCallbackPage />}
+                />
+                <Route path="*" element={<Navigate to="/" />} />
+              </Routes>
+            </main>
 
-              <Footer />
+            <Footer />
 
-              {/* WhatsApp widget rendered site-wide (appears after Footer in DOM) */}
-              <WhatsAppWidget
-                phone="=0712007722"
-                message="Hello Tawari Digital, I hope you’re well. I’d like to learn more about your Apple products and repair services."
-              />
-            </div>
-
-            {/* Toaster must be inside the ToastProvider */}
-            <Toaster />
-          </ToastProvider>
-        </CartProvider>
-      </AuthProvider>
-    </Router>
+            {/* WhatsApp widget rendered site-wide */}
+            <WhatsAppWidget
+              phone="0712007722"
+              message="Hello Tawari Digital, I hope you’re well. I’d like to learn more about your Apple products and repair services."
+            />
+          </div>
+      
+          <Toaster />
+        </ToastProvider>
+      </CartProvider>
+    </AuthProvider>
   );
 }
 
