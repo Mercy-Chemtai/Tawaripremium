@@ -321,7 +321,7 @@ export const dummyProducts = [
   },
 
   {
-    id: 8,
+    id: 9,
     name: "iPhone 15 Silicone Case with MagSafe",
     slug: "iphone-15-case",
     category_name: "Accessories",
@@ -342,7 +342,7 @@ export const dummyProducts = [
     reviews_count: 154,
   },
   {
-    id: 8,
+    id: 9,
     name: "iPhone 15 Silicone Case with MagSafe",
     slug: "iphone-15-case",
     category_name: "Accessories",
@@ -364,7 +364,7 @@ export const dummyProducts = [
   },
 
   {
-    id: 9,
+    id: 10,
     name: "Apple Watch SE 3 40mm",
     slug: "apple-watch-se-3-40mm",
     category_name: "Wearables",

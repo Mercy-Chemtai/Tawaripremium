@@ -5,12 +5,14 @@ import { Plus, Minus, X, ShoppingCart } from "lucide-react";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function CartPage() {
-  const { items, updateItem, removeItem, clear, subtotal, totalItems } =
-    useCart();
+  const { cart, updateQuantity, removeItem, clearCart, getSubTotal, getTotalItems } = useCart();
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
-  if (!items || items.length === 0) {
+  const totalItems = getTotalItems();
+  const totalWithTax = Math.round(getSubTotal());
+
+  if (!cart || cart.length === 0) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 pt-20">
         <div className="text-center py-20">
@@ -34,8 +36,6 @@ export default function CartPage() {
     );
   }
 
-  const totalWithTax = Math.round(subtotal);
-
   return (
     <div className="min-h-screen bg-gray-50 pt-16 sm:pt-20">
       <div className="container mx-auto py-6 sm:py-12 px-4 sm:px-6 lg:px-12">
@@ -51,7 +51,7 @@ export default function CartPage() {
           </div>
           <div className="flex gap-4">
             <button
-              onClick={() => clear()}
+              onClick={() => clearCart()}
               className="text-sm text-red-600 hover:text-red-700 font-medium"
             >
               Clear cart
@@ -68,9 +68,9 @@ export default function CartPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
           {/* Cart Items */}
           <div className="lg:col-span-2 space-y-3 sm:space-y-4">
-            {items.map((item, idx) => (
+            {cart.map((item, idx) => (
               <div
-                key={`${item.product_id}-${item.selectedColor}-${item.selectedStorage}-${idx}`}
+                key={`${item.id}-${item.selectedColor}-${item.selectedStorage}-${idx}`}
                 className="bg-white rounded-lg shadow-sm p-4 sm:p-6 hover:shadow-md transition"
               >
                 <div className="flex gap-3 sm:gap-6">
@@ -80,7 +80,7 @@ export default function CartPage() {
                     className="h-20 w-20 sm:h-32 sm:w-32 flex-shrink-0 bg-gray-50 rounded-lg overflow-hidden hover:opacity-75 transition"
                   >
                     <img
-                      src={item.image || "/placeholder.svg"}
+                      src={item.primary_image?.image || item.image || "/placeholder.svg"}
                       alt={item.name}
                       className="h-full w-full object-contain"
                     />
@@ -97,11 +97,11 @@ export default function CartPage() {
                           {item.name}
                         </Link>
                         <p className="text-xs sm:text-sm text-gray-500">
-                          {item.category}
+                          {item.category_name || item.category}
                         </p>
                       </div>
                       <button
-                        onClick={() => removeItem(item.product_id)}
+                        onClick={() => removeItem(item.id)}
                         className="text-gray-400 hover:text-red-600 transition flex-shrink-0"
                         aria-label="Remove item"
                       >
@@ -115,17 +115,13 @@ export default function CartPage() {
                         {item.selectedColor && (
                           <span>
                             Color:{" "}
-                            <span className="font-medium">
-                              {item.selectedColor}
-                            </span>
+                            <span className="font-medium">{item.selectedColor}</span>
                           </span>
                         )}
                         {item.selectedStorage && (
                           <span>
                             Storage:{" "}
-                            <span className="font-medium">
-                              {item.selectedStorage}
-                            </span>
+                            <span className="font-medium">{item.selectedStorage}</span>
                           </span>
                         )}
                       </div>
@@ -136,9 +132,7 @@ export default function CartPage() {
                       <div className="flex items-center border rounded-lg">
                         <button
                           onClick={() =>
-                            updateItem(item.product_id, {
-                              quantity: Math.max(1, item.quantity - 1),
-                            })
+                            updateQuantity(item.id, Math.max(1, item.quantity - 1))
                           }
                           className="px-2 sm:px-3 py-1.5 sm:py-2 hover:bg-gray-50 transition"
                           aria-label="Decrease quantity"
@@ -150,9 +144,7 @@ export default function CartPage() {
                         </div>
                         <button
                           onClick={() =>
-                            updateItem(item.product_id, {
-                              quantity: item.quantity + 1,
-                            })
+                            updateQuantity(item.id, item.quantity + 1)
                           }
                           className="px-2 sm:px-3 py-1.5 sm:py-2 hover:bg-gray-50 transition"
                           aria-label="Increase quantity"
@@ -163,10 +155,10 @@ export default function CartPage() {
 
                       <div className="text-right">
                         <div className="text-xs sm:text-sm text-gray-500">
-                          KSh {item.price.toLocaleString()} each
+                          KSh {Number(item.sale_price || item.price).toLocaleString()} each
                         </div>
                         <div className="text-base sm:text-xl font-bold text-gray-900">
-                          KSh {(item.price * item.quantity).toLocaleString()}
+                          KSh {(Number(item.sale_price || item.price) * item.quantity).toLocaleString()}
                         </div>
                       </div>
                     </div>

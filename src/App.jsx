@@ -37,6 +37,7 @@ import { useLocation } from "react-router-dom";
 import PrivacyTermsPage from "./pages/PrivacyAndPolicyTermsAndServices";
 
 
+
 // Helper to check auth
 const isAuthenticated = () => {
   return !!localStorage.getItem("user") || !!localStorage.getItem("userToken");

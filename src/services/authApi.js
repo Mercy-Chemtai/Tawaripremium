@@ -156,7 +156,10 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+const [user, setUser] = useState(() => {
+  const token = localStorage.getItem("auth_token");
+  return token ? { token } : null;
+});
   const [loading, setLoading] = useState(true);
   const [tokens, setTokens] = useState(() => {
     const savedTokens = localStorage.getItem('tokens');
@@ -208,16 +211,14 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const login = async (email, password) => {
-    try {
-      const response = await authApi.login(email, password);
-      setUser(response.user);
-      saveTokens(response.tokens);
-      return response;
-    } catch (error) {
-      throw error;
-    }
-  };
+  // ✅ Persist token to localStorage on login
+const login = async (credentials) => {
+  const data = await api.login(credentials);
+  localStorage.setItem("auth_token", data.token); // persist it
+  setUser(data.user);
+  setIsAuthenticated(true);
+};
+
 
   const loginWithGoogle = useGoogleLogin({
     onSuccess: async (tokenResponse) => {

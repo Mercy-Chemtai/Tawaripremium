@@ -258,3 +258,27 @@ export default {
   usersAPI,
   newsletterAPI,
 };
+// ============================================
+// ADDRESSES API
+// ============================================
+export const addressesAPI = {
+  getAddresses: () => fetchAPI("/addresses/"),
+  addAddress: (addressData) =>
+    fetchAPI("/addresses/", { method: "POST", body: addressData }),
+  updateAddress: (id, addressData) =>
+    fetchAPI(`/addresses/${id}/`, { method: "PUT", body: addressData }),
+  deleteAddress: (id) =>
+    fetchAPI(`/addresses/${id}/`, { method: "DELETE" }),
+  setDefault: (id) =>
+    fetchAPI(`/addresses/${id}/set-default/`, { method: "POST" }),
+};
+
+// ============================================
+// BLOG API
+// ============================================
+export const blogAPI = {
+  getPosts: () => fetchAPI("/blog/posts/"),
+  getPost: (slug) => fetchAPI(`/blog/posts/${slug}/`),
+  getCategories: () => fetchAPI("/blog/categories/"),
+  getPostsByCategory: (category) => fetchAPI(`/blog/posts/?category=${category}`),
+};
