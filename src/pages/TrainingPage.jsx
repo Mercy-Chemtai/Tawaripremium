@@ -432,7 +432,7 @@ export default function TrainingPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/contact?tab=training"
-                className="inline-flex items-center justify-center px-8 py-3 bg-black text-white font-semibold rounded-lg hover:bg-black/700 transition-colors shadow-lg hover:shadow-xl"
+                className="inline-flex items-center justify-center px-8 py-3 bg-black text-white font-semibold rounded-lg"
               >
                 Start Your Journey Today
                 <GraduationCap className="ml-2 h-5 w-5" />
