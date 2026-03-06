@@ -1,0 +1,8 @@
+{
+  "name": "Tawari Digital",
+  "short_name": "Tawari",
+  "icons": [],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}

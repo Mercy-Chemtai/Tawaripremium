@@ -35,6 +35,7 @@ export default function ContactPage() {
 
   const [contactFormData, setContactFormData] = useState({
     name: "",
+    phone: "",
     email: "",
     subject: "",
     message: "",
@@ -60,7 +61,6 @@ export default function ContactPage() {
         setCourses(data.results || data);
       } catch (err) {
         console.error("Failed to load courses:", err);
-        // Set mock courses as fallback
         setCourses([
           {
             id: 1,
@@ -129,6 +129,7 @@ export default function ContactPage() {
 
       setContactFormData({
         name: "",
+        phone: "",
         email: "",
         subject: "",
         message: "",
@@ -326,6 +327,25 @@ export default function ContactPage() {
                         id="name"
                         name="name"
                         value={contactFormData.name}
+                        onChange={handleContactInputChange}
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent outline-none"
+                        placeholder=""
+                        required
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <label
+                        htmlFor="phone"
+                        className="block text-sm font-medium"
+                      >
+                        Phone Number *
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        value={contactFormData.phone}
                         onChange={handleContactInputChange}
                         className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent outline-none"
                         placeholder=""
@@ -634,11 +654,11 @@ export default function ContactPage() {
             Westlands Commercial Centre.
           </p>
 
-          <div className="grid  gap-8 lg:grid-cols-2">
+          <div className="grid gap-8 lg:grid-cols-2">
             {/* Video */}
-            <div className="rounded-2xl overflow-hidden shadow-lg border">
-              <video controls className="w-170 h-105 object-cover">
-                <source src="/Images/tawaridirection.mp4" type="video/mp4" className="h-105 w-130" />
+            <div className="rounded-2xl overflow-hidden shadow-lg border h-[420px]">
+              <video controls className="w-full h-full object-cover">
+                <source src="/Images/tawaridirection.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>

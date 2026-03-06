@@ -4,7 +4,7 @@ import { Menu, X, ShoppingCart, Search } from "lucide-react";
 import { useCart } from "../cart/CartContext";
 
 export default function Header() {
-  const { totalItems = 0 } = useCart();
+  const { getTotalItems } = useCart();
   const [open, setOpen] = useState(false);
 
   // NEW: search state + ref
@@ -83,9 +83,9 @@ export default function Header() {
             {/* Left: logo */}
             <div className="flex items-center gap-4">
               <NavLink to="/" end className="flex items-center gap-3 no-underline" aria-label="Tawari home">
-                <div className="flex items-center justify-center w-10 h-10 rounded-lg overflow-hidden bg-white/5">
+                <div className="flex items-center justify-center w-10 h-10 rounded-lg overflow-hidden bg-white/100">
                   <img
-                    src="/favicon.svg"
+                    src="/src/assets/Tawari_Logo.svg"
                     alt="Tawari Logo"
                     className="object-contain w-8 h-8"
                     onError={(e) => {
@@ -140,7 +140,7 @@ export default function Header() {
                   style={{ backgroundColor: "#fff", color: "#000" }}
                   aria-live="polite"
                 >
-                  {totalItems}
+                  {getTotalItems()}
                 </span>
               </NavLink>
 
@@ -186,7 +186,7 @@ export default function Header() {
               </NavLink>
 
               <NavLink to="/cart" onClick={() => setOpen(false)} className="mt-2 inline-flex items-center gap-2 px-3 py-2 border rounded-md border-white/8 hover:bg-white/6 transition text-white">
-                <ShoppingCart className="h-4 w-4" /> View cart ({totalItems})
+                <ShoppingCart className="h-4 w-4" /> View cart ({getTotalItems()})
               </NavLink>
             </div>
           </div>

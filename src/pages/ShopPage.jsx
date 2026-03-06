@@ -330,7 +330,7 @@ export const dummyProducts = [
     reviews_count: 154,
   },
   {
-  id: 9,
+  id: 16,
   name: "Mac mini (M2, 2023)",
   slug: "mac-mini-m2",
   category_name: "mac mini",

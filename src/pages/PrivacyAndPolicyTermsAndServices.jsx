@@ -1,6 +1,15 @@
 // src/pages/PrivacyTermsPage.jsx
 import { useState, useEffect, useRef } from "react";
-import { Shield, FileText, ChevronDown, Lock, Eye, Database, RefreshCw, CheckCircle } from "lucide-react";
+import {
+  Shield,
+  FileText,
+  ChevronDown,
+  Lock,
+  Eye,
+  Database,
+  RefreshCw,
+  CheckCircle,
+} from "lucide-react";
 
 const sections = {
   privacy: [
@@ -54,6 +63,17 @@ const sections = {
       title: "Trade-In Valuation",
       content:
         "Trade-in values will vary based on the condition, year, and configuration of your device. The final trade-in value is determined after physical inspection and may differ from the initial online estimate. Presentation of a valid government-issued ID is required for all trade-in transactions.",
+    },
+    {
+      icon: <RefreshCw className="w-5 h-5" />,
+      title: "Trade-In Policy",
+      content: null,
+      list: [
+        "The device owner must present a valid original ID.",
+        "The device must come with the original purchase receipt.",
+        "If the device was not purchased from Tawari, it must be accompanied by the original box.",
+        "Customers are required to allow at least 5 hours for our technicians to run full diagnostic tests and verify the device condition before the trade-in value is confirmed.",
+      ],
     },
     {
       icon: <Shield className="w-5 h-5" />,
@@ -124,12 +144,17 @@ function AccordionItem({ item, index, isOpen, onToggle }) {
       >
         <div className="px-6 pb-6 pl-20">
           {item.content && (
-            <p className="text-white/65 leading-relaxed text-sm">{item.content}</p>
+            <p className="text-white/65 leading-relaxed text-sm">
+              {item.content}
+            </p>
           )}
           {item.list && (
             <ul className="space-y-3">
               {item.list.map((point, i) => (
-                <li key={i} className="flex items-start gap-3 text-white/65 text-sm">
+                <li
+                  key={i}
+                  className="flex items-start gap-3 text-white/65 text-sm"
+                >
                   <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white/40 flex-shrink-0" />
                   {point}
                 </li>
@@ -165,7 +190,8 @@ export default function PrivacyTermsPage() {
     <div
       className="min-h-screen pt-12"
       style={{
-        background: "linear-gradient(135deg, #0a0a0f 0%, #111118 40%, #0d0d14 100%)",
+        background:
+          "linear-gradient(135deg, #0a0a0f 0%, #111118 40%, #0d0d14 100%)",
         fontFamily: "'Georgia', 'Times New Roman', serif",
       }}
     >
@@ -178,7 +204,8 @@ export default function PrivacyTermsPage() {
             right: "-10%",
             width: "600px",
             height: "600px",
-            background: "radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%)",
+            background:
+              "radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%)",
             borderRadius: "50%",
           }}
         />
@@ -189,7 +216,8 @@ export default function PrivacyTermsPage() {
             left: "-15%",
             width: "500px",
             height: "500px",
-            background: "radial-gradient(circle, rgba(16,185,129,0.06) 0%, transparent 70%)",
+            background:
+              "radial-gradient(circle, rgba(16,185,129,0.06) 0%, transparent 70%)",
             borderRadius: "50%",
           }}
         />
@@ -208,13 +236,19 @@ export default function PrivacyTermsPage() {
           <div className="flex items-center gap-3 mb-6">
             <div
               className="w-10 h-10 rounded-2xl flex items-center justify-center"
-              style={{ background: "rgba(255,255,255,0.1)", backdropFilter: "blur(10px)" }}
+              style={{
+                background: "rgba(255,255,255,0.1)",
+                backdropFilter: "blur(10px)",
+              }}
             >
               <Shield className="w-5 h-5 text-white" />
             </div>
             <span
               className="text-xs font-semibold tracking-[0.2em] uppercase"
-              style={{ color: "rgba(255,255,255,0.4)", fontFamily: "'Helvetica Neue', sans-serif" }}
+              style={{
+                color: "rgba(255,255,255,0.4)",
+                fontFamily: "'Helvetica Neue', sans-serif",
+              }}
             >
               Legal
             </span>
@@ -226,7 +260,9 @@ export default function PrivacyTermsPage() {
           >
             Your trust
             <br />
-            <span style={{ color: "rgba(255,255,255,0.4)" }}>matters to us.</span>
+            <span style={{ color: "rgba(255,255,255,0.4)" }}>
+              matters to us.
+            </span>
           </h1>
 
           <p
@@ -237,8 +273,8 @@ export default function PrivacyTermsPage() {
               fontWeight: 300,
             }}
           >
-            We believe privacy is a fundamental right, and transparency is the foundation
-            of trust. Read how we protect you.
+            We believe privacy is a fundamental right, and transparency is the
+            foundation of trust. Read how we protect you.
           </p>
         </div>
 
@@ -253,11 +289,22 @@ export default function PrivacyTermsPage() {
         >
           <div
             className="inline-flex rounded-2xl p-1 gap-1"
-            style={{ background: "rgba(255,255,255,0.07)", backdropFilter: "blur(20px)" }}
+            style={{
+              background: "rgba(255,255,255,0.07)",
+              backdropFilter: "blur(20px)",
+            }}
           >
             {[
-              { key: "privacy", label: "Privacy Policy", icon: <Shield className="w-4 h-4" /> },
-              { key: "terms", label: "Terms & Conditions", icon: <FileText className="w-4 h-4" /> },
+              {
+                key: "privacy",
+                label: "Privacy Policy",
+                icon: <Shield className="w-4 h-4" />,
+              },
+              {
+                key: "terms",
+                label: "Terms & Conditions",
+                icon: <FileText className="w-4 h-4" />,
+              },
             ].map((tab) => (
               <button
                 key={tab.key}
@@ -265,9 +312,16 @@ export default function PrivacyTermsPage() {
                 className="flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-300"
                 style={{
                   fontFamily: "'Helvetica Neue', sans-serif",
-                  background: activeTab === tab.key ? "rgba(255,255,255,0.95)" : "transparent",
-                  color: activeTab === tab.key ? "#0a0a0f" : "rgba(255,255,255,0.5)",
-                  boxShadow: activeTab === tab.key ? "0 2px 20px rgba(0,0,0,0.3)" : "none",
+                  background:
+                    activeTab === tab.key
+                      ? "rgba(255,255,255,0.95)"
+                      : "transparent",
+                  color:
+                    activeTab === tab.key ? "#0a0a0f" : "rgba(255,255,255,0.5)",
+                  boxShadow:
+                    activeTab === tab.key
+                      ? "0 2px 20px rgba(0,0,0,0.3)"
+                      : "none",
                 }}
               >
                 {tab.icon}
@@ -332,11 +386,16 @@ export default function PrivacyTermsPage() {
                 className="text-sm font-semibold text-white"
                 style={{ fontFamily: "'Helvetica Neue', sans-serif" }}
               >
-                {activeTab === "privacy" ? "Privacy Policy" : "Terms & Conditions"}
+                {activeTab === "privacy"
+                  ? "Privacy Policy"
+                  : "Terms & Conditions"}
               </h2>
               <p
                 className="text-xs"
-                style={{ color: "rgba(255,255,255,0.35)", fontFamily: "'Helvetica Neue', sans-serif" }}
+                style={{
+                  color: "rgba(255,255,255,0.35)",
+                  fontFamily: "'Helvetica Neue', sans-serif",
+                }}
               >
                 {sections[activeTab].length} sections — tap any to expand
               </p>
