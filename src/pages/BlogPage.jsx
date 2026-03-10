@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Calendar, Tag, User, Search, X, TrendingUp } from "lucide-react";
-import DailyUpdatesSidebar from "./DailyUpdatesSidebar";
 import axios from "axios";
 import { useToast } from "../components/ui/use-toast";
 import { newsletterAPI } from "../services/api";

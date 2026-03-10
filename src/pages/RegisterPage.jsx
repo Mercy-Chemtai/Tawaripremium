@@ -1,7 +1,7 @@
 // src/pages/RegisterPage.jsx
 import { useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../components/auth/AuthContext";
 import { Mail, Lock, User, ArrowRight, Eye, EyeOff, UserPlus } from 'lucide-react';
 
 export default function RegisterPage() {

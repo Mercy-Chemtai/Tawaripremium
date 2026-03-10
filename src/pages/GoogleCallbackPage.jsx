@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
 import { Loader2 } from "lucide-react"
 import toast from "react-hot-toast"
-import { useAuth } from "../contexts/AuthContext"
+import { useAuth } from "../components/auth/AuthContext"
 
 export default function GoogleCallbackPage() {
   const [isProcessing, setIsProcessing] = useState(true)

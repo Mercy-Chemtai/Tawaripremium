@@ -1,7 +1,7 @@
 // src/pages/LoginPage.jsx
 import { useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../components/auth/AuthContext";
 import { Mail, Lock, ArrowRight, Eye, EyeOff } from 'lucide-react';
 
 export default function LoginPage() {
@@ -16,32 +16,33 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  setError('');
 
-    if (!email.trim()) {
-      setError("Email is required");
-      setLoading(false);
-      return;
-    }
-    if (!password) {
-      setError("Password is required");
-      setLoading(false);
-      return;
-    }
+  if (!email.trim()) {
+    setError("Email is required");
+    setLoading(false);
+    return;
+  }
 
-    try {
-      await login(email, password);
-      navigate(redirect);
-    } catch (err) {
-      setError(err.message || "Login failed. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  };
+  if (!password) {
+    setError("Password is required");
+    setLoading(false);
+    return;
+  }
 
+  try {
+    await login(email, password); // login returns true on success, throws on error
+    // If we get here, login succeeded
+    navigate(redirect);
+  } catch (err) {
+    setError(err.message || "Login failed. Please try again.");
+  } finally {
+    setLoading(false);
+  }
+};
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 flex items-center justify-center p-4">
       {/* Background decoration */}

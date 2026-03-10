@@ -2,11 +2,19 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../components/cart/CartContext";
 import { Plus, Minus, X, ShoppingCart } from "lucide-react";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../components/auth/AuthContext";
+
 
 export default function CartPage() {
-  const { cart, updateQuantity, removeItem, clearCart, getSubTotal, getTotalItems } = useCart();
-  const { isAuthenticated } = useAuth();
+  const {
+    cart,
+    updateQuantity,
+    removeItem,
+    clearCart,
+    getSubTotal,
+    getTotalItems,
+  } = useCart();
+  const { isAuthenticated } = useAuth(); // Add this
   const navigate = useNavigate();
 
   const totalItems = getTotalItems();
@@ -80,7 +88,11 @@ export default function CartPage() {
                     className="h-20 w-20 sm:h-32 sm:w-32 flex-shrink-0 bg-gray-50 rounded-lg overflow-hidden hover:opacity-75 transition"
                   >
                     <img
-                      src={item.primary_image?.image || item.image || "/placeholder.svg"}
+                      src={
+                        item.primary_image?.image ||
+                        item.image ||
+                        "/placeholder.svg"
+                      }
                       alt={item.name}
                       className="h-full w-full object-contain"
                     />
@@ -115,13 +127,17 @@ export default function CartPage() {
                         {item.selectedColor && (
                           <span>
                             Color:{" "}
-                            <span className="font-medium">{item.selectedColor}</span>
+                            <span className="font-medium">
+                              {item.selectedColor}
+                            </span>
                           </span>
                         )}
                         {item.selectedStorage && (
                           <span>
                             Storage:{" "}
-                            <span className="font-medium">{item.selectedStorage}</span>
+                            <span className="font-medium">
+                              {item.selectedStorage}
+                            </span>
                           </span>
                         )}
                       </div>
@@ -132,7 +148,10 @@ export default function CartPage() {
                       <div className="flex items-center border rounded-lg">
                         <button
                           onClick={() =>
-                            updateQuantity(item.id, Math.max(1, item.quantity - 1))
+                            updateQuantity(
+                              item.id,
+                              Math.max(1, item.quantity - 1)
+                            )
                           }
                           className="px-2 sm:px-3 py-1.5 sm:py-2 hover:bg-gray-50 transition"
                           aria-label="Decrease quantity"
@@ -155,10 +174,18 @@ export default function CartPage() {
 
                       <div className="text-right">
                         <div className="text-xs sm:text-sm text-gray-500">
-                          KSh {Number(item.sale_price || item.price).toLocaleString()} each
+                          KSh{" "}
+                          {Number(
+                            item.sale_price || item.price
+                          ).toLocaleString()}{" "}
+                          each
                         </div>
                         <div className="text-base sm:text-xl font-bold text-gray-900">
-                          KSh {(Number(item.sale_price || item.price) * item.quantity).toLocaleString()}
+                          KSh{" "}
+                          {(
+                            Number(item.sale_price || item.price) *
+                            item.quantity
+                          ).toLocaleString()}
                         </div>
                       </div>
                     </div>
@@ -174,7 +201,6 @@ export default function CartPage() {
               <h2 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6">
                 Order Summary
               </h2>
-
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between text-gray-600 text-sm sm:text-base">
                   <span>Subtotal ({totalItems} items)</span>
@@ -188,18 +214,18 @@ export default function CartPage() {
                   Tax (16% VAT) included in price
                 </p>
               </div>
-
               <button
-                onClick={() =>
-                  navigate(
-                    isAuthenticated ? "/checkout" : "/login?redirect=/checkout"
-                  )
-                }
-                className="w-full bg-black text-white py-3 sm:py-4 rounded-lg font-semibold hover:bg-gray-800 transition mb-4 text-sm sm:text-base"
+                onClick={() => {
+                  if (isAuthenticated) {
+                    navigate("/checkout");
+                  } else {
+                    navigate("/login?redirect=/checkout");
+                  }
+                }}
+                className="w-full bg-black text-white py-4 rounded-lg font-semibold hover:bg-gray-800 transition mb-4"
               >
                 Proceed to Checkout
               </button>
-
               <div className="text-xs text-gray-500 text-center">
                 Taxes calculated at checkout
               </div>
