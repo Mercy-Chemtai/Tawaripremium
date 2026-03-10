@@ -5,6 +5,7 @@ from django.db import models
 # ============================================
 class ContactMessage(models.Model):
     name = models.CharField(max_length=200)
+    phone = models.CharField(max_length=20)
     email = models.EmailField()
     subject = models.CharField(max_length=300)
     message = models.TextField()

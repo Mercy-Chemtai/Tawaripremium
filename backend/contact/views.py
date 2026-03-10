@@ -13,6 +13,7 @@ class ContactMessageView(APIView):
      
     def post(self, request):
         name = request.data.get('name')
+        phone = request.data.get('phone')
         email = request.data.get('email')
         subject = request.data.get('subject')
         message = request.data.get('message')
@@ -23,6 +24,7 @@ class ContactMessageView(APIView):
         New contact form submission:
         
         From: {name} ({email})
+        Phone: {phone}
         Subject: {subject}
         
         Message:

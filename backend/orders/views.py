@@ -35,12 +35,13 @@ class OrderViewSet(viewsets.ModelViewSet):
         for item_data in data.get('items', []):
             OrderItem.objects.create(
                 order=order,
-                product_id=item_data['product'],
+                product_id=item_data.get('product') or item_data.get('product_id'),
                 quantity=item_data['quantity'],
-                price=item_data['price'],
+                price=item_data.get('price') or item_data.get('sale_price') or 0,
                 color=item_data.get('color'),
                 storage=item_data.get('storage')
             )
+
         
         # Send confirmation email
         self.send_order_confirmation_email(order)
