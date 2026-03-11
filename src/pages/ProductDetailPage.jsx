@@ -154,9 +154,6 @@ colors: [
       Battery: "Up to 10 hours",
     },
     features: ["Apple Pencil Pro support", "ProMotion 120Hz"],
-    gallery: [
-      "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/ipad-pro-m4-1",
-    ],
     availability: "In Stock",
     rating: 4.9,
     reviews_count: 245,
@@ -180,7 +177,6 @@ colors: [
       Sensors: "HR, ECG, SpO2, depth",
     },
     features: ["Action Button", "Dual-frequency GPS", "Dive-ready"],
-   primary_image: { image: "/Images/Apple-Watch-Ultra-2.png" },
     availability: "In Stock",
     rating: 4.9,
     reviews_count: 411,
@@ -283,30 +279,6 @@ colors: [
     availability: "In Stock",
     rating: 4.8,
     reviews_count: 154,
-  },
-
-  {
-    id: 10,
-    name: "Apple Watch SE 3 40mm",
-    slug: "apple-watch-se-3-40mm",
-    category_name: "Wearables",
-    price: 45000,
-    sale_price: 45000,
-    primary_image: {
-      image:
-        "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/watch-se-40-aluminum-midnight-nc-se_VW_34FR+watch-face-40-aluminum-midnight-se_VW_34FR_WF_CO?wid=1400&hei=1400&fmt=jpeg&qlt=90&.v=1693703814406",
-    },
-    description:
-      "Apple Watch SE 3 (40mm) with Retina display, fitness and health tracking.",
-    specifications: {
-      Display: "40mm Retina",
-      Connectivity: "GPS",
-      Compatibility: "iPhone",
-    },
-    features: ["Heart rate monitoring", "Fitness tracking", "Crash detection"],
-    availability: "In Stock",
-    rating: 4.7,
-    reviews_count: 98,
   },
 
   {
