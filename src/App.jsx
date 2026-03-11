@@ -1,5 +1,5 @@
 import React from "react";
-import { AuthProvider } from "./contexts/AuthContext";
+import { AuthProvider } from "./components/auth/AuthContext";
 import { CartProvider } from "./components/cart/CartContext";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
@@ -31,25 +31,20 @@ import ProductManager from "./components/admin/product-manager";
 import ProductForm from "./components/admin/product-form";
 import WhatsAppWidget from "./pages/WhatsAppWidget";
 import GoogleCallbackPage from "./pages/GoogleCallbackPage";
-import { Routes, Route, Navigate } from "react-router-dom";
 import AuthCallback from "./pages/AuthCallBackPage";
-import { useLocation } from "react-router-dom";
 import PrivacyTermsPage from "./pages/PrivacyAndPolicyTermsAndServices";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { useAuth } from "./components/auth/AuthContext";
+// ... other imports
 
-
-
-// Helper to check auth
-const isAuthenticated = () => {
-  return !!localStorage.getItem("user") || !!localStorage.getItem("userToken");
-};
-
-// Protected route wrapper
+// Updated PrivateRoute component
 function PrivateRoute({ children }) {
-  const location = useLocation(); // Import from react-router-dom
+  const { isAuthenticated } = useAuth(); // Use the hook
+  const location = useLocation();
   
-  if (!isAuthenticated()) {
+  if (!isAuthenticated) {
     // Redirect to login with the current path as redirect parameter
-    return <Navigate to={`/login?redirect=${location.pathname}`} />;
+    return <Navigate to={`/login?redirect=${location.pathname}`} replace />;
   }
   
   return children;
@@ -95,7 +90,7 @@ function App() {
                       <CheckoutPage />
                     </PrivateRoute>
                   }
-                />{" "}
+                />
                 <Route path="/checkout/:id" element={<CheckoutPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/auth/callback" element={<AuthCallback />} />
@@ -105,7 +100,10 @@ function App() {
                   element={<ResendEmailVerificationPage />}
                 />
                 <Route path="/cart" element={<CartPage />} />
-                <Route path="/PrivacyAndPolicyTermsAndServices" element={<PrivacyTermsPage/>} />
+                <Route
+                  path="/PrivacyAndPolicyTermsAndServices"
+                  element={<PrivacyTermsPage />}
+                />
                 <Route
                   path="/account/*"
                   element={
@@ -130,7 +128,7 @@ function App() {
               message="Hello Tawari Digital, I hope you’re well. I’d like to learn more about your Apple products and repair services."
             />
           </div>
-      
+
           <Toaster />
         </ToastProvider>
       </CartProvider>
@@ -139,3 +137,12 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+

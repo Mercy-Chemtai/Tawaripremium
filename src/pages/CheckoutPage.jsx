@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { ordersAPI } from "../services/api";
 import { useCart } from "../components/cart/CartContext";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../components/auth/AuthContext";
 import { useToast } from "../components/ui/use-toast";
 import {
   CreditCard,
@@ -50,7 +50,11 @@ const mpesaAPI = {
 
 export default function CheckoutPage() {
   const navigate = useNavigate();
-  const { items, clear, subtotal } = useCart();
+
+  // TO
+  const { cart, clearCart, getSubTotal } = useCart();
+  const subtotal = getSubTotal();
+  const items = cart;
   const { user } = useAuth();
   const { toast } = useToast();
 
@@ -154,11 +158,10 @@ export default function CheckoutPage() {
       // 1. Create order in your backend
       const orderData = {
         items: items.map((item) => ({
-          product: item.product_id,
+          product: item.product_id || item.id,
           quantity: item.quantity,
-          price: item.price,
-          color: item.selectedColor,
-          storage: item.selectedStorage,
+          color: item.selectedColor || "",
+          storage: item.selectedStorage || "",
         })),
         total: Math.round(total),
         shipping_details: shippingDetails,
@@ -191,7 +194,7 @@ export default function CheckoutPage() {
       } else {
         // Cash on delivery — go straight to confirmation
         setStep(3);
-        clear();
+        clearCart();
         toast({
           title: "Order Placed!",
           description: `Order #${order.id} confirmed`,
@@ -225,7 +228,7 @@ export default function CheckoutPage() {
           stopPolling();
           setMpesaStatus("success");
           setMpesaReceipt(data.mpesa_receipt || "");
-          clear(); // Clear cart
+          clearCart(); // Clear cart
           setStep(3);
           toast({
             title: "✅ Payment Confirmed!",
@@ -788,7 +791,7 @@ export default function CheckoutPage() {
                   <div key={`${item.product_id}-${idx}`} className="flex gap-4">
                     <div className="h-20 w-20 flex-shrink-0 bg-gray-50 rounded-lg overflow-hidden">
                       <img
-                        src={item.image || "/placeholder.svg"}
+                        src={item.primary_image?.image || item.image || "/placeholder.svg"}
                         alt={item.name}
                         className="h-full w-full object-contain"
                       />

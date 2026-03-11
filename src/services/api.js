@@ -19,15 +19,14 @@ async function refreshAccessToken() {
     body: JSON.stringify({ refresh: refreshToken }),
   });
 
-  if (!response.ok) {
-    // Refresh token itself is expired — force user to log in again
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
-    localStorage.removeItem("user");
-    window.location.href = "/login";
+ if (response.status === 401 && !isRetry && !endpoint.includes("/auth/login")) {
+  try {
+    await refreshAccessToken();
+    return fetchAPI(endpoint, options, true);
+  } catch {
     throw new Error("Session expired. Please log in again.");
   }
-
+}
   const data = await response.json();
   localStorage.setItem("accessToken", data.access);
   return data.access;

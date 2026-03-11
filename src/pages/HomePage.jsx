@@ -52,10 +52,9 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  
   useEffect(() => {
     let mounted = true;
-    
+
     const fetchData = async () => {
       try {
         setLoading(true);
@@ -70,21 +69,24 @@ export default function HomePage() {
         if (!mounted) return;
 
         // Handle services result
-        if (servicesData.status === 'fulfilled') {
-          setServices(Array.isArray(servicesData.value) ? servicesData.value : []);
+        if (servicesData.status === "fulfilled") {
+          setServices(
+            Array.isArray(servicesData.value) ? servicesData.value : []
+          );
         } else {
-          console.warn('Failed to fetch services:', servicesData.reason);
+          console.warn("Failed to fetch services:", servicesData.reason);
         }
 
         // Handle products result
-        if (productsData.status === 'fulfilled') {
-          setProducts(Array.isArray(productsData.value) ? productsData.value : []);
+        if (productsData.status === "fulfilled") {
+          setProducts(
+            Array.isArray(productsData.value) ? productsData.value : []
+          );
         } else {
-          console.warn('Failed to fetch products:', productsData.reason);
+          console.warn("Failed to fetch products:", productsData.reason);
         }
-
       } catch (err) {
-        console.error('Error fetching data:', err);
+        console.error("Error fetching data:", err);
         if (!mounted) return;
         setError("Failed to load data. Please try again later.");
       } finally {
@@ -101,187 +103,198 @@ export default function HomePage() {
     };
   }, []);
 
-function HeroSlider({ interval = 6000, startIndex = 0 }) {
-  const slides = [
-    {
-      id: "hero-1",
-      type: "video",
-      src: "/Images/hero1.png",
-      poster: "/Images/hero1.png",
-      title: "Apple Device Specialists",
-      desc: "Expert repairs, premium devices, and professional training",
-      primary: { label: "Shop Devices", to: "/shop" },
-      secondary: { label: "Book Repair", to: "/services" },
-    },
-    {
-      id: "hero-2",
-      type: "video",
-      src: "/Images/openlaptop.png",
-      poster: "/Images/openlaptop.png",
-      title: "Expert Repair Services",
-      desc: "Certified technicians and genuine parts for quality you can trust",
-      primary: { label: "Book Repair", to: "/services" },
-      secondary: { label: "View Pricing", to: "/services#pricing" },
-    },
-    {
-      id: "hero-3",
-      type: "image",
-      src: "/Images/hero3.png",
-      title: "Professional Training",
-      desc: "Comprehensive courses for repair technicians and retailers",
-      primary: { label: "Explore Training", to: "/training" },
-      secondary: { label: "Contact Us", to: "/contact" },
-    },
-  ];
+  function HeroSlider({ interval = 6000, startIndex = 0 }) {
+    const slides = [
+      {
+        id: "hero-1",
+        type: "video",
+        src: "/Images/hero1.png",
+        poster: "/Images/hero1.png",
+        title: "Apple Device Specialists",
+        desc: "Expert repairs, premium devices, and professional training",
+        primary: { label: "Shop Devices", to: "/shop" },
+        secondary: { label: "Book Repair", to: "/services" },
+      },
+      {
+        id: "hero-2",
+        type: "video",
+        src: "/Images/openlaptop.png",
+        poster: "/Images/openlaptop.png",
+        title: "Expert Repair Services",
+        desc: "Certified technicians and genuine parts for quality you can trust",
+        primary: { label: "Book Repair", to: "/services" },
+        secondary: { label: "View Pricing", to: "/services#pricing" },
+      },
+      {
+        id: "hero-3",
+        type: "image",
+        src: "/Images/hero3.png",
+        title: "Professional Training",
+        desc: "Comprehensive courses for repair technicians and retailers",
+        primary: { label: "Explore Training", to: "/training" },
+        secondary: { label: "Contact Us", to: "/contact" },
+      },
+    ];
 
-  const [index, setIndex] = useState(Math.max(0, Math.min(startIndex, slides.length - 1)));
-  const [isPaused, setIsPaused] = useState(false);
-  const intervalRef = useRef(null);
-  const touchStartX = useRef(0);
-  const touchCurrentX = useRef(0);
+    const [index, setIndex] = useState(
+      Math.max(0, Math.min(startIndex, slides.length - 1))
+    );
+    const [isPaused, setIsPaused] = useState(false);
+    const intervalRef = useRef(null);
+    const touchStartX = useRef(0);
+    const touchCurrentX = useRef(0);
 
-  useEffect(() => {
-    if (!isPaused) {
-      intervalRef.current = setInterval(() => {
-        setIndex((i) => (i + 1) % slides.length);
-      }, interval);
-    }
-    return () => clearInterval(intervalRef.current);
-  }, [isPaused, interval, slides.length]);
+    useEffect(() => {
+      if (!isPaused) {
+        intervalRef.current = setInterval(() => {
+          setIndex((i) => (i + 1) % slides.length);
+        }, interval);
+      }
+      return () => clearInterval(intervalRef.current);
+    }, [isPaused, interval, slides.length]);
 
-  useEffect(() => {
-    const onKey = (e) => {
-      if (e.key === "ArrowLeft") setIndex((i) => (i - 1 + slides.length) % slides.length);
-      if (e.key === "ArrowRight") setIndex((i) => (i + 1) % slides.length);
+    useEffect(() => {
+      const onKey = (e) => {
+        if (e.key === "ArrowLeft")
+          setIndex((i) => (i - 1 + slides.length) % slides.length);
+        if (e.key === "ArrowRight") setIndex((i) => (i + 1) % slides.length);
+      };
+      window.addEventListener("keydown", onKey);
+      return () => window.removeEventListener("keydown", onKey);
+    }, [slides.length]);
+
+    const goTo = (i) =>
+      setIndex(((i % slides.length) + slides.length) % slides.length);
+    const prev = () => goTo(index - 1);
+    const next = () => goTo(index + 1);
+
+    const handleTouchStart = (e) => {
+      touchStartX.current = e.touches?.[0]?.clientX ?? 0;
+      setIsPaused(true);
     };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [slides.length]);
 
-  const goTo = (i) => setIndex((i % slides.length + slides.length) % slides.length);
-  const prev = () => goTo(index - 1);
-  const next = () => goTo(index + 1);
+    const handleTouchMove = (e) => {
+      touchCurrentX.current = e.touches?.[0]?.clientX ?? touchCurrentX.current;
+    };
 
-  const handleTouchStart = (e) => {
-    touchStartX.current = e.touches?.[0]?.clientX ?? 0;
-    setIsPaused(true);
-  };
+    const handleTouchEnd = () => {
+      const dx = touchCurrentX.current - touchStartX.current;
+      if (dx > 50) prev();
+      else if (dx < -50) next();
+      setIsPaused(false);
+    };
 
-  const handleTouchMove = (e) => {
-    touchCurrentX.current = e.touches?.[0]?.clientX ?? touchCurrentX.current;
-  };
+    return (
+      <section
+        className="relative w-full overflow-hidden"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        <div className="relative h-screen min-h-[600px] max-h-[900px]">
+          {slides.map((s, i) => {
+            const active = i === index;
+            return (
+              <div
+                key={s.id}
+                className={`absolute inset-0 transition-opacity duration-1000 ${
+                  active ? "opacity-100 z-10" : "opacity-0 z-0"
+                }`}
+              >
+                {s.type === "video" ? (
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
+                    poster={s.poster}
+                  >
+                    <source src={s.src} type="video/mp4" />
+                  </video>
+                ) : (
+                  <div
+                    className="absolute inset-0 w-full h-full bg-cover bg-center"
+                    style={{ backgroundImage: `url(${s.src})` }}
+                  />
+                )}
+                <div className="absolute inset-0 bg-black/50"></div>
 
-  const handleTouchEnd = () => {
-    const dx = touchCurrentX.current - touchStartX.current;
-    if (dx > 50) prev();
-    else if (dx < -50) next();
-    setIsPaused(false);
-  };
+                <div className="relative z-20 h-full flex items-center justify-center px-6">
+                  <div className="max-w-4xl text-center">
+                    <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight animate-fadeIn">
+                      {s.title}
+                    </h1>
 
-  return (
-    <section
-      className="relative w-full overflow-hidden"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
-      <div className="relative h-screen min-h-[600px] max-h-[900px]">
-        {slides.map((s, i) => {
-          const active = i === index;
-          return (
-            <div
-              key={s.id}
-              className={`absolute inset-0 transition-opacity duration-1000 ${
-                active ? "opacity-100 z-10" : "opacity-0 z-0"
-              }`}
-            >
-              {s.type === "video" ? (
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="absolute inset-0 w-full h-full object-cover"
-                  poster={s.poster}
-                >
-                  <source src={s.src} type="video/mp4" />
-                </video>
-              ) : (
-                <div
-                  className="absolute inset-0 w-full h-full bg-cover bg-center"
-                  style={{ backgroundImage: `url(${s.src})` }}
-                />
-              )}
-              <div className="absolute inset-0 bg-black/50"></div>
-
-              <div className="relative z-20 h-full flex items-center justify-center px-6">
-                <div className="max-w-4xl text-center">
-                  <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight animate-fadeIn">
-                    {s.title}
-                  </h1>
-
-                  <p className="text-xl md:text-2xl text-gray-100 mb-12 max-w-3xl mx-auto animate-fadeIn" style={{ animationDelay: "0.2s" }}>
-                    {s.desc}
-                  </p>
-
-                  <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fadeIn" style={{ animationDelay: "0.4s" }}>
-                    <Link
-                      to={s.primary.to}
-                      className="inline-flex items-center justify-center px-10 py-5 bg-white text-black text-lg font-semibold rounded-lg hover:bg-gray-100 transition-all shadow-2xl transform hover:scale-105"
+                    <p
+                      className="text-xl md:text-2xl text-gray-100 mb-12 max-w-3xl mx-auto animate-fadeIn"
+                      style={{ animationDelay: "0.2s" }}
                     >
-                      {s.primary.label}
-                      <ArrowRight className="ml-3 h-6 w-6" />
-                    </Link>
+                      {s.desc}
+                    </p>
 
-                    <Link
-                      to={s.secondary.to}
-                      className="inline-flex items-center justify-center px-10 py-5 border-2 border-white text-white text-lg font-semibold rounded-lg hover:bg-white/10 transition-all transform hover:scale-105"
+                    <div
+                      className="flex flex-col sm:flex-row gap-6 justify-center animate-fadeIn"
+                      style={{ animationDelay: "0.4s" }}
                     >
-                      {s.secondary.label}
-                    </Link>
+                      <Link
+                        to={s.primary.to}
+                        className="inline-flex items-center justify-center px-10 py-5 bg-white text-black text-lg font-semibold rounded-lg hover:bg-gray-100 transition-all shadow-2xl transform hover:scale-105"
+                      >
+                        {s.primary.label}
+                        <ArrowRight className="ml-3 h-6 w-6" />
+                      </Link>
+
+                      <Link
+                        to={s.secondary.to}
+                        className="inline-flex items-center justify-center px-10 py-5 border-2 border-white text-white text-lg font-semibold rounded-lg hover:bg-white/10 transition-all transform hover:scale-105"
+                      >
+                        {s.secondary.label}
+                      </Link>
+                    </div>
                   </div>
                 </div>
+
+                {active && (
+                  <div
+                    className="absolute inset-0"
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={handleTouchEnd}
+                  />
+                )}
               </div>
+            );
+          })}
 
-              {active && (
-                <div
-                  className="absolute inset-0"
-                  onTouchStart={handleTouchStart}
-                  onTouchMove={handleTouchMove}
-                  onTouchEnd={handleTouchEnd}
-                />
-              )}
-            </div>
-          );
-        })}
+          <button
+            onClick={prev}
+            className="absolute left-6 top-1/2 -translate-y-1/2 z-30 p-4 rounded-full bg-white/20 backdrop-blur-md hover:bg-white/30 transition-all"
+          >
+            <ChevronLeft className="h-7 w-7 text-white" />
+          </button>
 
-        <button
-          onClick={prev}
-          className="absolute left-6 top-1/2 -translate-y-1/2 z-30 p-4 rounded-full bg-white/20 backdrop-blur-md hover:bg-white/30 transition-all"
-        >
-          <ChevronLeft className="h-7 w-7 text-white" />
-        </button>
+          <button
+            onClick={next}
+            className="absolute right-6 top-1/2 -translate-y-1/2 z-30 p-4 rounded-full bg-white/20 backdrop-blur-md hover:bg-white/30 transition-all"
+          >
+            <ChevronRight className="h-7 w-7 text-white" />
+          </button>
 
-        <button
-          onClick={next}
-          className="absolute right-6 top-1/2 -translate-y-1/2 z-30 p-4 rounded-full bg-white/20 backdrop-blur-md hover:bg-white/30 transition-all"
-        >
-          <ChevronRight className="h-7 w-7 text-white" />
-        </button>
-
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex gap-3">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => goTo(i)}
-              className={`h-2 rounded-full transition-all ${
-                i === index ? "w-16 bg-white" : "w-2 bg-white/50"
-              }`}
-            />
-          ))}
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex gap-3">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => goTo(i)}
+                className={`h-2 rounded-full transition-all ${
+                  i === index ? "w-16 bg-white" : "w-2 bg-white/50"
+                }`}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
-  );}
+      </section>
+    );
+  }
 
   return (
     <div className="flex flex-col min-h-screen w-full bg-white">
@@ -306,21 +319,14 @@ function HeroSlider({ interval = 6000, startIndex = 0 }) {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <AnimatedContent delay={200}>
-              <ServiceCard
-                title="Device Sales"
-                to="/shop"
-                Icon={ShoppingBag}
-              >
-                Latest Apple devices with expert guidance and competitive pricing
+              <ServiceCard title="Device Sales" to="/shop" Icon={ShoppingBag}>
+                Latest Apple devices with expert guidance and competitive
+                pricing
               </ServiceCard>
             </AnimatedContent>
 
             <AnimatedContent delay={400}>
-              <ServiceCard
-                title="Repair Services"
-                to="/services"
-                Icon={Wrench}
-              >
+              <ServiceCard title="Repair Services" to="/services" Icon={Wrench}>
                 Professional repairs by certified technicians with genuine parts
               </ServiceCard>
             </AnimatedContent>
@@ -359,10 +365,7 @@ function HeroSlider({ interval = 6000, startIndex = 0 }) {
       </section>
 
       {/* Why Choose Us with Parallax Image */}
-      <ParallaxSection
-        imageSrc="/Images/whychooselaptop.png"
-        overlay="dark"
-      >
+      <ParallaxSection imageSrc="/Images/whychooselaptop.png" overlay="dark">
         <div className="w-full max-w-[1400px] mx-auto px-4 md:px-6">
           <AnimatedContent delay={0}>
             <div className="text-center space-y-6 mb-20">
@@ -381,13 +384,13 @@ function HeroSlider({ interval = 6000, startIndex = 0 }) {
                 Fully certified technicians trained on latest Apple technologies
               </FeatureCard>
             </AnimatedContent>
-            
+
             <AnimatedContent delay={300}>
               <FeatureCard title="Genuine Parts" Icon={Shield}>
                 Only authentic Apple parts for quality and longevity
               </FeatureCard>
             </AnimatedContent>
-            
+
             <AnimatedContent delay={400}>
               <FeatureCard title="Fast Service" Icon={Zap}>
                 Same-day repairs to minimize your downtime
@@ -399,13 +402,13 @@ function HeroSlider({ interval = 6000, startIndex = 0 }) {
                 Transparent, competitive pricing with no hidden fees
               </FeatureCard>
             </AnimatedContent>
-            
+
             <AnimatedContent delay={600}>
               <FeatureCard title="Warranty Included" Icon={Shield}>
                 Comprehensive warranty on repairs and products
               </FeatureCard>
             </AnimatedContent>
-            
+
             <AnimatedContent delay={700}>
               <FeatureCard title="Expert Guidance" Icon={Award}>
                 Personalized consultation for informed decisions
@@ -416,10 +419,7 @@ function HeroSlider({ interval = 6000, startIndex = 0 }) {
       </ParallaxSection>
 
       {/* Work Gallery with Parallax */}
-      <ParallaxSection
-        imageSrc="/Images/gallerylaptop.png"
-        overlay="light"
-      >
+      <ParallaxSection imageSrc="/Images/gallerylaptop.png" overlay="light">
         <div className="w-full max-w-[1400px] mx-auto px-4 md:px-6">
           <AnimatedContent delay={0}>
             <div className="text-center space-y-6 mb-20">
@@ -462,7 +462,7 @@ function HeroSlider({ interval = 6000, startIndex = 0 }) {
                   Contact Us
                   <Phone className="ml-3 h-5 w-5" />
                 </Link>
-                
+
                 <Link
                   to="/book-service"
                   className="inline-flex items-center justify-center px-10 py-5 border-2 border-white text-white text-lg font-semibold rounded-lg hover:bg-white/10 transition-all transform hover:scale-105"
@@ -482,35 +482,39 @@ function HeroSlider({ interval = 6000, startIndex = 0 }) {
 // Rest of the components remain the same...
 // (BrandsCarousel, CompanyGallery, GalleryItem, ParallaxSection, AnimatedContent, ServiceCard, FeatureCard, HeroSlider)
 
-/* Brands Carousel */
 function BrandsCarousel() {
   const brands = [
+    {
+      name: "KCB Bank",
+      logo: "/Images/kcb_logo.png",
+      label: "Financial Partner",
+    },
   ];
 
   return (
-    <div className="relative w-full overflow-hidden">
-      <div className="flex animate-scroll gap-12 py-4">
-        {[...brands, ...brands].map((brand, index) => (
-          <div
-            key={index}
-            className="flex-shrink-0 w-32 h-32 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center p-4"
-          >
-            <div className="text-2xl font-bold text-gray-800 text-center">
-              {brand.name}
-            </div>
-          </div>
-        ))}
-      </div>
-      
-      <style>{`
-        @keyframes scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(calc(-50% - 3rem)); }
-        }
-        .animate-scroll {
-          animation: scroll 30s linear infinite;
-        }
-      `}</style>
+    <div className="flex flex-wrap justify-center gap-8 py-4">
+      {brands.map((brand, i) => (
+        <div
+          key={i}
+          className="flex flex-col items-center justify-center bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 p-6 w-48 h-32 border border-gray-100"
+        >
+          <img
+            src={brand.logo}
+            alt={brand.name}
+            className="max-h-14 max-w-full object-contain"
+            onError={(e) => {
+              e.currentTarget.style.display = "none";
+              e.currentTarget.nextSibling.style.display = "block";
+            }}
+          />
+          <span className="text-xl font-bold text-[#0054A6] hidden">
+            {brand.name}
+          </span>
+          <p className="text-xs text-gray-400 mt-2 tracking-widest uppercase">
+            {brand.label}
+          </p>
+        </div>
+      ))}
     </div>
   );
 }
@@ -559,7 +563,8 @@ function CompanyGallery({ companies = [] }) {
     if (!open) return;
     const onKey = (e) => {
       if (e.key === "Escape") setOpen(false);
-      if (e.key === "ArrowLeft") setCurrentIndex((i) => (i - 1 + flat.length) % flat.length);
+      if (e.key === "ArrowLeft")
+        setCurrentIndex((i) => (i - 1 + flat.length) % flat.length);
       if (e.key === "ArrowRight") setCurrentIndex((i) => (i + 1) % flat.length);
     };
     window.addEventListener("keydown", onKey);
@@ -600,12 +605,16 @@ function CompanyGallery({ companies = [] }) {
   }, []);
 
   if (flat.length === 0) {
-    return <div className="text-center text-gray-800 py-12">No gallery images available</div>;
+    return (
+      <div className="text-center text-gray-800 py-12">
+        No gallery images available
+      </div>
+    );
   }
 
   return (
     <>
-      <div 
+      <div
         className="relative w-full max-w-6xl mx-auto h-96 md:h-[500px]"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
@@ -689,7 +698,9 @@ function CompanyGallery({ companies = [] }) {
           </button>
 
           <button
-            onClick={() => setCurrentIndex((i) => (i - 1 + flat.length) % flat.length)}
+            onClick={() =>
+              setCurrentIndex((i) => (i - 1 + flat.length) % flat.length)
+            }
             className="absolute left-8 top-1/2 -translate-y-1/2 p-4 rounded-full bg-white/10 hover:bg-white/20 transition-all"
           >
             <ChevronLeft className="h-8 w-8 text-white" />
@@ -723,7 +734,9 @@ function CompanyGallery({ companies = [] }) {
           </button>
 
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white text-center">
-            <p className="text-xl font-medium">{flat[currentIndex].companyName}</p>
+            <p className="text-xl font-medium">
+              {flat[currentIndex].companyName}
+            </p>
             <p className="text-sm text-gray-400 mt-2">
               {currentIndex + 1} / {flat.length}
             </p>
@@ -776,7 +789,13 @@ function GalleryItem({ item, index, onClick, className = "" }) {
   );
 }
 
-function ParallaxSection({ children, videoSrc, imageSrc, imageFallback, overlay = "medium" }) {
+function ParallaxSection({
+  children,
+  videoSrc,
+  imageSrc,
+  imageFallback,
+  overlay = "medium",
+}) {
   const [scrollY, setScrollY] = useState(0);
   const sectionRef = useRef(null);
 
@@ -802,11 +821,11 @@ function ParallaxSection({ children, videoSrc, imageSrc, imageFallback, overlay 
 
   return (
     <section ref={sectionRef} className="relative w-full py-32 overflow-hidden">
-      <div 
+      <div
         className="absolute inset-0 z-0"
         style={{
           transform: `translateY(${scrollY * 0.5}px)`,
-          transition: "transform 0.1s ease-out"
+          transition: "transform 0.1s ease-out",
         }}
       >
         {videoSrc ? (
@@ -821,7 +840,7 @@ function ParallaxSection({ children, videoSrc, imageSrc, imageFallback, overlay 
             <source src={videoSrc} type="video/mp4" />
           </video>
         ) : imageSrc ? (
-          <div 
+          <div
             className="w-full h-[120%] bg-cover bg-center"
             style={{ backgroundImage: `url(${imageSrc})` }}
           />
@@ -829,9 +848,7 @@ function ParallaxSection({ children, videoSrc, imageSrc, imageFallback, overlay 
         <div className={`absolute inset-0 ${overlayClass}`}></div>
       </div>
 
-      <div className="relative z-10">
-        {children}
-      </div>
+      <div className="relative z-10">{children}</div>
     </section>
   );
 }
@@ -865,9 +882,7 @@ function AnimatedContent({ children, delay = 0 }) {
     <div
       ref={contentRef}
       className={`transition-all duration-1000 ease-out ${
-        isVisible
-          ? "opacity-100 translate-y-0"
-          : "opacity-0 translate-y-12"
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
       }`}
     >
       {children}
@@ -883,10 +898,10 @@ function ServiceCard({ title, to, Icon, children }) {
           <div className="p-5 rounded-2xl bg-gray-900 text-white group-hover:bg-gray-800 transition-all duration-300">
             <Icon className="h-10 w-10" />
           </div>
-          
+
           <h3 className="text-2xl font-bold text-gray-900">{title}</h3>
           <p className="text-gray-700 text-lg leading-relaxed">{children}</p>
-          
+
           <div className="inline-flex items-center text-gray-900 font-semibold group-hover:gap-3 gap-2 transition-all mt-4">
             Learn more
             <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />

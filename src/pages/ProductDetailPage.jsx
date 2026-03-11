@@ -23,33 +23,12 @@ export const dummyProducts = [
     category_name: "iPhone",
     price: 250000,
     sale_price: 248000,
-    primary_image: {
-      image:
-        "https://www.novelty.co.ke/wp-content/uploads/2025/09/iPhone-17-Pro-2.jpg",
-    },
-    colors: [
-      {
-        name: "Orange Titanium",
-        hex: "#8B7355",
-        images: [
-          "https://www.novelty.co.ke/wp-content/uploads/2025/09/iPhone-17-Pro-2.jpg",
-        ],
-      },
-      {
-        name: "Black",
-        hex: "#1a1a1a",
-        images: [
-          "https://www.novelty.co.ke/wp-content/uploads/2025/09/iPhone-17-Pro-2.jpg",
-        ],
-      },
-      {
-        name: "White",
-        hex: "#f5f5f5",
-        images: [
-          "https://www.novelty.co.ke/wp-content/uploads/2025/09/iPhone-17-Pro-2.jpg",
-        ],
-      },
-    ],
+    primary_image: { image: "/Images/iPhone-17-Pro-Max.png" },
+colors: [
+  { name: "Orange Titanium", hex: "#8B7355", images: ["/Images/iPhone-17-Pro-Max.png"] },
+  { name: "Black", hex: "#1a1a1a", images: ["/Images/iPhone-17-Pro-Max-Titanium.png"] },
+  { name: "White", hex: "#f5f5f5", images: ["/Images/iPhone-17-Pro-Max-White.png"] },
+],
     description:
       "The iPhone 17 Pro Max — powerful A-series chip, pro camera system and a stunning display.",
     highlights: ["ProMotion 120Hz", "Always-On", "A19 Pro performance"],
@@ -87,34 +66,12 @@ export const dummyProducts = [
     category_name: "iPhone",
     price: 189999,
     sale_price: 179999,
-    primary_image: {
-      image:
-        "https://alephksa.com/cdn/shop/files/iPhone_16_Pro_Max_Natural_Titanium_PDP_Image_Position_1__en-ME_a46d3e5e-dad7-4584-9581-342342e640bc.jpg?v=1750067799",
-    },
-    colors: [
-      {
-        name: "Black Titanium",
-        hex: "#8B7355",
-        images: [
-          "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/16/1744623/1.jpg?9770",
-        ],
-      },
-      {
-        name: "Blue Titanium",
-        hex: "#4A5A6A",
-        images: ["https://alephksa.com/cdn/...jpg"],
-      },
-      {
-        name: "White Titanium",
-        hex: "#E5E5E5",
-        images: ["https://alephksa.com/cdn/...jpg"],
-      },
-      {
-        name: "Black Titanium",
-        hex: "#2C2C2C",
-        images: ["https://alephksa.com/cdn/...jpg"],
-      },
-    ],
+    primary_image: { image: "/Images/iPhone-16-Pro-Max.png" },
+colors: [
+  { name: "Natural Titanium", hex: "#8B7355", images: ["/Images/iPhone-16-Pro-Max.png"] },
+  { name: "Blue Titanium", hex: "#4A5A6A", images: ["/Images/iPhone-16-Pro-Max-Blue.png"] },
+  { name: "Black Titanium", hex: "#2C2C2C", images: ["/Images/iPhone-16-Pro-Max-Black.png"] },
+],
     description:
       "The iPhone 16 Pro Max combines cutting-edge performance, a new titanium build, and Apple's most advanced camera system.",
     highlights: [
@@ -154,24 +111,11 @@ export const dummyProducts = [
     category_name: "MacBook",
     price: 199999,
     sale_price: 189999,
-    primary_image: {
-      image:
-        "https://www.phoneplacekenya.com/wp-content/uploads/2024/04/13-inch-MacBook-Air-M3.webp",
-    },
-    colors: [
-      {
-        name: "Midnight",
-        hex: "#191E29",
-        images: [
-          "https://www.phoneplacekenya.com/wp-content/uploads/2024/04/13-inch-MacBook-Air-M3.webp",
-        ],
-      },
-      {
-        name: "Starlight",
-        hex: "#F2E9DC",
-        images: ["https://www.hoxtonmacs.co.uk/cdn/shop/files/apple-macbook-air-13-inch-macbook-air-13-inch-m3-starlight-2024-excellent-46784564101436.jpg?v=1764058199&width=1080"],
-      },
-    ],
+   primary_image: { image: "/Images/MacBook-Air-M3.png" },
+colors: [
+  { name: "Midnight", hex: "#191E29", images: ["/Images/MacBook-Air-M3.png"] },
+  { name: "Starlight", hex: "#F2E9DC", images: ["/Images/MacBook-Air-M3-Starlight.png"] },
+],
     description:
       "The MacBook Air M3 redefines lightweight performance with the M3 chip.",
     specifications: {
@@ -199,10 +143,7 @@ export const dummyProducts = [
     category_name: "iPad",
     price: 159999,
     sale_price: 149999,
-    primary_image: {
-      image:
-        "https://www.phoneplacekenya.com/wp-content/uploads/2024/05/Apple-iPad-Pro-11-2024.jpg",
-    },
+    primary_image: { image: "/Images/iPad-Pro-M4.png" },
     description: "iPad Pro M4 — power and portability with the M4 chip.",
     specifications: {
       Display: "13-inch Ultra Retina XDR OLED 120Hz",
@@ -213,9 +154,6 @@ export const dummyProducts = [
       Battery: "Up to 10 hours",
     },
     features: ["Apple Pencil Pro support", "ProMotion 120Hz"],
-    gallery: [
-      "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/ipad-pro-m4-1",
-    ],
     availability: "In Stock",
     rating: 4.9,
     reviews_count: 245,
@@ -229,10 +167,7 @@ export const dummyProducts = [
     category_name: "Apple Watch",
     price: 119999,
     sale_price: 114999,
-    primary_image: {
-      image:
-        "https://www.androidauthority.com/wp-content/uploads/2024/09/Apple-Watch-Ultra-2-in-Black-featured-image-scaled.jpg",
-    },
+    primary_image: { image: "/Images/Apple-Watch-Ultra-2.png" },
     description: "Engineered for endurance athletes and adventurers.",
     specifications: {
       Display: "49mm Always-On Retina, 3000 nits",
@@ -242,9 +177,6 @@ export const dummyProducts = [
       Sensors: "HR, ECG, SpO2, depth",
     },
     features: ["Action Button", "Dual-frequency GPS", "Dive-ready"],
-    gallery: [
-      "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/apple-watch-ultra-2-1",
-    ],
     availability: "In Stock",
     rating: 4.9,
     reviews_count: 411,
@@ -257,9 +189,7 @@ export const dummyProducts = [
     category_name: "AirPods",
     price: 39999,
     sale_price: 37999,
-    primary_image: {
-      image: "https://applecenter.co.ke/wp-content/uploads/2023/11/MTJV3.jpeg",
-    },
+    primary_image: { image: "/Images/AirPods-Pro-2.png" },
     description: "AirPods Pro (2nd Gen) with Adaptive Audio and ANC.",
     specifications: {
       Chip: "Apple H2",
@@ -267,9 +197,7 @@ export const dummyProducts = [
       Connectivity: "Bluetooth 5.3",
     },
     features: ["Active Noise Cancellation", "Adaptive Transparency"],
-    gallery: [
-      "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/airpods-pro-2-1",
-    ],
+    primary_image: { image: "/Images/AirPods-Pro-2.png" },
     availability: "In Stock",
     rating: 4.8,
     reviews_count: 540,
@@ -282,10 +210,7 @@ export const dummyProducts = [
     category_name: "Accessories",
     price: 19999,
     sale_price: 17999,
-    primary_image: {
-      image:
-        "https://mightyape.co.ke/public/uploads/all/MDhOiqV5A41K6szVExXk199dK4PUU6YFbj2EcWvO.png",
-    },
+    primary_image: { image: "/Images/Apple-Pencil-2.png" },
     description: "Apple Pencil (2nd Gen) for precision input.",
     specifications: {
       Compatibility: "iPad Pro, iPad Air (selected models)",
@@ -304,10 +229,7 @@ export const dummyProducts = [
     category_name: "Accessories",
     price: 9999,
     sale_price: 8999,
-    primary_image: {
-      image:
-        "https://mac-more.co.ke/wp-content/uploads/2025/07/MagSafe_Charger_1m_Coiled_Screen__USEN.jpg",
-    },
+    primary_image: { image: "/Images/MagSafe-Charger.png" },
     description: "MagSafe Charger — magnetic wireless charging up to 15W.",
     specifications: {
       ChargingPower: "Up to 15W",
@@ -327,9 +249,7 @@ export const dummyProducts = [
     category_name: "Accessories",
     price: 7999,
     sale_price: 6999,
-    primary_image: {
-      image: "https://i.ebayimg.com/images/g/I98AAOSwNbNlprtg/s-l1200.jpg",
-    },
+   primary_image: { image: "/Images/iPhone-15-Silicone-Case.png" },
     description: "Silicone Case with MagSafe for iPhone 15.",
     specifications: {
       Material: "Silicone",
@@ -348,9 +268,7 @@ export const dummyProducts = [
     category_name: "Accessories",
     price: 7999,
     sale_price: 6999,
-    primary_image: {
-      image: "https://i.ebayimg.com/images/g/I98AAOSwNbNlprtg/s-l1200.jpg",
-    },
+   primary_image: { image: "/Images/iPhone-15-128GB.png" },
     description: "Silicone Case with MagSafe for iPhone 15.",
     specifications: {
       Material: "Silicone",
@@ -364,40 +282,13 @@ export const dummyProducts = [
   },
 
   {
-    id: 10,
-    name: "Apple Watch SE 3 40mm",
-    slug: "apple-watch-se-3-40mm",
-    category_name: "Wearables",
-    price: 45000,
-    sale_price: 45000,
-    primary_image: {
-      image:
-        "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/watch-se-40-aluminum-midnight-nc-se_VW_34FR+watch-face-40-aluminum-midnight-se_VW_34FR_WF_CO?wid=1400&hei=1400&fmt=jpeg&qlt=90&.v=1693703814406",
-    },
-    description:
-      "Apple Watch SE 3 (40mm) with Retina display, fitness and health tracking.",
-    specifications: {
-      Display: "40mm Retina",
-      Connectivity: "GPS",
-      Compatibility: "iPhone",
-    },
-    features: ["Heart rate monitoring", "Fitness tracking", "Crash detection"],
-    availability: "In Stock",
-    rating: 4.7,
-    reviews_count: 98,
-  },
-
-  {
     id: 11,
     name: "iPhone 15 128GB",
     slug: "iphone-15-128gb",
     category_name: "Smartphones",
     price: 75000,
     sale_price: 75000,
-    primary_image: {
-      image:
-        "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-15-blue-witb-202309?wid=1400&hei=1400&fmt=jpeg&qlt=90&.v=1692923777972",
-    },
+    primary_image: { image: "/Images/iPhone-15-128GB.png" },
     description: "iPhone 15 with A16 Bionic chip and 128GB storage.",
     specifications: {
       Storage: "128GB",
@@ -417,10 +308,7 @@ export const dummyProducts = [
     category_name: "Smartphones",
     price: 58000,
     sale_price: 58000,
-    primary_image: {
-      image:
-        "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-14-midnight-witb-202209?wid=1400&hei=1400&fmt=jpeg&qlt=90&.v=1661027205808",
-    },
+    primary_image: { image: "/Images/iPhone-14-128GB.png" },
     description:
       "iPhone 14 with powerful performance and advanced safety features.",
     specifications: {
