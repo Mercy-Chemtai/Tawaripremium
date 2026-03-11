@@ -85,7 +85,7 @@ export default function Header() {
               <NavLink to="/" end className="flex items-center gap-3 no-underline" aria-label="Tawari home">
                 <div className="flex items-center justify-center w-10 h-10 rounded-lg overflow-hidden bg-white/100">
                   <img
-                    src="/src/assets/Tawari_Logo.svg"
+                    src="/public/Images/Tawari_Logo.svg"
                     alt="Tawari Logo"
                     className="object-contain w-8 h-8"
                     onError={(e) => {
