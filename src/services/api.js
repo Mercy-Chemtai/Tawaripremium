@@ -34,7 +34,7 @@ async function refreshAccessToken() {
 }
 
 async function fetchAPI(endpoint, options = {}, isRetry = false) {
-  const token = localStorage.getItem("accessToken");
+  const token = options.skipAuth ? null : localStorage.getItem("accessToken");
   const isFormData = options.body instanceof FormData;
 
   const config = {
@@ -197,6 +197,11 @@ const DUMMY_PRODUCTS = [
 ];
 
 export const productsAPI = {
+  // Real backend (public, so no auth header)
+  list: () => fetchAPI("/products/", { skipAuth: true }),
+  detail: (slug) =>
+    fetchAPI(`/products/${encodeURIComponent(slug)}/`, { skipAuth: true }),
+  // Old dummy methods: HomePage still uses getProducts
   getProducts: () => Promise.resolve(DUMMY_PRODUCTS),
   getProduct: (id) =>
     Promise.resolve(DUMMY_PRODUCTS.find((p) => p.id === Number(id)) || null),

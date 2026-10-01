@@ -1,0 +1,1931 @@
+[
+  {
+    "id": 18,
+    "name": "iPhone 18 Pro Max",
+    "slug": "iphone-18-pro-max",
+    "category_name": "iPhone",
+    "price": 0,
+    "sale_price": 0,
+    "primary_image": {
+      "image": "/Images/iPhone-18-Pro-Max.png"
+    },
+    "colors": [
+      {
+        "name": "Burgundy",
+        "hex": "#7A263A",
+        "images": [
+          "/Images/iPhone-18-Pro-Max.png"
+        ]
+      },
+      {
+        "name": "Black",
+        "hex": "#1A1A1A",
+        "images": [
+          "/Images/iPhone-18-Pro-Max-Black.png"
+        ]
+      },
+      {
+        "name": "Silver",
+        "hex": "#D8D8D8",
+        "images": [
+          "/Images/iPhone-18-Pro-Max-Silver.png"
+        ]
+      },
+      {
+        "name": "Glacier",
+        "hex": "#DDE8F0",
+        "images": [
+          "/Images/iPhone-18-Pro-Max-Glacier.png"
+        ]
+      }
+    ],
+    "description": "iPhone 18 Pro Max combines the A20 Pro chip, advanced Pro camera system, variable-aperture 48MP Fusion Main camera, next-generation display technology and powerful Apple Intelligence features.",
+    "highlights": [
+      "A20 Pro chip",
+      "48MP Fusion Main camera with variable aperture",
+      "Pro camera controls",
+      "Advanced Apple Intelligence",
+      "iOS 27",
+      "Exceptional battery life"
+    ],
+    "specifications": {
+      "Display": "Super Retina XDR display with ProMotion",
+      "Chip": "A20 Pro chip",
+      "Camera": "48MP Fusion Main camera with variable aperture",
+      "Camera System": "Advanced Pro camera system",
+      "Pro Controls": "Customizable controls in the Camera app",
+      "Battery": "Largest battery-life increase ever on iPhone",
+      "Storage": "256GB, 512GB, 1TB, 2TB",
+      "Material": "Pro-grade design",
+      "Connectivity": "5G, Wi-Fi, Bluetooth",
+      "Charging": "USB-C and MagSafe",
+      "Water Resistance": "IP68",
+      "Operating System": "iOS 27"
+    },
+    "features": [
+      "Dynamic Island",
+      "Camera Control",
+      "Face ID",
+      "Apple Intelligence",
+      "Siri AI",
+      "Emergency SOS via satellite",
+      "Crash Detection",
+      "MagSafe"
+    ],
+    "gallery": [
+      "/Images/iPhone-18-Pro-Max.png",
+      "/Images/iPhone-18-Pro-Max-Black.png",
+      "/Images/iPhone-18-Pro-Max-Silver.png",
+      "/Images/iPhone-18-Pro-Max-Glacier.png",
+      "/Images/iPhone-18-Pro-Max-Burgundy.png"
+    ],
+    "availability": "In Stock",
+    "rating": 5,
+    "reviews_count": 0,
+    "storage_options": [
+      "256GB",
+      "512GB",
+      "1TB",
+      "2TB"
+    ]
+  },
+  {
+    "id": 19,
+    "name": "iPhone 18 Pro",
+    "slug": "iphone-18-pro",
+    "category_name": "iPhone",
+    "price": 0,
+    "sale_price": 0,
+    "primary_image": {
+      "image": "/Images/iPhone-18-Pro.png"
+    },
+    "colors": [
+      {
+        "name": "Burgundy",
+        "hex": "#7A263A",
+        "images": [
+          "/Images/iPhone-18-Pro.png"
+        ]
+      },
+      {
+        "name": "Black",
+        "hex": "#1A1A1A",
+        "images": [
+          "/Images/iPhone-18-Pro-Black.png"
+        ]
+      },
+      {
+        "name": "Silver",
+        "hex": "#D8D8D8",
+        "images": [
+          "/Images/iPhone-18-Pro-Silver.png"
+        ]
+      },
+      {
+        "name": "Glacier",
+        "hex": "#DDE8F0",
+        "images": [
+          "/Images/iPhone-18-Pro-Glacier.png"
+        ]
+      }
+    ],
+    "description": "iPhone 18 Pro delivers powerful A20 Pro performance, an advanced 48MP Fusion camera system with variable aperture, Pro camera controls and next-generation Apple Intelligence.",
+    "highlights": [
+      "A20 Pro chip",
+      "48MP Fusion Main camera",
+      "Variable aperture",
+      "Pro camera controls",
+      "Apple Intelligence",
+      "iOS 27"
+    ],
+    "specifications": {
+      "Display": "Super Retina XDR display with ProMotion",
+      "Chip": "A20 Pro chip",
+      "Camera": "48MP Fusion Main camera with variable aperture",
+      "Camera System": "Advanced Pro camera system",
+      "Pro Controls": "Customizable controls in the Camera app",
+      "Battery": "Major battery-life improvements",
+      "Storage": "256GB, 512GB, 1TB, 2TB",
+      "Material": "Pro-grade design",
+      "Connectivity": "5G, Wi-Fi, Bluetooth",
+      "Charging": "USB-C and MagSafe",
+      "Water Resistance": "IP68",
+      "Operating System": "iOS 27"
+    },
+    "features": [
+      "Dynamic Island",
+      "Camera Control",
+      "Face ID",
+      "Apple Intelligence",
+      "Siri AI",
+      "Emergency SOS via satellite",
+      "Crash Detection",
+      "MagSafe"
+    ],
+    "gallery": [
+      "/Images/iPhone-18-Pro.png",
+      "/Images/iPhone-18-Pro-Black.png",
+      "/Images/iPhone-18-Pro-Silver.png",
+      "/Images/iPhone-18-Pro-Glacier.png",
+      "/Images/iPhone-18-Pro-Burgundy.png"
+    ],
+    "availability": "In Stock",
+    "rating": 5,
+    "reviews_count": 0,
+    "storage_options": [
+      "256GB",
+      "512GB",
+      "1TB",
+      "2TB"
+    ]
+  },
+  {
+    "id": 27,
+    "name": "Apple Watch Ultra 4",
+    "slug": "apple-watch-ultra-4",
+    "category_name": "Apple Watch",
+    "price": 0,
+    "sale_price": 0,
+    "primary_image": {
+      "image": "/Images/Apple-Watch-Ultra-4.png"
+    },
+    "colors": [
+      {
+        "name": "Natural Titanium",
+        "hex": "#B7B1A5",
+        "images": [
+          "/Images/Apple-Watch-Ultra-4.png"
+        ]
+      },
+      {
+        "name": "Black Titanium",
+        "hex": "#252525",
+        "images": [
+          "/Images/Apple-Watch-Ultra-4-Black.png"
+        ]
+      }
+    ],
+    "description": "Apple Watch Ultra 4 is designed for demanding sports, outdoor adventures and advanced health and fitness tracking, powered by the S11 chip and new Health Sensing System.",
+    "highlights": [
+      "S11 chip",
+      "New Health Sensing System",
+      "Up to 50 hours everyday battery life",
+      "Up to 45 hours outdoor workout tracking",
+      "Readiness score",
+      "Siri AI"
+    ],
+    "specifications": {
+      "Case": "Titanium",
+      "Chip": "Apple S11",
+      "Sensors": "New Health Sensing System",
+      "HeartRate": "Advanced heart-rate sensing",
+      "Battery": "Up to 50 hours",
+      "OutdoorWorkout": "Up to 45 hours outdoor workout tracking",
+      "Charging": "Fast charging",
+      "Fitness": "Advanced workout tracking",
+      "Sleep": "Advanced sleep tracking",
+      "Connectivity": "GPS and cellular",
+      "Operating System": "watchOS 27"
+    },
+    "features": [
+      "Readiness insights",
+      "Emergency SOS",
+      "Fall Detection",
+      "Advanced workout tracking",
+      "Sleep tracking",
+      "Heart health notifications",
+      "Siri AI",
+      "Rugged titanium design"
+    ],
+    "gallery": [
+      "/Images/Apple-Watch-Ultra-4.png",
+      "/Images/Apple-Watch-Ultra-4-Natural-Titanium.png",
+      "/Images/Apple-Watch-Ultra-4-Black.png"
+    ],
+    "availability": "In Stock",
+    "rating": 5,
+    "reviews_count": 0
+  },
+  {
+    "id": 26,
+    "name": "Apple Watch Series 12",
+    "slug": "apple-watch-series-12",
+    "category_name": "Apple Watch",
+    "price": 0,
+    "sale_price": 0,
+    "primary_image": {
+      "image": "/Images/Apple-Watch-Series-12.png"
+    },
+    "colors": [
+      {
+        "name": "Dark Bronze",
+        "hex": "#6F5141",
+        "images": [
+          "/Images/Apple-Watch-Series-12.png"
+        ]
+      },
+      {
+        "name": "Black",
+        "hex": "#1A1A1A",
+        "images": [
+          "/Images/Apple-Watch-Series-12-Black.png"
+        ]
+      },
+      {
+        "name": "Light Gold",
+        "hex": "#D8C6A5",
+        "images": [
+          "/Images/Apple-Watch-Series-12-Gold.png"
+        ]
+      },
+      {
+        "name": "Space Gray",
+        "hex": "#53565A",
+        "images": [
+          "/Images/Apple-Watch-Series-12-Space-Gray.png"
+        ]
+      }
+    ],
+    "description": "Apple Watch Series 12 combines the new S11 chip, Health Sensing System, advanced health features and faster charging in a versatile everyday smartwatch.",
+    "highlights": [
+      "S11 chip",
+      "New Health Sensing System",
+      "Up to 24 hours battery life",
+      "Faster charging",
+      "Readiness score",
+      "Siri AI"
+    ],
+    "specifications": {
+      "Sizes": "42mm and 46mm",
+      "Chip": "Apple S11",
+      "Sensors": "New Health Sensing System",
+      "HeartRate": "Advanced heart-rate sensing",
+      "HRV": "Higher-frequency heart-rate variability measurements",
+      "Health": "Advanced health and fitness features",
+      "Battery": "Up to 24 hours",
+      "Charging": "Fast charging",
+      "WaterResistance": "Water-resistant design",
+      "Connectivity": "GPS and cellular options",
+      "Operating System": "watchOS 27"
+    },
+    "features": [
+      "ECG",
+      "Sleep tracking",
+      "Sleep apnea notifications",
+      "Fall Detection",
+      "Emergency SOS",
+      "Readiness insights",
+      "Workout tracking",
+      "Siri AI"
+    ],
+    "gallery": [
+      "/Images/Apple-Watch-Series-12.png",
+      "/Images/Apple-Watch-Series-12-Dark-Bronze.png",
+      "/Images/Apple-Watch-Series-12-Black.png",
+      "/Images/Apple-Watch-Series-12-Light-Gold.png"
+    ],
+    "availability": "In Stock",
+    "rating": 5,
+    "reviews_count": 0
+  },
+  {
+    "id": 25,
+    "name": "AirPods 5",
+    "slug": "airpods-5",
+    "category_name": "AirPods",
+    "price": 0,
+    "sale_price": 0,
+    "primary_image": {
+      "image": "/Images/AirPods-5.png"
+    },
+    "colors": [
+      {
+        "name": "White",
+        "hex": "#FFFFFF",
+        "images": [
+          "/Images/AirPods-5.png"
+        ]
+      }
+    ],
+    "description": "AirPods 5 feature an open-ear design, Active Noise Cancellation, Adaptive EQ, improved sound quality and new intelligent features including Siri AI and Live Translation.",
+    "highlights": [
+      "Active Noise Cancellation",
+      "Open-ear design",
+      "Next-generation Adaptive EQ",
+      "Multiport acoustic architecture",
+      "Siri AI",
+      "Live Translation"
+    ],
+    "specifications": {
+      "Design": "Open-ear design",
+      "Audio": "Spatial Audio",
+      "ANC": "Active Noise Cancellation",
+      "AdaptiveEQ": "Next-generation Adaptive EQ",
+      "Transparency": "Natural Transparency mode",
+      "ChargingCase": "Wireless Charging Case",
+      "Controls": "Force sensor with volume swipe",
+      "Connectivity": "Bluetooth",
+      "Compatibility": "iPhone, iPad, Mac and Apple Watch"
+    },
+    "features": [
+      "Active Noise Cancellation",
+      "Transparency mode",
+      "Spatial Audio",
+      "Adaptive EQ",
+      "Siri AI",
+      "Head gesture controls",
+      "Live Translation"
+    ],
+    "gallery": [
+      "/Images/AirPods-5.png"
+    ],
+    "availability": "In Stock",
+    "rating": 5,
+    "reviews_count": 0
+  },
+  {
+    "id": 29,
+    "name": "Mac Studio M5 Ultra",
+    "slug": "mac-studio-m5-ultra",
+    "category_name": "Mac",
+    "price": 0,
+    "sale_price": 0,
+    "primary_image": {
+      "image": "/Images/Mac-Studio-M5-Ultra.png"
+    },
+    "colors": [
+      {
+        "name": "Silver",
+        "hex": "#B8B8B8",
+        "images": [
+          "/Images/Mac-Studio-M5-Ultra.png"
+        ]
+      }
+    ],
+    "description": "Mac Studio with M5 Ultra is built for demanding professional workflows including AI research, software development, 3D rendering, scientific computing and high-resolution video production.",
+    "highlights": [
+      "M5 Ultra chip",
+      "Up to 80-core GPU",
+      "Up to 36-core CPU",
+      "Up to 512GB unified memory",
+      "Up to 1.2TB/s memory bandwidth",
+      "Thunderbolt 5"
+    ],
+    "specifications": {
+      "Chip": "Apple M5 Ultra",
+      "CPU": "Up to 36-core CPU",
+      "GPU": "Up to 80-core GPU",
+      "NeuralEngine": "32-core Neural Engine",
+      "Memory": "Up to 512GB unified memory",
+      "MemoryBandwidth": "Up to 1.2TB/s",
+      "Storage": "Multiple SSD configurations",
+      "AI": "Up to 4.3x faster AI performance",
+      "Graphics": "Advanced GPU with hardware-accelerated ray tracing",
+      "Connectivity": "Wi-Fi 7, Bluetooth 6",
+      "Ports": "Thunderbolt 5",
+      "Operating System": "macOS 27"
+    },
+    "features": [
+      "Apple Intelligence",
+      "Advanced AI compute",
+      "Professional video workflows",
+      "3D rendering",
+      "Scientific computing",
+      "Thunderbolt 5"
+    ],
+    "gallery": [
+      "/Images/Mac-Studio-M5-Ultra.png"
+    ],
+    "availability": "In Stock",
+    "rating": 5,
+    "reviews_count": 0,
+    "storage_options": [
+      "1TB",
+      "2TB",
+      "4TB",
+      "8TB"
+    ]
+  },
+  {
+    "id": 28,
+    "name": "Mac mini M6",
+    "slug": "mac-mini-m6",
+    "category_name": "Mac",
+    "price": 0,
+    "sale_price": 0,
+    "primary_image": {
+      "image": "/Images/Mac-mini-M6.png"
+    },
+    "colors": [
+      {
+        "name": "Silver",
+        "hex": "#B8B8B8",
+        "images": [
+          "/Images/Mac-mini-M6.png"
+        ]
+      }
+    ],
+    "description": "Mac mini with M6 delivers major performance improvements in a compact desktop design, with powerful CPU, GPU and AI capabilities.",
+    "highlights": [
+      "M6 chip",
+      "First Apple 2nm chip",
+      "Up to 4x faster AI performance",
+      "Up to 2x faster graphics",
+      "Up to 2x faster storage",
+      "Wi-Fi 7"
+    ],
+    "specifications": {
+      "Chip": "Apple M6",
+      "CPU": "12-core CPU",
+      "GPU": "12-core GPU",
+      "Memory": "Up to 32GB unified memory",
+      "MemoryBandwidth": "Up to 170GB/s",
+      "Storage": "Multiple SSD configurations",
+      "AI": "Up to 4x faster AI performance",
+      "Graphics": "Hardware-accelerated graphics",
+      "Connectivity": "Wi-Fi 7, Bluetooth 6",
+      "Ports": "Thunderbolt 5",
+      "Operating System": "macOS 27"
+    },
+    "features": [
+      "Apple Intelligence",
+      "On-device AI",
+      "Thunderbolt 5",
+      "Wi-Fi 7",
+      "Bluetooth 6",
+      "Compact desktop design"
+    ],
+    "gallery": [
+      "/Images/Mac-mini-M6.png"
+    ],
+    "availability": "In Stock",
+    "rating": 5,
+    "reviews_count": 0,
+    "storage_options": [
+      "512GB",
+      "1TB",
+      "2TB",
+      "4TB"
+    ]
+  },
+  {
+    "id": 23,
+    "name": "MacBook Pro M5 Max",
+    "slug": "macbook-pro-m5-max",
+    "category_name": "MacBook",
+    "price": 0,
+    "sale_price": 0,
+    "primary_image": {
+      "image": "/Images/MacBook-Pro-M5-Max.png"
+    },
+    "colors": [
+      {
+        "name": "Space Black",
+        "hex": "#1D1D1F",
+        "images": [
+          "/Images/MacBook-Pro-M5-Max.png"
+        ]
+      },
+      {
+        "name": "Silver",
+        "hex": "#E3E3E3",
+        "images": [
+          "/Images/MacBook-Pro-M5-Max-Silver.png"
+        ]
+      }
+    ],
+    "description": "MacBook Pro with M5 Max delivers professional-level performance for software development, AI workloads, video production, 3D work and demanding creative applications.",
+    "highlights": [
+      "M5 Max chip",
+      "14-inch or 16-inch display options",
+      "Professional performance",
+      "Advanced Apple Intelligence",
+      "Wi-Fi 7",
+      "Thunderbolt connectivity"
+    ],
+    "specifications": {
+      "Display": "Liquid Retina XDR display with ProMotion",
+      "Sizes": "14-inch and 16-inch",
+      "Chip": "Apple M5 Max",
+      "CPU": "Next-generation CPU",
+      "GPU": "Next-generation GPU with Neural Accelerators",
+      "Memory": "High-capacity unified memory",
+      "Storage": "2TB starting storage",
+      "Camera": "12MP Center Stage camera",
+      "Connectivity": "Wi-Fi 7, Bluetooth 6",
+      "Ports": "Thunderbolt 5",
+      "Battery": "All-day battery life",
+      "Operating System": "macOS"
+    },
+    "features": [
+      "Apple Intelligence",
+      "Center Stage",
+      "Liquid Retina XDR",
+      "ProMotion",
+      "MagSafe charging",
+      "Thunderbolt 5",
+      "Wi-Fi 7"
+    ],
+    "gallery": [
+      "/Images/MacBook-Pro-M5-Max.png",
+      "/Images/MacBook-Pro-M5-Max-Space-Black.png",
+      "/Images/MacBook-Pro-M5-Max-Silver.png"
+    ],
+    "availability": "In Stock",
+    "rating": 5,
+    "reviews_count": 0,
+    "storage_options": [
+      "2TB",
+      "4TB",
+      "8TB"
+    ]
+  },
+  {
+    "id": 22,
+    "name": "MacBook Pro M5 Pro",
+    "slug": "macbook-pro-m5-pro",
+    "category_name": "MacBook",
+    "price": 0,
+    "sale_price": 0,
+    "primary_image": {
+      "image": "/Images/MacBook-Pro-M5-Pro.png"
+    },
+    "colors": [
+      {
+        "name": "Space Black",
+        "hex": "#1D1D1F",
+        "images": [
+          "/Images/MacBook-Pro-M5-Pro.png"
+        ]
+      },
+      {
+        "name": "Silver",
+        "hex": "#E3E3E3",
+        "images": [
+          "/Images/MacBook-Pro-M5-Pro-Silver.png"
+        ]
+      }
+    ],
+    "description": "MacBook Pro with M5 Pro combines professional performance with advanced AI capabilities for developers, creators and demanding workflows.",
+    "highlights": [
+      "M5 Pro chip",
+      "14-inch or 16-inch display options",
+      "Liquid Retina XDR",
+      "Apple Intelligence",
+      "Wi-Fi 7",
+      "Thunderbolt"
+    ],
+    "specifications": {
+      "Display": "Liquid Retina XDR display with ProMotion",
+      "Sizes": "14-inch and 16-inch",
+      "Chip": "Apple M5 Pro",
+      "CPU": "Next-generation CPU",
+      "GPU": "Next-generation GPU with Neural Accelerators",
+      "Memory": "Unified memory",
+      "Storage": "1TB starting storage",
+      "Camera": "12MP Center Stage camera",
+      "Connectivity": "Wi-Fi 7, Bluetooth 6",
+      "Ports": "Thunderbolt 5",
+      "Battery": "All-day battery life",
+      "Operating System": "macOS"
+    },
+    "features": [
+      "Apple Intelligence",
+      "Center Stage",
+      "Liquid Retina XDR",
+      "ProMotion",
+      "MagSafe charging",
+      "Thunderbolt 5",
+      "Wi-Fi 7"
+    ],
+    "gallery": [
+      "/Images/MacBook-Pro-M5-Pro.png",
+      "/Images/MacBook-Pro-M5-Pro-Space-Black.png",
+      "/Images/MacBook-Pro-M5-Pro-Silver.png"
+    ],
+    "availability": "In Stock",
+    "rating": 5,
+    "reviews_count": 0,
+    "storage_options": [
+      "1TB",
+      "2TB",
+      "4TB"
+    ]
+  },
+  {
+    "id": 21,
+    "name": "MacBook Air M5",
+    "slug": "macbook-air-m5",
+    "category_name": "MacBook",
+    "price": 0,
+    "sale_price": 0,
+    "primary_image": {
+      "image": "/Images/MacBook-Air-M5.png"
+    },
+    "colors": [
+      {
+        "name": "Sky Blue",
+        "hex": "#A8C7DC",
+        "images": [
+          "/Images/MacBook-Air-M5.png"
+        ]
+      },
+      {
+        "name": "Midnight",
+        "hex": "#1D1D1F",
+        "images": [
+          "/Images/MacBook-Air-M5-Midnight.png"
+        ]
+      },
+      {
+        "name": "Starlight",
+        "hex": "#F0E5D3",
+        "images": [
+          "/Images/MacBook-Air-M5-Starlight.png"
+        ]
+      },
+      {
+        "name": "Silver",
+        "hex": "#E3E3E3",
+        "images": [
+          "/Images/MacBook-Air-M5-Silver.png"
+        ]
+      }
+    ],
+    "description": "MacBook Air with M5 delivers fast everyday performance, powerful AI capabilities and a thin, fanless design.",
+    "highlights": [
+      "M5 chip",
+      "13-inch and 15-inch options",
+      "Apple Intelligence",
+      "Wi-Fi 7",
+      "Bluetooth 6",
+      "All-day battery life"
+    ],
+    "specifications": {
+      "Display": "Liquid Retina display",
+      "Sizes": "13-inch and 15-inch",
+      "Chip": "Apple M5",
+      "CPU": "Next-generation CPU",
+      "GPU": "Next-generation GPU",
+      "NeuralEngine": "16-core Neural Engine",
+      "Memory": "Unified memory",
+      "Storage": "512GB starting storage",
+      "Camera": "12MP Center Stage camera",
+      "Connectivity": "Wi-Fi 7, Bluetooth 6",
+      "Battery": "All-day battery life",
+      "Operating System": "macOS"
+    },
+    "features": [
+      "Apple Intelligence",
+      "Center Stage",
+      "MagSafe charging",
+      "Wi-Fi 7",
+      "Bluetooth 6",
+      "Liquid Retina display"
+    ],
+    "gallery": [
+      "/Images/MacBook-Air-M5.png",
+      "/Images/MacBook-Air-M5-Sky-Blue.png",
+      "/Images/MacBook-Air-M5-Midnight.png",
+      "/Images/MacBook-Air-M5-Starlight.png",
+      "/Images/MacBook-Air-M5-Silver.png"
+    ],
+    "availability": "In Stock",
+    "rating": 5,
+    "reviews_count": 0,
+    "storage_options": [
+      "512GB",
+      "1TB",
+      "2TB",
+      "4TB"
+    ]
+  },
+  {
+    "id": 20,
+    "name": "MacBook Neo",
+    "slug": "macbook-neo",
+    "category_name": "MacBook",
+    "price": 0,
+    "sale_price": 0,
+    "primary_image": {
+      "image": "/Images/MacBook-Neo.png"
+    },
+    "colors": [
+      {
+        "name": "Blush",
+        "hex": "#F2B5B5",
+        "images": [
+          "/Images/MacBook-Neo.png"
+        ]
+      },
+      {
+        "name": "Indigo",
+        "hex": "#4B4E8A",
+        "images": [
+          "/Images/MacBook-Neo-Indigo.png"
+        ]
+      },
+      {
+        "name": "Silver",
+        "hex": "#D8D8D8",
+        "images": [
+          "/Images/MacBook-Neo-Silver.png"
+        ]
+      },
+      {
+        "name": "Citrus",
+        "hex": "#D8D85C",
+        "images": [
+          "/Images/MacBook-Neo-Citrus.png"
+        ]
+      }
+    ],
+    "description": "MacBook Neo brings the Mac experience to a more accessible notebook with a thin aluminum design, Liquid Retina display and long battery life.",
+    "highlights": [
+      "13-inch Liquid Retina display",
+      "Apple A18 Pro chip",
+      "Fanless design",
+      "Up to 16 hours battery life",
+      "1080p FaceTime HD camera",
+      "Durable aluminum enclosure"
+    ],
+    "specifications": {
+      "Display": "13-inch Liquid Retina display",
+      "Chip": "Apple A18 Pro",
+      "CPU": "6-core CPU",
+      "GPU": "5-core GPU",
+      "Memory": "8GB unified memory",
+      "Storage": "256GB SSD",
+      "Camera": "1080p FaceTime HD camera",
+      "Microphones": "Dual microphones",
+      "Battery": "Up to 16 hours",
+      "Design": "Fanless aluminum enclosure",
+      "Connectivity": "Wi-Fi, Bluetooth",
+      "Operating System": "macOS"
+    },
+    "features": [
+      "Apple Intelligence",
+      "Fanless operation",
+      "1080p FaceTime HD camera",
+      "Touch ID",
+      "Aluminum enclosure",
+      "All-day battery life"
+    ],
+    "gallery": [
+      "/Images/MacBook-Neo.png",
+      "/Images/MacBook-Neo-Blush.png",
+      "/Images/MacBook-Neo-Indigo.png",
+      "/Images/MacBook-Neo-Silver.png",
+      "/Images/MacBook-Neo-Citrus.png"
+    ],
+    "availability": "In Stock",
+    "rating": 4.8,
+    "reviews_count": 0,
+    "storage_options": [
+      "256GB"
+    ]
+  },
+  {
+    "id": 24,
+    "name": "iPad Air M4",
+    "slug": "ipad-air-m4",
+    "category_name": "iPad",
+    "price": 0,
+    "sale_price": 0,
+    "primary_image": {
+      "image": "/Images/iPad-Air-M4.png"
+    },
+    "colors": [
+      {
+        "name": "Blue",
+        "hex": "#7BA7C7",
+        "images": [
+          "/Images/iPad-Air-M4.png"
+        ]
+      },
+      {
+        "name": "Purple",
+        "hex": "#A78BC5",
+        "images": [
+          "/Images/iPad-Air-M4-Purple.png"
+        ]
+      },
+      {
+        "name": "Starlight",
+        "hex": "#E8DCC8",
+        "images": [
+          "/Images/iPad-Air-M4-Starlight.png"
+        ]
+      },
+      {
+        "name": "Space Gray",
+        "hex": "#55565A",
+        "images": [
+          "/Images/iPad-Air-M4-Space-Gray.png"
+        ]
+      }
+    ],
+    "description": "iPad Air with M4 combines powerful Apple silicon performance with a thin design and support for Apple Pencil Pro and Magic Keyboard.",
+    "highlights": [
+      "M4 chip",
+      "11-inch or 13-inch display",
+      "Liquid Retina display",
+      "Apple Pencil Pro support",
+      "Magic Keyboard support",
+      "Apple Intelligence"
+    ],
+    "specifications": {
+      "Display": "Liquid Retina display",
+      "Sizes": "11-inch and 13-inch",
+      "Chip": "Apple M4",
+      "CPU": "Multi-core CPU",
+      "GPU": "Advanced GPU",
+      "Storage": "Multiple storage configurations",
+      "Camera": "12MP Center Stage camera",
+      "Connectivity": "Wi-Fi and cellular options",
+      "ApplePencil": "Apple Pencil Pro support",
+      "Keyboard": "Magic Keyboard support",
+      "Operating System": "iPadOS 26"
+    },
+    "features": [
+      "Apple Intelligence",
+      "Apple Pencil Pro",
+      "Magic Keyboard",
+      "Center Stage",
+      "USB-C",
+      "iPadOS 26"
+    ],
+    "gallery": [
+      "/Images/iPad-Air-M4.png",
+      "/Images/iPad-Air-M4-Blue.png",
+      "/Images/iPad-Air-M4-Purple.png",
+      "/Images/iPad-Air-M4-Starlight.png",
+      "/Images/iPad-Air-M4-Space-Gray.png"
+    ],
+    "availability": "In Stock",
+    "rating": 4.9,
+    "reviews_count": 0,
+    "storage_options": [
+      "128GB",
+      "256GB",
+      "512GB",
+      "1TB"
+    ]
+  },
+  {
+    "id": 17,
+    "name": "iPhone 17e",
+    "slug": "iphone-17e",
+    "category_name": "iPhone",
+    "price": 0,
+    "sale_price": 0,
+    "primary_image": {
+      "image": "/Images/iPhone-17e.png"
+    },
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#1A1A1A",
+        "images": [
+          "/Images/iPhone-17e.png"
+        ]
+      },
+      {
+        "name": "White",
+        "hex": "#F5F5F5",
+        "images": [
+          "/Images/iPhone-17e-White.png"
+        ]
+      },
+      {
+        "name": "Soft Pink",
+        "hex": "#F1C6C8",
+        "images": [
+          "/Images/iPhone-17e-Pink.png"
+        ]
+      }
+    ],
+    "description": "iPhone 17e combines the A19 chip, a 48MP Fusion camera, a 6.1-inch Super Retina XDR display, Ceramic Shield 2 and MagSafe.",
+    "highlights": [
+      "A19 chip",
+      "48MP Fusion camera",
+      "6.1-inch Super Retina XDR",
+      "Ceramic Shield 2",
+      "MagSafe charging",
+      "Apple Intelligence"
+    ],
+    "specifications": {
+      "Display": "6.1-inch Super Retina XDR display",
+      "Chip": "A19 chip with 6-core CPU",
+      "Camera": "48MP Fusion camera with 2-in-1 camera system",
+      "Front Camera": "12MP TrueDepth camera",
+      "Battery": "All-day battery life",
+      "Storage": "256GB, 512GB",
+      "Material": "Aluminum design with Ceramic Shield 2 front",
+      "Connectivity": "5G, Wi-Fi, Bluetooth",
+      "Charging": "USB-C and MagSafe wireless charging",
+      "Water Resistance": "IP68",
+      "Operating System": "iOS 27"
+    },
+    "features": [
+      "Face ID",
+      "Dynamic Island",
+      "Apple Intelligence",
+      "MagSafe",
+      "Emergency SOS via satellite",
+      "Crash Detection"
+    ],
+    "gallery": [
+      "/Images/iPhone-17e.png",
+      "/Images/iPhone-17e-Black.png",
+      "/Images/iPhone-17e-White.png",
+      "/Images/iPhone-17e-Soft-Pink.png"
+    ],
+    "availability": "In Stock",
+    "rating": 4.9,
+    "reviews_count": 0,
+    "storage_options": [
+      "256GB",
+      "512GB"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "iPhone 17 Pro Max",
+    "slug": "iphone-17-pro-max",
+    "category_name": "iPhone",
+    "price": 250000,
+    "sale_price": 248000,
+    "primary_image": {
+      "image": "/Images/iPhone-17-Pro-Max.png"
+    },
+    "colors": [
+      {
+        "name": "Orange Titanium",
+        "hex": "#8B7355",
+        "images": [
+          "/Images/iPhone-17-Pro-Max.png"
+        ]
+      },
+      {
+        "name": "Black",
+        "hex": "#1A1A1A",
+        "images": [
+          "/Images/iPhone-17-Pro-Max-Titanium.png"
+        ]
+      },
+      {
+        "name": "White",
+        "hex": "#F5F5F5",
+        "images": [
+          "/Images/iPhone-17-Pro-Max-White.png"
+        ]
+      }
+    ],
+    "description": "The iPhone 17 Pro Max — powerful A-series chip, pro camera system and a stunning display.",
+    "highlights": [
+      "ProMotion 120Hz",
+      "Always-On",
+      "A19 Pro performance"
+    ],
+    "specifications": {
+      "Display": "6.9-inch Super Retina XDR display with ProMotion",
+      "Chip": "A19 Pro chip",
+      "Camera": "48MP Fusion camera system",
+      "Battery": "Long battery life",
+      "Storage": "256GB, 512GB, 1TB",
+      "Material": "Titanium design",
+      "Connectivity": "5G, Wi-Fi, Bluetooth",
+      "Water Resistance": "IP68"
+    },
+    "features": [
+      "Action button",
+      "Dynamic Island",
+      "Always-On display",
+      "Face ID",
+      "Emergency SOS via satellite",
+      "Crash Detection"
+    ],
+    "gallery": [
+      "/Images/iPhone-17-Pro-Max.png"
+    ],
+    "availability": "In Stock",
+    "rating": 4.9,
+    "reviews_count": 120,
+    "storage_options": [
+      "256GB",
+      "512GB",
+      "1TB"
+    ]
+  },
+  {
+    "id": 1,
+    "name": "iPhone 16 Pro Max",
+    "slug": "iphone-16-pro-max",
+    "category_name": "iPhone",
+    "price": 180000,
+    "sale_price": 175000,
+    "primary_image": {
+      "image": "/Images/iPhone-16-Pro-Max.png"
+    },
+    "colors": [
+      {
+        "name": "Natural Titanium",
+        "hex": "#8B7355",
+        "images": [
+          "/Images/iPhone-16-Pro-Max.png"
+        ]
+      },
+      {
+        "name": "Blue Titanium",
+        "hex": "#4A5A6A",
+        "images": [
+          "/Images/iPhone-16-Pro-Max-Blue.png"
+        ]
+      },
+      {
+        "name": "Black Titanium",
+        "hex": "#2C2C2C",
+        "images": [
+          "/Images/iPhone-16-Pro-Max-Black.png"
+        ]
+      }
+    ],
+    "description": "iPhone 16 Pro Max delivers pro performance, advanced cameras and a large Super Retina XDR display.",
+    "highlights": [
+      "6.9-inch Super Retina XDR display with ProMotion",
+      "A18 Pro chip (3-nm)",
+      "48MP Pro camera system",
+      "All-day battery life",
+      "iOS 18"
+    ],
+    "specifications": {
+      "Display": "6.9-inch Super Retina XDR OLED, 120Hz ProMotion",
+      "Processor": "Apple A18 Pro chip",
+      "Camera": "48MP Main + 12MP Ultra-Wide + 12MP Telephoto",
+      "Front Camera": "12MP TrueDepth",
+      "Battery": "Up to 29 hours video playback",
+      "OS": "iOS 18",
+      "Connectivity": "5G, Wi-Fi 7, Bluetooth 5.3, USB-C",
+      "Materials": "Titanium frame, Ceramic Shield front"
+    },
+    "features": [
+      "Action button",
+      "Camera Control",
+      "Dynamic Island",
+      "Face ID",
+      "Apple Intelligence"
+    ],
+    "gallery": [
+      "/Images/iPhone-16-Pro-Max.png"
+    ],
+    "availability": "In Stock",
+    "rating": 4.8,
+    "reviews_count": 98,
+    "storage_options": [
+      "256GB",
+      "512GB",
+      "1TB"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "iPad Pro M4 (2024) 13-inch",
+    "slug": "ipad-pro-m4-13-inch",
+    "category_name": "iPad",
+    "price": 160000,
+    "sale_price": 155000,
+    "primary_image": {
+      "image": "/Images/iPad-Pro-M4.png"
+    },
+    "colors": [
+      {
+        "name": "Space Black",
+        "hex": "#1D1D1F",
+        "images": [
+          "/Images/iPad-Pro-M4.png"
+        ]
+      },
+      {
+        "name": "Silver",
+        "hex": "#E3E3E3",
+        "images": [
+          "/Images/iPad-Pro-M4-Silver.png"
+        ]
+      }
+    ],
+    "description": "The 13-inch iPad Pro with M4 delivers exceptional performance in an incredibly thin design.",
+    "highlights": [
+      "M4 chip",
+      "Ultra Retina XDR display",
+      "ProMotion 120Hz",
+      "Apple Pencil Pro support"
+    ],
+    "specifications": {
+      "Display": "13-inch Ultra Retina XDR display",
+      "Chip": "Apple M4",
+      "Camera": "12MP Wide camera",
+      "Storage": "256GB and higher",
+      "Connectivity": "Wi-Fi and cellular options",
+      "Material": "Aluminum"
+    },
+    "features": [
+      "Face ID",
+      "Apple Pencil Pro",
+      "Magic Keyboard support",
+      "Thunderbolt / USB 4"
+    ],
+    "gallery": [
+      "/Images/iPad-Pro-M4.png"
+    ],
+    "availability": "In Stock",
+    "rating": 4.9,
+    "reviews_count": 75,
+    "storage_options": [
+      "256GB",
+      "512GB",
+      "1TB",
+      "2TB"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "MacBook Air M3 (2024) 15-inch",
+    "slug": "macbook-air-m3-15-inch",
+    "category_name": "MacBook",
+    "price": 155000,
+    "sale_price": 150000,
+    "primary_image": {
+      "image": "/Images/MacBook-Air-M3.png"
+    },
+    "colors": [
+      {
+        "name": "Midnight",
+        "hex": "#1D1D1F",
+        "images": [
+          "/Images/MacBook-Air-M3.png"
+        ]
+      },
+      {
+        "name": "Starlight",
+        "hex": "#F0E5D3",
+        "images": [
+          "/Images/MacBook-Air-M3-Starlight.png"
+        ]
+      }
+    ],
+    "description": "MacBook Air M3 combines powerful performance, long battery life and a thin fanless design.",
+    "highlights": [
+      "Apple M3 chip",
+      "15-inch Liquid Retina display",
+      "Apple Intelligence support",
+      "Long battery life"
+    ],
+    "specifications": {
+      "Display": "15.3-inch Liquid Retina display",
+      "Chip": "Apple M3",
+      "Memory": "8GB and higher",
+      "Storage": "256GB and higher",
+      "Connectivity": "Wi-Fi 6E, Bluetooth 5.3",
+      "Material": "Aluminum"
+    },
+    "features": [
+      "MagSafe charging",
+      "Touch ID",
+      "1080p FaceTime HD camera",
+      "Fanless design"
+    ],
+    "gallery": [
+      "/Images/MacBook-Air-M3.png"
+    ],
+    "availability": "In Stock",
+    "rating": 4.8,
+    "reviews_count": 82,
+    "storage_options": [
+      "256GB",
+      "512GB",
+      "1TB",
+      "2TB"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Apple Watch Ultra 2",
+    "slug": "apple-watch-ultra-2",
+    "category_name": "Apple Watch",
+    "price": 95000,
+    "sale_price": 90000,
+    "primary_image": {
+      "image": "/Images/Apple-Watch-Ultra-2.png"
+    },
+    "colors": [
+      {
+        "name": "Titanium",
+        "hex": "#B7B1A5",
+        "images": [
+          "/Images/Apple-Watch-Ultra-2.png"
+        ]
+      }
+    ],
+    "description": "Apple Watch Ultra 2 is designed for endurance, outdoor exploration and advanced fitness tracking.",
+    "highlights": [
+      "S9 SiP",
+      "49mm titanium case",
+      "Double tap",
+      "Action button"
+    ],
+    "specifications": {
+      "Display": "49mm Always-On Retina display",
+      "Chip": "S9 SiP",
+      "Battery": "Up to 36 hours",
+      "Material": "Titanium",
+      "Connectivity": "GPS, cellular, Wi-Fi, Bluetooth",
+      "Water Resistance": "100 meters"
+    },
+    "features": [
+      "Action button",
+      "Depth app",
+      "Double Tap",
+      "Precision Finding",
+      "Emergency SOS"
+    ],
+    "gallery": [
+      "/Images/Apple-Watch-Ultra-2.png"
+    ],
+    "availability": "In Stock",
+    "rating": 4.8,
+    "reviews_count": 65
+  },
+  {
+    "id": 5,
+    "name": "AirPods Pro (2nd Gen)",
+    "slug": "airpods-pro-2nd-gen",
+    "category_name": "AirPods",
+    "price": 35000,
+    "sale_price": 32000,
+    "primary_image": {
+      "image": "/Images/AirPods-Pro-2.png"
+    },
+    "colors": [
+      {
+        "name": "White",
+        "hex": "#FFFFFF",
+        "images": [
+          "/Images/AirPods-Pro-2.png"
+        ]
+      }
+    ],
+    "description": "AirPods Pro 2 deliver immersive audio with Active Noise Cancellation and Adaptive Audio.",
+    "highlights": [
+      "Active Noise Cancellation",
+      "Adaptive Audio",
+      "Transparency mode",
+      "USB-C charging"
+    ],
+    "specifications": {
+      "Chip": "H2 chip",
+      "Audio": "Personalized Spatial Audio",
+      "Noise Cancellation": "Active Noise Cancellation",
+      "Connectivity": "Bluetooth",
+      "Charging": "USB-C MagSafe Charging Case"
+    },
+    "features": [
+      "Adaptive Audio",
+      "Conversation Awareness",
+      "Touch controls",
+      "Find My"
+    ],
+    "gallery": [
+      "/Images/AirPods-Pro-2.png"
+    ],
+    "availability": "In Stock",
+    "rating": 4.8,
+    "reviews_count": 110
+  },
+  {
+    "id": 16,
+    "name": "Mac mini (M2, 2023)",
+    "slug": "mac-mini-m2-2023",
+    "category_name": "Mac",
+    "price": 85000,
+    "sale_price": 80000,
+    "primary_image": {
+      "image": "/Images/Mac-mini-M2.png"
+    },
+    "colors": [
+      {
+        "name": "Silver",
+        "hex": "#B8B8B8",
+        "images": [
+          "/Images/Mac-mini-M2.png"
+        ]
+      }
+    ],
+    "description": "Mac mini with M2 delivers compact desktop performance for home, office and professional workflows.",
+    "highlights": [
+      "M2 chip",
+      "Compact design",
+      "Thunderbolt 4",
+      "Excellent desktop performance"
+    ],
+    "specifications": {
+      "Chip": "Apple M2",
+      "CPU": "8-core CPU",
+      "GPU": "10-core GPU",
+      "Memory": "8GB and higher",
+      "Storage": "256GB and higher",
+      "Connectivity": "Wi-Fi 6E, Bluetooth 5.3, Thunderbolt 4"
+    },
+    "features": [
+      "Compact desktop",
+      "Apple Intelligence support",
+      "Multiple displays",
+      "Thunderbolt"
+    ],
+    "gallery": [
+      "/Images/Mac-mini-M2.png"
+    ],
+    "availability": "In Stock",
+    "rating": 4.7,
+    "reviews_count": 54
+  },
+  {
+    "id": 11,
+    "name": "iPhone 15 128GB",
+    "slug": "iphone-15-128gb",
+    "category_name": "iPhone",
+    "price": 85000,
+    "sale_price": 80000,
+    "primary_image": {
+      "image": "/Images/iPhone-15.png"
+    },
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#1A1A1A",
+        "images": [
+          "/Images/iPhone-15.png"
+        ]
+      },
+      {
+        "name": "Blue",
+        "hex": "#B8D4E8",
+        "images": [
+          "/Images/iPhone-15-Blue.png"
+        ]
+      }
+    ],
+    "description": "iPhone 15 features the A16 Bionic chip, Dynamic Island and a 48MP Main camera.",
+    "highlights": [
+      "A16 Bionic",
+      "48MP Main camera",
+      "Dynamic Island",
+      "USB-C"
+    ],
+    "specifications": {
+      "Display": "6.1-inch Super Retina XDR",
+      "Chip": "A16 Bionic",
+      "Camera": "48MP Main camera",
+      "Storage": "128GB",
+      "Connectivity": "5G, Wi-Fi, Bluetooth"
+    },
+    "features": [
+      "Dynamic Island",
+      "Face ID",
+      "USB-C",
+      "Emergency SOS"
+    ],
+    "gallery": [
+      "/Images/iPhone-15.png"
+    ],
+    "availability": "In Stock",
+    "rating": 4.7,
+    "reviews_count": 85,
+    "storage_options": [
+      "128GB"
+    ]
+  },
+  {
+    "id": 12,
+    "name": "iPhone 14 128GB",
+    "slug": "iphone-14-128gb",
+    "category_name": "iPhone",
+    "price": 70000,
+    "sale_price": 65000,
+    "primary_image": {
+      "image": "/Images/iPhone-14.png"
+    },
+    "colors": [
+      {
+        "name": "Midnight",
+        "hex": "#1D1D1F",
+        "images": [
+          "/Images/iPhone-14.png"
+        ]
+      },
+      {
+        "name": "Blue",
+        "hex": "#A8C7DC",
+        "images": [
+          "/Images/iPhone-14-Blue.png"
+        ]
+      }
+    ],
+    "description": "iPhone 14 combines reliable performance, an advanced dual-camera system and excellent battery life.",
+    "highlights": [
+      "A15 Bionic",
+      "12MP dual-camera system",
+      "Super Retina XDR",
+      "Emergency SOS"
+    ],
+    "specifications": {
+      "Display": "6.1-inch Super Retina XDR",
+      "Chip": "A15 Bionic",
+      "Camera": "12MP dual-camera system",
+      "Storage": "128GB",
+      "Connectivity": "5G, Wi-Fi, Bluetooth"
+    },
+    "features": [
+      "Face ID",
+      "Emergency SOS",
+      "Crash Detection",
+      "MagSafe"
+    ],
+    "gallery": [
+      "/Images/iPhone-14.png"
+    ],
+    "availability": "In Stock",
+    "rating": 4.6,
+    "reviews_count": 70,
+    "storage_options": [
+      "128GB"
+    ]
+  },
+  {
+    "id": 13,
+    "name": "iPad 10th Generation 256GB 11-inch with Magic Keyboard",
+    "slug": "ipad-10th-generation-256gb-magic-keyboard",
+    "category_name": "iPad",
+    "price": 85000,
+    "sale_price": 80000,
+    "primary_image": {
+      "image": "/Images/iPad-10th-Generation.png"
+    },
+    "colors": [
+      {
+        "name": "black",
+        "hex": "#1A1A1A",
+        "images": [
+          "/Images/iPad-10th-Generation.png"
+        ]
+      }
+    ],
+    "description": "The 10th-generation iPad offers a colorful all-screen design and includes a Magic Keyboard for productivity.",
+    "highlights": [
+      "10.9-inch Liquid Retina display",
+      "A14 Bionic chip",
+      "256GB storage",
+      "Magic Keyboard support"
+    ],
+    "specifications": {
+      "Display": "10.9-inch Liquid Retina display",
+      "Chip": "A14 Bionic",
+      "Storage": "256GB",
+      "Camera": "12MP Wide camera",
+      "Connectivity": "Wi-Fi and cellular options"
+    },
+    "features": [
+      "USB-C",
+      "Touch ID",
+      "Magic Keyboard support",
+      "Apple Pencil support"
+    ],
+    "gallery": [
+      "/Images/iPad-10th-Generation.png"
+    ],
+    "availability": "In Stock",
+    "rating": 4.6,
+    "reviews_count": 48,
+    "storage_options": [
+      "256GB"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Magic Keyboard for iPad 10th Generation",
+    "slug": "magic-keyboard-ipad-10th-generation",
+    "category_name": "Accessories",
+    "price": 25000,
+    "sale_price": 23000,
+    "primary_image": {
+      "image": "/Images/Magic-Keyboard-iPad.png"
+    },
+    "colors": [
+      {
+        "name": "White",
+        "hex": "#FFFFFF",
+        "images": [
+          "/Images/Magic-Keyboard-iPad.png"
+        ]
+      }
+    ],
+    "description": "Magic Keyboard provides a comfortable typing experience and convenient protection for compatible iPad models.",
+    "highlights": [
+      "Comfortable typing",
+      "Trackpad",
+      "Protective design",
+      "iPad compatibility"
+    ],
+    "specifications": {
+      "Compatibility": "iPad 10th Generation",
+      "Connection": "Smart Connector",
+      "Design": "Folio-style keyboard case",
+      "Color": "White"
+    },
+    "features": [
+      "Built-in trackpad",
+      "Keyboard",
+      "Protective cover",
+      "Adjustable viewing angles"
+    ],
+    "gallery": [
+      "/Images/Magic-Keyboard-iPad.png"
+    ],
+    "availability": "In Stock",
+    "rating": 4.6,
+    "reviews_count": 35
+  },
+  {
+    "id": 15,
+    "name": "Apple Magic Mouse 2",
+    "slug": "apple-magic-mouse-2",
+    "category_name": "Accessories",
+    "price": 18000,
+    "sale_price": 16000,
+    "primary_image": {
+      "image": "/Images/Apple-Magic-Mouse-2.png"
+    },
+    "colors": [
+      {
+        "name": "White",
+        "hex": "#F5F5F5",
+        "images": [
+          "/Images/Apple-Magic-Mouse-2.png"
+        ]
+      }
+    ],
+    "description": "Magic Mouse provides a sleek rechargeable wireless mouse experience with a Multi-Touch surface.",
+    "highlights": [
+      "Multi-Touch surface",
+      "Rechargeable battery",
+      "Wireless",
+      "Sleek design"
+    ],
+    "specifications": {
+      "Connection": "Bluetooth",
+      "Battery": "Rechargeable",
+      "Interface": "Multi-Touch surface",
+      "Compatibility": "Mac and compatible devices"
+    },
+    "features": [
+      "Multi-Touch",
+      "Wireless",
+      "Rechargeable battery"
+    ],
+    "gallery": [
+      "/Images/Apple-Magic-Mouse-2.png"
+    ],
+    "availability": "In Stock",
+    "rating": 4.5,
+    "reviews_count": 30
+  },
+  {
+    "id": 14,
+    "name": "Apple 30W USB-C Power Adapter Charger",
+    "slug": "apple-30w-usb-c-power-adapter-charger",
+    "category_name": "Accessories",
+    "price": 8000,
+    "sale_price": 7500,
+    "primary_image": {
+      "image": "/Images/Apple-30W-USB-C-Charger.png"
+    },
+    "colors": [
+      {
+        "name": "White",
+        "hex": "#FFFFFF",
+        "images": [
+          "/Images/Apple-30W-USB-C-Charger.png"
+        ]
+      }
+    ],
+    "description": "Apple 30W USB-C Power Adapter provides convenient fast charging for compatible Apple devices.",
+    "highlights": [
+      "30W USB-C power",
+      "Compact design",
+      "Fast charging",
+      "Apple quality"
+    ],
+    "specifications": {
+      "Power": "30W",
+      "Port": "USB-C",
+      "Compatibility": "Compatible Apple devices",
+      "Design": "Compact"
+    },
+    "features": [
+      "USB-C",
+      "Fast charging",
+      "Compact design"
+    ],
+    "gallery": [
+      "/Images/Apple-30W-USB-C-Charger.png"
+    ],
+    "availability": "In Stock",
+    "rating": 4.6,
+    "reviews_count": 25
+  },
+  {
+    "id": 7,
+    "name": "MagSafe Charger",
+    "slug": "magsafe-charger",
+    "category_name": "Accessories",
+    "price": 6500,
+    "sale_price": 6000,
+    "primary_image": {
+      "image": "/Images/MagSafe-Charger.png"
+    },
+    "colors": [
+      {
+        "name": "White",
+        "hex": "#FFFFFF",
+        "images": [
+          "/Images/MagSafe-Charger.png"
+        ]
+      }
+    ],
+    "description": "MagSafe Charger provides convenient wireless charging with magnetic alignment for compatible Apple devices.",
+    "highlights": [
+      "Magnetic alignment",
+      "Wireless charging",
+      "USB-C connection",
+      "Compact design"
+    ],
+    "specifications": {
+      "Connection": "USB-C",
+      "Charging": "Magnetic wireless charging",
+      "Compatibility": "Compatible MagSafe devices",
+      "Design": "Compact circular charger"
+    },
+    "features": [
+      "Magnetic alignment",
+      "Wireless charging",
+      "USB-C"
+    ],
+    "gallery": [
+      "/Images/MagSafe-Charger.png"
+    ],
+    "availability": "In Stock",
+    "rating": 4.6,
+    "reviews_count": 32
+  },
+  {
+    "id": 6,
+    "name": "Apple Pencil (2nd Gen)",
+    "slug": "apple-pencil-2nd-gen",
+    "category_name": "Accessories",
+    "price": 18000,
+    "sale_price": 16500,
+    "primary_image": {
+      "image": "/Images/Apple-Pencil-2nd-Gen.png"
+    },
+    "colors": [
+      {
+        "name": "White",
+        "hex": "#FFFFFF",
+        "images": [
+          "/Images/Apple-Pencil-2nd-Gen.png"
+        ]
+      }
+    ],
+    "description": "Apple Pencil 2 provides precise and responsive input for compatible iPad models.",
+    "highlights": [
+      "Pixel-perfect precision",
+      "Low latency",
+      "Magnetic charging",
+      "Double-tap controls"
+    ],
+    "specifications": {
+      "Connection": "Bluetooth",
+      "Charging": "Magnetic charging",
+      "Compatibility": "Compatible iPad models",
+      "Design": "Matte finish"
+    },
+    "features": [
+      "Double tap",
+      "Magnetic attachment",
+      "Wireless charging",
+      "Pressure sensitivity"
+    ],
+    "gallery": [
+      "/Images/Apple-Pencil-2nd-Gen.png"
+    ],
+    "availability": "In Stock",
+    "rating": 4.7,
+    "reviews_count": 40
+  },
+  {
+    "id": 8,
+    "name": "iPhone 15 Silicone Case with MagSafe",
+    "slug": "iphone-15-silicone-case-with-magsafe",
+    "category_name": "Accessories",
+    "price": 6000,
+    "sale_price": 5500,
+    "primary_image": {
+      "image": "/Images/iPhone-15-Silicone-Case.png"
+    },
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#1A1A1A",
+        "images": [
+          "/Images/iPhone-15-Silicone-Case.png"
+        ]
+      }
+    ],
+    "description": "Silicone Case with MagSafe provides a soft-touch finish and magnetic compatibility for iPhone 15.",
+    "highlights": [
+      "Silicone exterior",
+      "MagSafe compatible",
+      "Protective design",
+      "Slim profile"
+    ],
+    "specifications": {
+      "Material": "Silicone",
+      "Compatibility": "iPhone 15",
+      "Charging": "MagSafe compatible",
+      "Design": "Slim protective case"
+    },
+    "features": [
+      "MagSafe",
+      "Protective lining",
+      "Soft-touch exterior"
+    ],
+    "gallery": [
+      "/Images/iPhone-15-Silicone-Case.png"
+    ],
+    "availability": "In Stock",
+    "rating": 4.5,
+    "reviews_count": 22
+  },
+  {
+    "id": 31,
+    "name": "Studio Display XDR",
+    "slug": "studio-display-xdr",
+    "category_name": "Display",
+    "price": 0,
+    "sale_price": 0,
+    "primary_image": {
+      "image": "/Images/Studio-Display-XDR.png"
+    },
+    "colors": [
+      {
+        "name": "Silver",
+        "hex": "#C7C7C7",
+        "images": [
+          "/Images/Studio-Display-XDR.png"
+        ]
+      }
+    ],
+    "description": "Studio Display XDR delivers a professional 27-inch 5K Retina XDR viewing experience with advanced brightness, color and connectivity.",
+    "highlights": [
+      "27-inch 5K Retina XDR",
+      "Mini-LED",
+      "Up to 2000 nits peak HDR brightness",
+      "120Hz",
+      "Thunderbolt 5",
+      "12MP Center Stage camera"
+    ],
+    "specifications": {
+      "Display": "27-inch 5K Retina XDR display",
+      "Resolution": "5K",
+      "Backlight": "Mini-LED",
+      "Brightness": "Up to 2000 nits peak HDR brightness",
+      "RefreshRate": "120Hz",
+      "Color": "P3 wide color gamut",
+      "ProfessionalColor": "Adobe RGB",
+      "Camera": "12MP Center Stage camera",
+      "CameraFeature": "Desk View",
+      "Microphones": "Studio-quality three-microphone array",
+      "Speakers": "Six-speaker sound system",
+      "Audio": "Spatial Audio",
+      "Connectivity": "Thunderbolt 5"
+    },
+    "features": [
+      "Retina XDR",
+      "Mini-LED backlighting",
+      "120Hz refresh rate",
+      "Center Stage",
+      "Desk View",
+      "Spatial Audio",
+      "Thunderbolt 5"
+    ],
+    "gallery": [
+      "/Images/Studio-Display-XDR.png"
+    ],
+    "availability": "In Stock",
+    "rating": 5,
+    "reviews_count": 0
+  },
+  {
+    "id": 30,
+    "name": "Studio Display",
+    "slug": "studio-display",
+    "category_name": "Display",
+    "price": 0,
+    "sale_price": 0,
+    "primary_image": {
+      "image": "/Images/Studio-Display.png"
+    },
+    "colors": [
+      {
+        "name": "Silver",
+        "hex": "#C7C7C7",
+        "images": [
+          "/Images/Studio-Display.png"
+        ]
+      }
+    ],
+    "description": "Studio Display provides a high-quality 27-inch 5K Retina display with an integrated camera and speaker system.",
+    "highlights": [
+      "12MP Center Stage camera",
+      "Desk View",
+      "Studio-quality microphones",
+      "Six-speaker sound system",
+      "Spatial Audio",
+      "Thunderbolt 5"
+    ],
+    "specifications": {
+      "Display": "High-resolution Retina display",
+      "Camera": "12MP Center Stage camera",
+      "CameraFeature": "Desk View",
+      "Microphones": "Studio-quality three-microphone array",
+      "Speakers": "Six-speaker sound system",
+      "Audio": "Spatial Audio",
+      "Connectivity": "Thunderbolt 5",
+      "Compatibility": "Mac"
+    },
+    "features": [
+      "Center Stage",
+      "Desk View",
+      "Spatial Audio",
+      "Studio-quality microphones",
+      "Six-speaker sound system",
+      "Thunderbolt 5"
+    ],
+    "gallery": [
+      "/Images/Studio-Display.png"
+    ],
+    "availability": "In Stock",
+    "rating": 4.8,
+    "reviews_count": 0
+  }
+]
