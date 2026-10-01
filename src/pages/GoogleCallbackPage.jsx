@@ -24,7 +24,7 @@ export default function GoogleCallbackPage() {
         }
 
         // Exchange the code for a token
-        const response = await fetch("http://localhost:8000/api/auth/google/callback/", {
+        const response = await fetch("http://https://tawaridigital.co.ke/api/auth/google/callback/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

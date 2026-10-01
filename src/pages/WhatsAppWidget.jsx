@@ -73,7 +73,7 @@ export default function WhatsAppWidget({
           "
           alt="Chat on WhatsApp"
           loading="lazy"
-          className="w-20 h-20 object-contain"
+          className="w-15 h-15 object-contain"
         />
       </a>
     </div>

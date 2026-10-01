@@ -48,6 +48,16 @@ export default function HomePage() {
       name: "Accessories",
       gallery: ["/Images/vedio4.mp4", "/Images/image5.jpeg"],
     },
+    {
+      id: "c6",
+      name: "tawari",
+      gallery: ["/Images/image6.png", "/Images/image7.png"],
+    },
+     {
+      id: "c7",
+      name: "tawari",
+      gallery: ["/Images/image8.png", "/Images/image9.png"],
+    },
   ]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -108,8 +118,8 @@ export default function HomePage() {
       {
         id: "hero-1",
         type: "video",
-        src: "/Images/hero1.png",
-        poster: "/Images/hero1.png",
+        src: "/Images/repair.png",
+        poster: "/Images/repair.png",
         title: "Apple Device Specialists",
         desc: "Expert repairs, premium devices, and professional training",
         primary: { label: "Shop Devices", to: "/shop" },
@@ -221,24 +231,24 @@ export default function HomePage() {
 
                 <div className="relative z-20 h-full flex items-center justify-center px-6">
                   <div className="max-w-4xl text-center">
-                    <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight animate-fadeIn">
+                    <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-300 mb-8 leading-tight animate-fadeIn">
                       {s.title}
                     </h1>
 
                     <p
-                      className="text-xl md:text-2xl text-gray-100 mb-12 max-w-3xl mx-auto animate-fadeIn"
+                      className="text-xl md:text-2xl text-gray-300  max-w-3xl mx-auto animate-fadeIn lg:mt-20"
                       style={{ animationDelay: "0.2s" }}
                     >
                       {s.desc}
                     </p>
 
                     <div
-                      className="flex flex-col sm:flex-row gap-6 justify-center animate-fadeIn"
+                      className="flex flex-col sm:flex-row gap-20 justify-center animate-fadeIn lg:mt-25"
                       style={{ animationDelay: "0.4s" }}
                     >
                       <Link
                         to={s.primary.to}
-                        className="inline-flex items-center justify-center px-10 py-5 bg-white text-black text-lg font-semibold rounded-lg hover:bg-gray-100 transition-all shadow-2xl transform hover:scale-105"
+                        className="inline-flex items-center justify-center px-10 py-5 bg-white text-black text-lg font-semibold rounded-lg hover:bg-gray-100 transition-all shadow-2xl transform hover:scale-105 lg:-mb-2"
                       >
                         {s.primary.label}
                         <ArrowRight className="ml-3 h-6 w-6" />
@@ -246,13 +256,13 @@ export default function HomePage() {
 
                       <Link
                         to={s.secondary.to}
-                        className="inline-flex items-center justify-center px-10 py-5 border-2 border-white text-white text-lg font-semibold rounded-lg hover:bg-white/10 transition-all transform hover:scale-105"
+                        className="inline-flex items-center justify-center px-16 py-2 border-2 border-white text-gray-300 text-lg font-semibold rounded-lg hover:bg-white/10 transition-all transform hover:scale-105 lg:-mb-2"
                       >
                         {s.secondary.label}
                       </Link>
+                      </div>
                     </div>
                   </div>
-                </div>
 
                 {active && (
                   <div
@@ -270,14 +280,14 @@ export default function HomePage() {
             onClick={prev}
             className="absolute left-6 top-1/2 -translate-y-1/2 z-30 p-4 rounded-full bg-white/20 backdrop-blur-md hover:bg-white/30 transition-all"
           >
-            <ChevronLeft className="h-7 w-7 text-white" />
+            <ChevronLeft className="h-6 w-6 text-white" />
           </button>
 
           <button
             onClick={next}
             className="absolute right-6 top-1/2 -translate-y-1/2 z-30 p-4 rounded-full bg-white/20 backdrop-blur-md hover:bg-white/30 transition-all"
           >
-            <ChevronRight className="h-7 w-7 text-white" />
+            <ChevronRight className="h-6 w-6 text-white" />
           </button>
 
           <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex gap-3">
@@ -297,7 +307,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen w-full bg-white">
+    <div className="flex flex-col min-h-screen w-full bg-gray-300">
       <HeroSlider />
 
       {/* Services Section with Parallax Video */}
@@ -308,10 +318,10 @@ export default function HomePage() {
         <div className="w-full max-w-[1400px] mx-auto px-4 md:px-6">
           <AnimatedContent delay={0}>
             <div className="flex flex-col items-center justify-center space-y-6 text-center mb-20">
-              <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-white">
+              <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-300">
                 Our Services
               </h2>
-              <p className="max-w-2xl text-xl text-gray-100">
+              <p className="max-w-2xl text-xl text-gray-300">
                 Comprehensive Apple solutions tailored to your needs
               </p>
             </div>
@@ -345,7 +355,7 @@ export default function HomePage() {
       </ParallaxSection>
 
       {/* Brands We Partner With */}
-      <section className="w-full py-20 bg-gray-50">
+      <section className="w-full py-20 bg-gray-300">
         <div className="w-full max-w-[1400px] mx-auto px-4 md:px-6">
           <AnimatedContent delay={0}>
             <div className="text-center space-y-6 mb-16">
@@ -369,7 +379,7 @@ export default function HomePage() {
         <div className="w-full max-w-[1400px] mx-auto px-4 md:px-6">
           <AnimatedContent delay={0}>
             <div className="text-center space-y-6 mb-20">
-              <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-white">
+              <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-300">
                 Why Choose Us
               </h2>
               <p className="max-w-2xl text-xl text-gray-100 mx-auto">
@@ -447,10 +457,10 @@ export default function HomePage() {
         <div className="w-full max-w-[1400px] mx-auto px-4 md:px-6">
           <AnimatedContent delay={0}>
             <div className="flex flex-col items-center justify-center space-y-8 text-center">
-              <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-white">
+              <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-300">
                 Ready to Get Started?
               </h2>
-              <p className="max-w-2xl text-2xl text-gray-100">
+              <p className="max-w-2xl text-2xl text-gray-300">
                 Contact us today for expert service
               </p>
 
@@ -464,8 +474,8 @@ export default function HomePage() {
                 </Link>
 
                 <Link
-                  to="/book-service"
-                  className="inline-flex items-center justify-center px-10 py-5 border-2 border-white text-white text-lg font-semibold rounded-lg hover:bg-white/10 transition-all transform hover:scale-105"
+                  to="/contact"
+                  className="inline-flex items-center justify-center px-10 py-5 border-2 border-white text-gray-300 text-lg font-semibold rounded-lg hover:bg-white/10 transition-all transform hover:scale-105"
                 >
                   Book Service
                   <ArrowRight className="ml-3 h-5 w-5" />
@@ -488,6 +498,11 @@ function BrandsCarousel() {
       name: "KCB Bank",
       logo: "/Images/kcb_logo.png",
       label: "Financial Partner",
+    },
+    {
+      name: "Redington Technologies",
+      logo: "/Images/Redington.png",
+      label: "Technology Partner",
     },
   ];
 

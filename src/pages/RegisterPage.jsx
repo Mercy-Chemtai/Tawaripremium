@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from "../components/auth/AuthContext";
 import { Mail, Lock, User, ArrowRight, Eye, EyeOff, UserPlus } from 'lucide-react';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function RegisterPage() {
   const { register } = useAuth();
@@ -35,14 +37,23 @@ export default function RegisterPage() {
     if (formData.password.length < 6) { setError('Password must be at least 6 characters'); setLoading(false); return; }
     if (formData.password !== formData.confirmPassword) { setError('Passwords do not match'); setLoading(false); return; }
 
-    try {
-      const success = await register(formData.name, formData.email, formData.password, formData.confirmPassword);
-      if (success) navigate(redirect);
-    } catch (err) {
-      setError(err.message || 'Registration failed. Please try again.');
-    } finally {
-      setLoading(false);
-    }
+   try {
+  await register(formData);
+
+  toast.success("Account created successfully!");
+
+  navigate("/login");
+} catch (error) {try {
+  await register(formData);
+
+  toast.success("Account created successfully!");
+
+  navigate("/login");
+} catch (error) {
+  toast.error(error.message);
+}
+  toast.error(error.message);
+}
   };
 
   return (

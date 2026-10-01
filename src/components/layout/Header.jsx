@@ -82,10 +82,15 @@ export default function Header() {
           <div className="flex items-center justify-between h-18">
             {/* Left: logo */}
             <div className="flex items-center gap-4">
-              <NavLink to="/" end className="flex items-center gap-3 no-underline" aria-label="Tawari home">
+              <NavLink
+                to="/"
+                end
+                className="flex items-center gap-3 no-underline"
+                aria-label="Tawari home"
+              >
                 <div className="flex items-center justify-center w-10 h-10 rounded-lg overflow-hidden bg-white/100">
                   <img
-                    src="/public/Images/Tawari_Logo.svg"
+                    src="/Images/Tawari_Logo.svg"
                     alt="Tawari Logo"
                     className="object-contain w-8 h-8"
                     onError={(e) => {
@@ -96,21 +101,43 @@ export default function Header() {
                   />
                 </div>
                 <div className="hidden sm:block">
-                  <div className="text-white text-lg font-semibold leading-tight">Tawari</div>
-                  <div className="text-xs text-white/60 -mt-1">Limited Digital</div>
+                  <div className="text-white text-lg font-semibold leading-tight">
+                    Tawari
+                  </div>
+                  <div className="text-xs text-white/60 -mt-1">
+                    Digital Limited
+                  </div>
                 </div>
               </NavLink>
             </div>
 
             {/* Center: desktop nav */}
-            <nav role="navigation" aria-label="Main navigation" className="hidden md:flex items-center gap-6 relative z-20">
-              <NavLink to="/" end className={navLinkClass}>HOME</NavLink>
-              <NavLink to="/services" className={navLinkClass}>SERVICES</NavLink>
-              <NavLink to="/about" className={navLinkClass}>ABOUT</NavLink>
-              <NavLink to="/shop" className={navLinkClass}>SHOP</NavLink>
-              <NavLink to="/training" className={navLinkClass}>TRAINING</NavLink>
-              <NavLink to="/contact" className={navLinkClass}>CONTACT</NavLink>
-              <NavLink to="/blog" className={navLinkClass}>BLOG</NavLink>
+            <nav
+              role="navigation"
+              aria-label="Main navigation"
+              className="hidden md:flex items-center gap-6 relative z-20"
+            >
+              <NavLink to="/" end className={navLinkClass}>
+                HOME
+              </NavLink>
+              <NavLink to="/services" className={navLinkClass}>
+                SERVICES
+              </NavLink>
+              <NavLink to="/about" className={navLinkClass}>
+                ABOUT
+              </NavLink>
+              <NavLink to="/shop" className={navLinkClass}>
+                SHOP
+              </NavLink>
+              <NavLink to="/training" className={navLinkClass}>
+                TRAINING
+              </NavLink>
+              <NavLink to="/contact" className={navLinkClass}>
+                CONTACT
+              </NavLink>
+              <NavLink to="/blog" className={navLinkClass}>
+                BLOG
+              </NavLink>
             </nav>
 
             {/* Right: actions */}
@@ -153,45 +180,89 @@ export default function Header() {
                 aria-expanded={open}
                 aria-controls="mobile-menu"
               >
-                {open ? <X className="h-5 w-5 text-white" /> : <Menu className="h-5 w-5 text-white" />}
+                {open ? (
+                  <X className="h-5 w-5 text-white" />
+                ) : (
+                  <Menu className="h-5 w-5 text-white" />
+                )}
               </button>
             </div>
           </div>
         </div>
-
+        ```jsx
         {/* Mobile menu panel */}
         <div
           id="mobile-menu"
-          className={`md:hidden transition-[max-height,opacity] duration-300 ease-in-out overflow-hidden ${
-            open ? "max-h-72 opacity-100" : "max-h-0 opacity-0 pointer-events-none"
-          }`}
+          className={`md:hidden transition-[max-height,opacity] duration-300 ease-in-out ${
+            open
+              ? "max-h-[calc(100vh-80px)] opacity-100"
+              : "max-h-0 opacity-0 pointer-events-none"
+          } overflow-hidden`}
           aria-hidden={!open}
         >
           <div className="px-4 pt-3 pb-4 border-t border-white/6 bg-black/40">
-            <div className="flex flex-col gap-3">
-              <NavLink to="/shop" onClick={() => setOpen(false)} ref={firstMobileLinkRef} className="block text-white/90 py-2 px-2 rounded hover:bg-white/6 transition text-base font-medium">
+            <div className="flex flex-col gap-3 max-h-[calc(100vh-110px)] overflow-y-auto overscroll-contain pr-1">
+              <NavLink
+                to="/"
+                onClick={() => setOpen(false)}
+                ref={firstMobileLinkRef}
+                className="block text-white/90 py-2 px-2 rounded hover:bg-white/6 transition text-base font-medium"
+              >
+                Home
+              </NavLink>
+
+              <NavLink
+                to="/shop"
+                onClick={() => setOpen(false)}
+                className="block text-white/90 py-2 px-2 rounded hover:bg-white/6 transition text-base font-medium"
+              >
                 Shop
               </NavLink>
 
-              <NavLink to="/training" onClick={() => setOpen(false)} className="block text-white/90 py-2 px-2 rounded hover:bg-white/6 transition text-base font-medium">
+              <NavLink
+                to="/training"
+                onClick={() => setOpen(false)}
+                className="block text-white/90 py-2 px-2 rounded hover:bg-white/6 transition text-base font-medium"
+              >
                 Training
               </NavLink>
 
-              <NavLink to="/contact" onClick={() => setOpen(false)} className="block text-white/90 py-2 px-2 rounded hover:bg-white/6 transition text-base font-medium">
+              <NavLink
+                to="/contact"
+                onClick={() => setOpen(false)}
+                className="block text-white/90 py-2 px-2 rounded hover:bg-white/6 transition text-base font-medium"
+              >
                 Contact
               </NavLink>
 
-              <NavLink to="/services" onClick={() => setOpen(false)} className="block text-white/90 py-2 px-2 rounded hover:bg-white/6 transition text-base font-medium">
+              <NavLink
+                to="/services"
+                onClick={() => setOpen(false)}
+                className="block text-white/90 py-2 px-2 rounded hover:bg-white/6 transition text-base font-medium"
+              >
                 Services
               </NavLink>
 
-              <NavLink to="/cart" onClick={() => setOpen(false)} className="mt-2 inline-flex items-center gap-2 px-3 py-2 border rounded-md border-white/8 hover:bg-white/6 transition text-white">
-                <ShoppingCart className="h-4 w-4" /> View cart ({getTotalItems()})
+              <NavLink
+                to="/blog"
+                onClick={() => setOpen(false)}
+                className="block text-white/90 py-2 px-2 rounded hover:bg-white/6 transition text-base font-medium"
+              >
+                Blog
+              </NavLink>
+
+              <NavLink
+                to="/cart"
+                onClick={() => setOpen(false)}
+                className="mt-2 inline-flex items-center gap-2 px-3 py-2 border rounded-md border-white/8 hover:bg-white/6 transition text-white"
+              >
+                <ShoppingCart className="h-4 w-4" />
+                View cart ({getTotalItems()})
               </NavLink>
             </div>
           </div>
         </div>
-
+        ```
         {/* Search overlay */}
         {searchOpen && (
           <div

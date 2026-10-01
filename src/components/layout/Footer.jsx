@@ -117,7 +117,12 @@ export default function Footer() {
               <p>Westlands Commercial Centre</p>
               <p>Old Block</p>
               <p>1st Floor</p>
-              <p className="pt-2">Phone: +254 710130021</p>
+              <p className="pt-2">Phone: We use these numbers as official numbers
+                <br />
+                +254712007722
+                <br />
+                +254734447444
+              </p>
               <p>Email: tawaridigital@gmail.com</p>
             </address>
           </div>

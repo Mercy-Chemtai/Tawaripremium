@@ -35,18 +35,23 @@ import AuthCallback from "./pages/AuthCallBackPage";
 import PrivacyTermsPage from "./pages/PrivacyAndPolicyTermsAndServices";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "./components/auth/AuthContext";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import BlogAdminPage from "./pages/BlogAdminPage";
+import { ToastContainer } from "react-toastify";
+
+
 // ... other imports
 
 // Updated PrivateRoute component
 function PrivateRoute({ children }) {
   const { isAuthenticated } = useAuth(); // Use the hook
   const location = useLocation();
-  
+
   if (!isAuthenticated) {
     // Redirect to login with the current path as redirect parameter
     return <Navigate to={`/login?redirect=${location.pathname}`} replace />;
   }
-  
+
   return children;
 }
 
@@ -91,6 +96,14 @@ function App() {
                     </PrivateRoute>
                   }
                 />
+                <Route
+                  path="/admin/blog"
+                  element={
+                    <ProtectedRoute requireStaff>
+                      <BlogAdminPage />
+                    </ProtectedRoute>
+                  }
+                />
                 <Route path="/checkout/:id" element={<CheckoutPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/auth/callback" element={<AuthCallback />} />
@@ -128,7 +141,14 @@ function App() {
               message="Hello Tawari Digital, I hope you’re well. I’d like to learn more about your Apple products and repair services."
             />
           </div>
-
+          <>
+            <Routes />
+            <ToastContainer
+              position="top-right"
+              autoClose={4000}
+              hideProgressBar={false}
+            />
+          </>
           <Toaster />
         </ToastProvider>
       </CartProvider>
@@ -137,12 +157,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
-
-
-
-
-

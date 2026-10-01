@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from "../components/auth/AuthContext";
 import { Mail, Lock, ArrowRight, Eye, EyeOff } from 'lucide-react';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -33,15 +35,17 @@ export default function LoginPage() {
     return;
   }
 
-  try {
-    await login(email, password); // login returns true on success, throws on error
-    // If we get here, login succeeded
-    navigate(redirect);
-  } catch (err) {
-    setError(err.message || "Login failed. Please try again.");
-  } finally {
-    setLoading(false);
-  }
+ try {
+  await login({
+    email,
+    password,
+  });
+
+  toast.success("Login successful!");
+  navigate("/");
+} catch (error) {
+  toast.error(error.message);
+}
 };
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 flex items-center justify-center p-4">

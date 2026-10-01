@@ -9,7 +9,7 @@ import { useToast } from "../components/ui/use-toast"
 import DOMPurify from "dompurify"
 
 // Get the API base URL from environment variables
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000"
+const API_URL = import.meta.env.VITE_API_URL || "http://https://tawaridigital.co.ke"
 
 // Function to get full image URL
 const getFullImageUrl = (imagePath) => {

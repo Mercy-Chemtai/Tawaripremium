@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 
 // ─── M-Pesa API helpers ────────────────────────────────────────────────────
-const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const API_BASE = import.meta.env.VITE_API_URL || "http://https://tawaridigital.co.ke";
 
 const mpesaAPI = {
   initiate: async ({ phone, amount, accountRef, description }) => {

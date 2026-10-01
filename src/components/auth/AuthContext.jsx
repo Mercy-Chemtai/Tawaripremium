@@ -30,46 +30,30 @@ export function AuthProvider({ children }) {
     initAuth();
   }, []);
 
-  const login = async (email, password) => {
-    try {
-      const data = await authAPI.login({ email, password });
+  const login = async (credentials) => {
+  try {
+    const data = await authAPI.login(credentials);
 
-      if (data?.tokens?.access && data?.user) {
-        localStorage.setItem("accessToken", data.tokens.access);
-        localStorage.setItem("refreshToken", data.tokens.refresh);
-        localStorage.setItem("user", JSON.stringify(data.user));
+    localStorage.setItem("accessToken", data.access);
+    localStorage.setItem("refreshToken", data.refresh);
+    localStorage.setItem("user", JSON.stringify(data.user));
 
-        setUser(data.user);
-        return true;
-      } else {
-        throw new Error("Invalid response format from server");
-      }
-    } catch (error) {
-      console.error("Registration error:", error.response?.data); // ← add this
-      throw new Error(
-        error.response?.data?.message || error.message || "Registration failed"
-      );
-    }
-  };
+    setUser(data.user);
 
-  const register = async (name, email, password, confirmPassword) => {
-    if (password !== confirmPassword) throw new Error("Passwords do not match");
+    return data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+  const register = async (userData) => {
+  try {
+    const data = await authAPI.register(userData);
 
-    try {
-      const res = await axios.post(
-        "http://localhost:8000/api/auth/register/",
-        { name, email, password, confirmPassword },
-        { headers: { "Content-Type": "application/json" } }
-      );
-      // You may want to handle the response here, e.g., setUser or return res.data
-      return res.data;
-    } catch (error) {
-      console.error("Registration error:", error);
-      throw new Error(
-        error.response?.data?.message || error.message || "Registration failed"
-      );
-    }
-  };
+    return data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
 
   const logout = () => {
     localStorage.removeItem("accessToken");

@@ -1,12 +1,160 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Calendar, Tag, User, Search, X, TrendingUp } from "lucide-react";
-import axios from "axios";
+import { Link } from "react-router-dom";
 import { useToast } from "../components/ui/use-toast";
 import { newsletterAPI } from "../services/api";
+import { blogAPI } from "../services/api";
 
-
-// Full blog articles (keeping your existing articles)
+// Full blog articles (keeping your existing hardcoded articles exactly as-is,
+// used only as a fallback / for legacy posts that predate the admin page)
 const FULL_ARTICLES = {
+  "iphone-18-pro-and-18-pro-max": {
+    title: "iPhone 18 Pro & iPhone 18 Pro Max: Everything You Need to Know",
+    slug: "iphone-18-pro-and-18-pro-max",
+    content: `
+    <h2>Meet Apple's Newest iPhone</h2>
+    <p>Apple has officially introduced its newest Pro iPhone lineup: the iPhone 18 Pro and iPhone 18 Pro Max. With major improvements to the camera system, performance, battery life, artificial intelligence, and overall user experience, Apple's latest iPhone is designed for users who want more from their smartphone.</p>
+    <p>The iPhone 18 Pro lineup introduces Apple's new A20 Pro chip, a 48MP Fusion Main camera with variable aperture, an improved thermal management system, longer battery life, and the next generation of Apple Intelligence through iOS 27. The new models are available in black, silver, glacier, and the new burgundy finish.</p>
+
+    <h3>1. A Revolutionary New Camera System</h3>
+    <p>One of the biggest upgrades in the iPhone 18 Pro is its camera system. Apple has introduced a new 48MP Fusion Main camera with variable aperture, giving iPhone users more control over photography than previous generations.</p>
+
+    <p>The variable aperture allows the camera to automatically adjust how much light enters the lens depending on the environment. Users can also manually control aperture settings when they want greater creative control over their photographs.</p>
+
+    <p>This means better flexibility when shooting portraits, landscapes, group photos, low-light scenes, and everyday moments. The new camera system is especially useful for photographers, social media creators, influencers, and businesses that rely on high-quality smartphone photography.</p>
+
+    <p>The iPhone 18 Pro also introduces enhanced Pro controls, allowing users to adjust settings such as aperture, shutter speed, white balance, and exposure directly within the Camera app.</p>
+
+    <h3>2. Powered by the New A20 Pro Chip</h3>
+    <p>At the heart of the iPhone 18 Pro and iPhone 18 Pro Max is Apple's new A20 Pro chip.</p>
+
+    <p>The A20 Pro is designed to deliver powerful performance for demanding tasks including gaming, photography, video editing, artificial intelligence, multitasking, and professional applications.</p>
+
+    <p>The chip includes a new Dual 16-core Neural Engine designed to accelerate on-device AI and computational photography. This gives the iPhone 18 Pro greater processing capability for advanced Apple Intelligence features while maintaining the fast and responsive experience iPhone users expect.</p>
+
+    <p>Whether you're editing a 4K video, playing graphics-intensive games, managing multiple applications, or using AI-powered features, the A20 Pro is built to handle demanding workloads efficiently.</p>
+
+    <h3>3. Improved Thermal Management</h3>
+    <p>Powerful smartphones can generate significant heat during demanding tasks. Apple has addressed this with a new vapor chamber thermal management system in the iPhone 18 Pro lineup.</p>
+
+    <p>The redesigned vapor chamber has a larger surface area than the previous generation, helping the device dissipate heat more effectively during sustained workloads.</p>
+
+    <p>This can be particularly useful for people who regularly play demanding games, record long videos, edit content, or perform other intensive tasks on their iPhone.</p>
+
+    <h3>4. Longer Battery Life</h3>
+    <p>Battery life is one of the most important features of any smartphone, and Apple has made significant improvements with the iPhone 18 Pro generation.</p>
+
+    <p>The iPhone 18 Pro offers up to 36 hours of video playback on eSIM-only models, while the iPhone 18 Pro Max can deliver up to 45 hours of video playback under Apple's stated testing conditions.</p>
+
+    <p>The iPhone 18 Pro can also charge up to 50 percent in around 15 minutes using wired charging, while wireless charging can reach 50 percent in around 30 minutes.</p>
+
+    <p>For people who use their phones throughout the day for work, communication, photography, entertainment, and social media, these battery improvements can make a noticeable difference.</p>
+
+    <h3>5. A Smaller and More Useful Dynamic Island</h3>
+    <p>The iPhone 18 Pro lineup continues Apple's Dynamic Island experience while introducing a smaller and more useful design.</p>
+
+    <p>Dynamic Island allows users to interact with notifications, calls, music, timers, navigation, and other live activities without completely leaving the application they are using.</p>
+
+    <p>This makes everyday interactions feel more integrated and keeps important information accessible while you continue using your phone.</p>
+
+    <h3>6. Apple Intelligence and the New Siri AI</h3>
+    <p>The iPhone 18 Pro is designed around more than traditional smartphone features. With iOS 27 and Apple Intelligence, Apple is expanding the role of artificial intelligence across the iPhone experience.</p>
+
+    <p>The new Siri AI is designed to provide a more personal and conversational experience. It can use personal context to help users find information across messages, emails, photos, and other parts of their device.</p>
+
+    <p>Siri AI also introduces onscreen awareness, allowing the assistant to understand what is currently displayed on your screen and help you take actions based on that information.</p>
+
+    <p>Apple is also bringing intelligence into photography and other everyday tasks, making the iPhone 18 Pro more useful as a personal productivity and creative device.</p>
+
+    <h3>7. New iPhone 18 Pro Colors</h3>
+    <p>The iPhone 18 Pro and iPhone 18 Pro Max are available in four finishes: black, silver, glacier, and an all-new burgundy.</p>
+
+    <p>The new burgundy finish gives the latest Pro lineup a distinctive look while maintaining Apple's premium design approach.</p>
+
+    <p>For customers who care about both performance and appearance, the new finishes provide more choice when selecting their next iPhone.</p>
+
+    <h3>8. Storage Options for Power Users</h3>
+    <p>The iPhone 18 Pro and iPhone 18 Pro Max are available with storage capacities ranging from 256GB to 2TB.</p>
+
+    <p>This gives customers more flexibility depending on how they use their phone. Someone who mainly uses their iPhone for communication and social media may be comfortable with a lower storage capacity, while photographers, videographers, gamers, and content creators may benefit from larger storage options.</p>
+
+    <p>With modern smartphone cameras producing increasingly large photo and video files, choosing the right storage capacity is an important consideration before purchasing a new iPhone.</p>
+
+    <h2>iPhone 18 Pro vs iPhone 18 Pro Max</h2>
+
+    <p>The iPhone 18 Pro and iPhone 18 Pro Max share many of the same major technologies, including the A20 Pro chip, advanced camera system, Apple Intelligence features, and improved thermal management.</p>
+
+    <p>The Pro Max is designed for customers who want the largest display and longest battery experience in the Pro lineup, while the standard Pro provides a more compact option for users who prefer a smaller device.</p>
+
+    <p>Your choice will ultimately depend on your preferred screen size, battery requirements, storage needs, and how you use your smartphone every day.</p>
+
+    <h2>Why the iPhone 18 Pro Matters for Content Creators</h2>
+
+    <p>The latest iPhone is particularly interesting for content creators.</p>
+
+    <p>With its advanced camera system, manual camera controls, powerful processor, improved battery life, and AI capabilities, the iPhone 18 Pro can be used for photography, video production, social media content, product photography, business marketing, and everyday content creation.</p>
+
+    <p>For creators who produce content for TikTok, Instagram, YouTube, Facebook, or other platforms, having a powerful camera and editing device in one pocket can simplify the entire content creation process.</p>
+
+    <h2>Should You Upgrade to the iPhone 18 Pro?</h2>
+
+    <p>Whether you should upgrade depends on the iPhone you currently own and how you use it.</p>
+
+    <p>If your current iPhone still provides the performance, battery life, camera quality, and storage you need, upgrading may not be necessary immediately.</p>
+
+    <p>However, users interested in improved photography, professional camera controls, longer battery life, advanced AI features, faster performance, and the latest Apple technology may find the iPhone 18 Pro generation particularly relevant.</p>
+
+    <p>Before upgrading, it is also worth checking the condition of your current iPhone. A battery replacement, screen repair, charging-port service, or camera repair may sometimes extend the useful life of an existing device.</p>
+
+    <h2>What to Know Before Buying the Latest iPhone</h2>
+
+    <p>If you're planning to purchase an iPhone 18 Pro or iPhone 18 Pro Max, don't look at the price alone. Consider the storage capacity, model, warranty, device condition, accessories, and after-sales support.</p>
+
+    <ul>
+      <li>Choose the storage capacity that matches your usage.</li>
+      <li>Confirm the exact iPhone model before purchasing.</li>
+      <li>Check the device condition if buying a pre-owned iPhone.</li>
+      <li>Confirm that the device is genuine.</li>
+      <li>Check the warranty and available service support.</li>
+      <li>Consider professional setup and technical support when necessary.</li>
+      <li>Choose a reputable Apple-focused seller or service provider.</li>
+    </ul>
+
+    <h2>Protecting Your New iPhone</h2>
+
+    <p>Buying a new iPhone is a significant investment, so protecting the device from accidental damage is important.</p>
+
+    <p>A quality protective case and screen protector can help reduce the risk of damage from everyday drops and scratches. It is also important to avoid exposing the device to extreme temperatures and to use appropriate charging accessories.</p>
+
+    <p>Even with proper care, however, accidents can happen. A damaged screen, battery issue, charging problem, or camera fault should be assessed by a professional rather than attempting an uncertain repair at home.</p>
+
+    <h2>Professional iPhone Repair and Support</h2>
+
+    <p>Modern iPhones contain sophisticated hardware and software, making professional repair important when something goes wrong.</p>
+
+    <p>Problems such as battery degradation, cracked displays, charging issues, camera faults, overheating, and other hardware problems can affect the performance of your device.</p>
+
+    <p>A professional diagnostic assessment can help identify the actual cause of a problem before unnecessary components are replaced.</p>
+
+    <p>Whether you own the newest iPhone 18 Pro or an older iPhone model, proper maintenance and professional servicing can help keep your device working reliably for longer.</p>
+
+    <h2>Experience the Newest iPhone</h2>
+
+    <p>The iPhone 18 Pro and iPhone 18 Pro Max represent Apple's latest approach to smartphone photography, performance, battery life, artificial intelligence, and professional creativity.</p>
+
+    <p>From the new 48MP Fusion Main camera with variable aperture to the A20 Pro chip, improved thermal management, longer battery life, and the next generation of Apple Intelligence, the newest iPhone is designed for people who expect more from their smartphone.</p>
+
+    <p>If you're researching the <strong>latest iPhone in 2026</strong>, considering an upgrade, or looking for professional Apple support, the iPhone 18 Pro lineup is worth exploring.</p>
+
+    <h2>Need iPhone Sales, Repair or Support?</h2>
+
+    <p>Whether you are looking to upgrade to the latest iPhone, need help with an existing Apple device, or require professional iPhone repair, getting the right technical support can make all the difference.</p>
+
+    <p>At <strong>Tawari Digital</strong>, we provide Apple-focused products and professional technical services to help customers get more from their devices.</p>
+
+    <p>Contact us today to learn more about our iPhone products, repair services, and Apple support.</p>
+  `,
+  },
   "signs-your-iphone-needs-repair": {
     title: "5 Signs Your iPhone Needs Professional Repair",
     slug: "signs-your-iphone-needs-repair",
@@ -183,64 +331,188 @@ const FULL_ARTICLES = {
       <p>If your Apple Watch is overheating, charging inconsistently, or shutting down unexpectedly after a previous repair, don't wait. Book a diagnostic appointment today, and we'll help restore your watch to proper working condition with safe, professional care.</p>
     `,
   },
-
   "airpods-apple-watch-perfect-harmony": {
-  title: "AirPods and Apple Watch: Perfect Harmony for a Healthier You",
-  slug: "airpods-apple-watch-perfect-harmony",
-  content: `
-    <h2>Better Together</h2>
-    <p>When innovation meets intention, powerful things happen. <strong>AirPods</strong> and <strong>Apple Watch</strong> are designed to work seamlessly together, creating an experience where every step you take and every beat you hear fuels a healthier, more active lifestyle.</p>
-    <p>From morning workouts to evening wind-downs, this dynamic duo keeps you connected, motivated, and in tune with your goals.</p>
+    title: "AirPods and Apple Watch: Perfect Harmony for a Healthier You",
+    slug: "airpods-apple-watch-perfect-harmony",
+    content: `
+      <h2>Better Together</h2>
+      <p>When innovation meets intention, powerful things happen. <strong>AirPods</strong> and <strong>Apple Watch</strong> are designed to work seamlessly together, creating an experience where every step you take and every beat you hear fuels a healthier, more active lifestyle.</p>
+      <p>From morning workouts to evening wind-downs, this dynamic duo keeps you connected, motivated, and in tune with your goals.</p>
 
-    <h3>1. Motivation in Every Beat</h3>
-    <p>Music has the power to transform your workout. With <strong>AirPods</strong> paired effortlessly to your <strong>Apple Watch</strong>, you can stream your favorite playlists, podcasts, or guided workouts without carrying your phone.</p>
-    <p>Whether you're running outdoors or pushing through a gym session, crisp, immersive sound keeps your energy high and your focus sharp. Every beat becomes a driving force, helping you go further and stay consistent.</p>
+      <h3>1. Motivation in Every Beat</h3>
+      <p>Music has the power to transform your workout. With <strong>AirPods</strong> paired effortlessly to your <strong>Apple Watch</strong>, you can stream your favorite playlists, podcasts, or guided workouts without carrying your phone.</p>
+      <p>Whether you're running outdoors or pushing through a gym session, crisp, immersive sound keeps your energy high and your focus sharp. Every beat becomes a driving force, helping you go further and stay consistent.</p>
 
-    <h3>2. Freedom to Move</h3>
-    <p>Leave your phone behind and experience true freedom. Your <strong>Apple Watch</strong> tracks your workout metrics in real time — heart rate, calories burned, distance, pace — while your <strong>AirPods</strong> deliver the soundtrack.</p>
-    <p>This seamless connection means fewer distractions and more movement. No tangled wires, no bulky devices — just pure, uninterrupted performance.</p>
+      <h3>2. Freedom to Move</h3>
+      <p>Leave your phone behind and experience true freedom. Your <strong>Apple Watch</strong> tracks your workout metrics in real time — heart rate, calories burned, distance, pace — while your <strong>AirPods</strong> deliver the soundtrack.</p>
+      <p>This seamless connection means fewer distractions and more movement. No tangled wires, no bulky devices — just pure, uninterrupted performance.</p>
 
-    <h3>3. Smarter Fitness Tracking</h3>
-    <p>Your <strong>Apple Watch</strong> does more than count steps. It monitors heart health, tracks different workout types, and provides detailed insights into your daily activity trends.</p>
-    <p>With audio cues delivered directly through your <strong>AirPods</strong>, you receive real-time updates on your progress. Close your rings, beat your personal best, and stay informed without ever glancing at your wrist.</p>
+      <h3>3. Smarter Fitness Tracking</h3>
+      <p>Your <strong>Apple Watch</strong> does more than count steps. It monitors heart health, tracks different workout types, and provides detailed insights into your daily activity trends.</p>
+      <p>With audio cues delivered directly through your <strong>AirPods</strong>, you receive real-time updates on your progress. Close your rings, beat your personal best, and stay informed without ever glancing at your wrist.</p>
 
-    <h3>4. Seamless Connectivity</h3>
-    <p>Switching between calls, music, and voice commands feels effortless. Take a call mid-walk, reply to a message using voice dictation, or ask Siri to adjust your playlist — all without breaking stride.</p>
-    <p>The integration between <strong>AirPods</strong> and <strong>Apple Watch</strong> ensures your digital life flows smoothly alongside your active one.</p>
+      <h3>4. Seamless Connectivity</h3>
+      <p>Switching between calls, music, and voice commands feels effortless. Take a call mid-walk, reply to a message using voice dictation, or ask Siri to adjust your playlist — all without breaking stride.</p>
+      <p>The integration between <strong>AirPods</strong> and <strong>Apple Watch</strong> ensures your digital life flows smoothly alongside your active one.</p>
 
-    <h3>5. Wellness Beyond Workouts</h3>
-    <p>The harmony doesn't stop when your workout ends. Use your <strong>AirPods</strong> for guided meditation, breathing sessions, or calming music while your <strong>Apple Watch</strong> tracks mindfulness minutes and monitors your heart rate.</p>
-    <p>Better sleep tracking, stress awareness, and daily activity reminders all work together to support a balanced, healthier lifestyle.</p>
+      <h3>5. Wellness Beyond Workouts</h3>
+      <p>The harmony doesn't stop when your workout ends. Use your <strong>AirPods</strong> for guided meditation, breathing sessions, or calming music while your <strong>Apple Watch</strong> tracks mindfulness minutes and monitors your heart rate.</p>
+      <p>Better sleep tracking, stress awareness, and daily activity reminders all work together to support a balanced, healthier lifestyle.</p>
 
-    <h2>Why They’re Better Together</h2>
-    <p>Individually, <strong>AirPods</strong> and <strong>Apple Watch</strong> are powerful tools. Together, they create an ecosystem designed around movement, motivation, and mindfulness.</p>
-    <p>Their seamless pairing, intuitive controls, and intelligent tracking capabilities transform everyday routines into meaningful progress. Every notification, every song, and every metric works in harmony to keep you inspired.</p>
+      <h2>Why They're Better Together</h2>
+      <p>Individually, <strong>AirPods</strong> and <strong>Apple Watch</strong> are powerful tools. Together, they create an ecosystem designed around movement, motivation, and mindfulness.</p>
+      <p>Their seamless pairing, intuitive controls, and intelligent tracking capabilities transform everyday routines into meaningful progress. Every notification, every song, and every metric works in harmony to keep you inspired.</p>
 
-    <h2>Tips to Maximize the Experience</h2>
-    <ul>
-      <li>Create dedicated workout playlists to stay energized</li>
-      <li>Use fitness tracking features to set measurable goals</li>
-      <li>Enable voice feedback for real-time performance updates</li>
-      <li>Take advantage of guided breathing and meditation sessions</li>
-      <li>Keep devices updated for optimal performance and new features</li>
-    </ul>
+      <h2>Tips to Maximize the Experience</h2>
+      <ul>
+        <li>Create dedicated workout playlists to stay energized</li>
+        <li>Use fitness tracking features to set measurable goals</li>
+        <li>Enable voice feedback for real-time performance updates</li>
+        <li>Take advantage of guided breathing and meditation sessions</li>
+        <li>Keep devices updated for optimal performance and new features</li>
+      </ul>
 
-    <h2>Step Into a Healthier You</h2>
-    <p>Every step you take matters. Every beat pushes you forward. With <strong>AirPods</strong> and <strong>Apple Watch</strong> working in perfect harmony, staying active and mindful becomes effortless.</p>
-    <p>Elevate your routine, embrace the rhythm, and let technology inspire your healthiest self — one step and one beat at a time.</p>
-  `,
-},
+      <h2>Step Into a Healthier You</h2>
+      <p>Every step you take matters. Every beat pushes you forward. With <strong>AirPods</strong> and <strong>Apple Watch</strong> working in perfect harmony, staying active and mindful becomes effortless.</p>
+      <p>Elevate your routine, embrace the rhythm, and let technology inspire your healthiest self — one step and one beat at a time.</p>
+    `,
+  },
+  "free-up-iphone-storage": {
+    slug: "free-up-iphone-storage",
+    title: "How to Free Up Storage on Your iPhone and Make It Run Faster",
+    content: `
+      <h2>Running Out of iPhone Storage?</h2>
+      <p>If your iPhone keeps showing the dreaded <strong>"Storage Almost Full"</strong> message, you're not alone. Photos, videos, apps, and cached files can quickly consume your available space, slowing down your device and preventing you from installing updates or taking new photos.</p>
+
+      <p>The good news is that you don't always need a new phone. By clearing unnecessary data and optimizing your storage, you can free up significant space and keep your iPhone running smoothly.</p>
+
+      <h2>1. Check What's Taking Up Space</h2>
+      <p>The first step is identifying which apps or files are using the most storage.</p>
+      <p>Go to <strong>Settings &gt; General &gt; iPhone Storage</strong>. Your iPhone will display a detailed breakdown of how much space each app and file type is using.</p>
+
+      <p>This helps you quickly locate the biggest storage consumers and decide what should be removed or optimized.</p>
+
+      <h3>Tip</h3>
+      <p>Large apps, photo libraries, and messaging apps are often the biggest contributors to storage problems.</p>
+
+      <h2>2. Manage Photos and Videos</h2>
+      <p>Photos and videos are usually the largest files stored on an iPhone. High-resolution videos and bursts of photos can consume gigabytes of space without you realizing it.</p>
+
+      <ul>
+        <li>Delete unnecessary or duplicate videos</li>
+        <li>Remove screenshots or blurred photos</li>
+        <li>Clear the <strong>Recently Deleted</strong> album to permanently free space</li>
+        <li>Back up your media to <strong>iCloud</strong> or <strong>Google Photos</strong> before deleting them from your phone</li>
+      </ul>
+
+      <p>Regularly cleaning your photo library can quickly recover a large amount of storage.</p>
+
+      <h2>3. Clean Up WhatsApp Storage</h2>
+      <p>Messaging apps like WhatsApp store photos, videos, voice notes, and documents that can accumulate over time.</p>
+
+      <p>To review and remove large files:</p>
+
+      <p><strong>WhatsApp &gt; Settings &gt; Storage and Data &gt; Manage Storage</strong></p>
+
+      <p>This section allows you to see large files and frequently forwarded media so you can delete them quickly.</p>
+
+      <h2>4. Clear Safari and App Cache</h2>
+      <p>Web browsing and app usage create temporary files called cache. Over time, these files can consume significant storage.</p>
+
+      <p>To clear Safari data:</p>
+      <p><strong>Settings &gt; Safari &gt; Clear History and Website Data</strong></p>
+
+      <p>For apps like Instagram, TikTok, or Facebook, reinstalling the app can sometimes remove accumulated cache and free up space.</p>
+
+      <h2>5. Offload Unused Apps</h2>
+      <p>If you have apps you rarely use, you can free up space without losing your data.</p>
+
+      <p>Enable <strong>Offload Unused Apps</strong> by going to:</p>
+
+      <p><strong>Settings &gt; General &gt; iPhone Storage</strong></p>
+
+      <p>This feature removes the app but keeps its documents and data. When you reinstall the app later, everything will still be there.</p>
+
+      <h2>Keep Your iPhone Running Smoothly</h2>
+      <p>Regularly managing storage helps your iPhone perform better, run faster, and avoid frustrating storage warnings.</p>
+
+      <p>If your device is still full even after clearing large files, it may require a deeper clean or system reset to remove hidden system data.</p>
+
+      <p>Our technicians can assist with safely optimizing your iPhone, recovering space, and ensuring your device performs at its best.</p>
+    `,
+  },
+  "iphone-liquid-detected-charging-port-fix": {
+    slug: "iphone-liquid-detected-charging-port-fix",
+    title:
+      "iPhone Showing 'Liquid Detected in Charging Port'? Here's How to Fix It",
+    content: `
+      <h2>iPhone Showing "Liquid Detected in Charging Port"?</h2>
+      <p>If your iPhone displays the <strong>"Liquid Detected in Lightning Connector"</strong> warning and refuses to charge, it means the device has detected moisture or debris inside the charging port.</p>
+
+      <p>This is a built-in safety feature designed to prevent electrical damage to your device. Charging while moisture is present can permanently damage the internal components of your iPhone.</p>
+
+      <h2>Why This Warning Appears</h2>
+      <p>The warning usually appears when the charging port detects:</p>
+      <ul>
+        <li>Moisture from water exposure</li>
+        <li>Humidity or condensation</li>
+        <li>Dust or debris inside the Lightning port</li>
+        <li>Corrosion affecting the connector pins</li>
+      </ul>
+
+      <p>Even small amounts of moisture can trigger the warning and stop your iPhone from charging.</p>
+
+      <h2>Professional iPhone Charging Port Repair</h2>
+      <p>At <strong>Tawari Digital – Westlands, Nairobi</strong>, we provide professional iPhone charging port diagnosis, cleaning, and repair to restore proper charging.</p>
+
+      <p>Our technicians will:</p>
+      <ul>
+        <li>Inspect the Lightning connector for moisture or corrosion</li>
+        <li>Safely clean the charging port using professional tools</li>
+        <li>Repair or replace the iPhone charging port flex if damaged</li>
+        <li>Test charging, microphone, and data functions after repair</li>
+      </ul>
+
+      <h2>Signs Your Charging Port Needs Repair</h2>
+      <ul>
+        <li>Your iPhone refuses to charge</li>
+        <li>Charging works only when the cable is positioned a certain way</li>
+        <li>The "Liquid Detected" warning keeps appearing</li>
+        <li>The phone charges very slowly or disconnects frequently</li>
+      </ul>
+
+      <h2>Get Your iPhone Fixed Quickly</h2>
+      <p>If your iPhone is not charging or keeps showing the liquid detected warning, bring it to <strong>Tawari Digital</strong> for fast and reliable repair.</p>
+
+      <p><strong>Location:</strong> Tawari Digital – Westlands Commercial Centre, Nairobi</p>
+      <p><strong>Phone:</strong> +254 710 130 021</p>
+
+      <p>Our technicians will diagnose the issue and restore your iPhone to full charging functionality.</p>
+    `,
+  },
 };
 
 const DUMMY_POSTS = [
   {
-    id: 1,
+    id: "hardcoded-1",
+    slug: "iphone-18-pro-and-18-pro-max",
+    title: "iPhone 18 Pro & iPhone 18 Pro Max: Everything You Need to Know",
+    excerpt:
+      "Discover Apple's newest iPhone 18 Pro and iPhone 18 Pro Max, including the A20 Pro chip, advanced 48MP camera, longer battery life, Apple Intelligence and the latest features.",
+    featured_image: "/Images/iphone-18-pro.jpg",
+    published_at: "2026-09-22T10:00:00Z",
+    category_name: "Apple News",
+    category_slug: "apple-news",
+    author_name: "Tech Team",
+    read_time: "8 min read",
+  },
+  {
+    id: "hardcoded-2",
     slug: "signs-your-iphone-needs-repair",
     title: "5 Signs Your iPhone Needs Professional Repair",
     excerpt:
       "Learn the early warning signs — battery, screen, overheating, charging ports and camera issues — and how timely repairs save you money.",
-    featured_image:
-      "/Images/iphone-repair.png",
+    featured_image: "/Images/iphone-repair.png",
     published_at: "2025-01-15T10:00:00Z",
     category_name: "Repairs",
     category_slug: "repairs",
@@ -248,13 +520,12 @@ const DUMMY_POSTS = [
     read_time: "6 min read",
   },
   {
-    id: 2,
+    id: "hardcoded-3",
     slug: "buying-refurbished-vs-new",
     title: "Buying Refurbished vs New: How to Save Without Sacrificing Quality",
     excerpt:
       "Certified refurbished Apple devices explained: warranties, inspection, and how to decide what's right for you.",
-    featured_image:
-      "/Images/refurbished-vs-new.png",
+    featured_image: "/Images/refurbished-vs-new.png",
     published_at: "2025-02-02T09:30:00Z",
     category_name: "Sales",
     category_slug: "sales",
@@ -262,13 +533,12 @@ const DUMMY_POSTS = [
     read_time: "7 min read",
   },
   {
-    id: 3,
+    id: "hardcoded-4",
     slug: "extend-macbook-lifespan",
     title: "How to Extend Your MacBook's Lifespan — Pro Tips",
     excerpt:
       "Practical maintenance tips to keep your MacBook running smoothly for years — cleaning, battery care, and smart upgrades.",
-    featured_image:
-      "/Images/whychooselaptop.png",
+    featured_image: "/Images/whychooselaptop.png",
     published_at: "2025-03-05T13:15:00Z",
     category_name: "Maintenance",
     category_slug: "maintenance",
@@ -276,13 +546,12 @@ const DUMMY_POSTS = [
     read_time: "8 min read",
   },
   {
-    id: 4,
+    id: "hardcoded-5",
     slug: "data-recovery-importance",
     title: "Why Data Recovery Matters — Protecting Memories & Business",
     excerpt:
       "How we recover lost photos, messages and business files — and steps you can take to avoid data loss in the future.",
-    featured_image:
-      "/Images/data-recovery.png",
+    featured_image: "/Images/data-recovery.png",
     published_at: "2025-04-10T11:00:00Z",
     category_name: "Data",
     category_slug: "data",
@@ -290,13 +559,12 @@ const DUMMY_POSTS = [
     read_time: "9 min read",
   },
   {
-    id: 5,
+    id: "hardcoded-6",
     slug: "apple-watch-charging-issues-after-unauthorized-repair",
     title: "Why Your Apple Watch May Misbehave After an Unauthorized Repair",
     excerpt:
       "Learn why glue or improper handling during previous repairs can cause charging issues, overheating, and shutdowns — and why a proper diagnostic is essential.",
-    featured_image:
-      "/Images/apple-watch-repair.png",
+    featured_image: "/Images/apple-watch-repair.png",
     published_at: "2025-11-18T15:30:00Z",
     category_name: "Apple Watch",
     category_slug: "apple-watch",
@@ -304,42 +572,57 @@ const DUMMY_POSTS = [
     read_time: "7 min read",
   },
   {
-  id: 6,
-  slug: "airpods-apple-watch-perfect-harmony",
-  title: "AirPods and Apple Watch: Perfect Harmony for a Healthier You",
-  excerpt:
-    "Discover how AirPods and Apple Watch work seamlessly together to power your workouts, boost motivation, and support a healthier, more connected lifestyle.",
-  featured_image:
-    "/Images/airpods-apple-watch.png",
-  published_at: "2025-11-25T10:00:00Z",
-  category_name: "Wearables",
-  category_slug: "wearables",
-  author_name: "Tech Repair Lab",
-  read_time: "6 min read",
-}];
+    id: "hardcoded-7",
+    slug: "airpods-apple-watch-perfect-harmony",
+    title: "AirPods and Apple Watch: Perfect Harmony for a Healthier You",
+    excerpt:
+      "Discover how AirPods and Apple Watch work seamlessly together to power your workouts, boost motivation, and support a healthier, more connected lifestyle.",
+    featured_image: "/Images/airpods-apple-watch.png",
+    published_at: "2025-11-25T10:00:00Z",
+    category_name: "Wearables",
+    category_slug: "wearables",
+    author_name: "Tech Repair Lab",
+    read_time: "6 min read",
+  },
+  {
+    id: "hardcoded-8",
+    slug: "free-up-iphone-storage",
+    title: "How to Free Up Storage on Your iPhone and Make It Run Faster",
+    excerpt:
+      "Learn simple ways to clear heavy data, remove unnecessary files, and free up valuable storage space on your iPhone to keep it running smoothly.",
+    featured_image: "/Images/iphone-storage-cleanup.png",
+    published_at: "2025-11-28T10:00:00Z",
+    category_name: "iPhone Tips",
+    category_slug: "iphone-tips",
+    author_name: "Tech Repair Lab",
+    read_time: "5 min read",
+  },
+  {
+    id: "hardcoded-9",
+    slug: "iphone-liquid-detected-charging-port-fix",
+    title:
+      "iPhone Showing 'Liquid Detected in Charging Port'? Here's How to Fix It",
+    excerpt:
+      "If your iPhone shows the 'Liquid Detected in Lightning Connector' warning and refuses to charge, it may have moisture or debris in the port. Learn what causes it and how professionals safely fix the issue.",
+    featured_image: "/Images/iphone-liquid-detected.png",
+    published_at: "2025-12-01T10:00:00Z",
+    category_name: "iPhone Repair",
+    category_slug: "iphone-repair",
+    author_name: "Tech Repair Lab",
+    read_time: "4 min read",
+  },
+];
 
-const CATEGORIES = [
-  { name: "All Posts", slug: "all", count: DUMMY_POSTS.length },
-  {
-    name: "Repairs",
-    slug: "repairs",
-    count: DUMMY_POSTS.filter((p) => p.category_slug === "repairs").length,
-  },
-  {
-    name: "Sales",
-    slug: "sales",
-    count: DUMMY_POSTS.filter((p) => p.category_slug === "sales").length,
-  },
-  {
-    name: "Maintenance",
-    slug: "maintenance",
-    count: DUMMY_POSTS.filter((p) => p.category_slug === "maintenance").length,
-  },
-  {
-    name: "Data",
-    slug: "data",
-    count: DUMMY_POSTS.filter((p) => p.category_slug === "data").length,
-  },
+const BASE_CATEGORIES = [
+  "repairs",
+  "sales",
+  "maintenance",
+  "data",
+  "apple-watch",
+  "wearables",
+  "iphone-tips",
+  "iphone-repair",
+  "apple-news",
 ];
 
 export default function BlogPage() {
@@ -350,52 +633,91 @@ export default function BlogPage() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
- const handleSubscribe = async () => {
-  if (!email) {
-    toast({
-      title: "Email required",
-      description: "Please enter your email address.",
-      variant: "destructive",
-    });
-    return;
-  }
+  // Posts fetched from the real backend (added via the admin page)
+  const [apiPosts, setApiPosts] = useState([]);
 
-  try {
-    setLoading(true);
+  useEffect(() => {
+    blogAPI
+      .getPosts()
+      .then((data) => setApiPosts(data.results || []))
+      .catch(() => {
+        // Fine to fail silently here — hardcoded posts still render either way
+      });
+  }, []);
 
-    await newsletterAPI.subscribe(email);
-    
-    toast({
-      title: "Subscribed!",
-      description: "You will now receive our blog updates and offers.",
-    });
+  // Hardcoded posts stay first (unchanged look/order), admin-added posts append after
+  const existingSlugs = new Set(DUMMY_POSTS.map((p) => p.slug));
+  const allPosts = [
+    ...DUMMY_POSTS,
+    ...apiPosts.filter((p) => !existingSlugs.has(p.slug)),
+  ];
 
-    setEmail("");
-  } catch (err) {
-    toast({
-      title: "Subscription failed",
-      description: err.message || "Please try again later.",
-      variant: "destructive",
-    });
-  } finally {
-    setLoading(false);
-  }
-};
+  const CATEGORIES = [
+    { name: "All Posts", slug: "all", count: allPosts.length },
+    ...Array.from(
+      new Set([...BASE_CATEGORIES, ...allPosts.map((p) => p.category_slug)]),
+    )
+      .filter(Boolean)
+      .map((slug) => {
+        const match = allPosts.find((p) => p.category_slug === slug);
+        return {
+          name: match?.category_name || slug,
+          slug,
+          count: allPosts.filter((p) => p.category_slug === slug).length,
+        };
+      }),
+  ];
+
+  const handleSubscribe = async () => {
+    if (!email) {
+      toast({
+        title: "Email required",
+        description: "Please enter your email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+    try {
+      setLoading(true);
+      await newsletterAPI.subscribe(email);
+      toast({
+        title: "Subscribed!",
+        description: "You will now receive our blog updates and offers.",
+      });
+      setEmail("");
+    } catch (err) {
+      toast({
+        title: "Subscription failed",
+        description: err.message || "Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "short", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
-  const filteredPosts = DUMMY_POSTS.filter((post) => {
+  const filteredPosts = allPosts.filter((post) => {
     const matchesSearch =
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+      (post.excerpt || "").toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory =
       selectedCategory === "all" || post.category_slug === selectedCategory;
     return matchesSearch && matchesCategory;
   });
 
-  const openArticle = (slug) => setOpenSlug(slug);
+  // Hardcoded posts open in the existing modal (unchanged behavior).
+  // Admin-added posts don't have modal content, so they navigate to the
+  // real BlogPostPage route, which already fetches from the API.
+  const openArticle = (slug) => {
+    if (FULL_ARTICLES[slug]) {
+      setOpenSlug(slug);
+    }
+  };
   const closeArticle = () => setOpenSlug(null);
 
   return (
@@ -462,15 +784,9 @@ export default function BlogPage() {
         </div>
       </div>
 
-      {/* Main Content with Grid Layout */}
+      {/* Main Content */}
       <div className="container mx-auto px-6 py-12">
         <div>
-          {/* Sidebar - Daily Updates (3 columns on large screens)
-          <div className="col-span-12 lg:col-span-3"> 
-            <DailyUpdatesSidebar />
-          </div> */}
-
-          {/* Main Blog Content (9 columns on large screens) */}
           <div className="col-span-3 lg:col-span-3">
             {filteredPosts.length === 0 ? (
               <div className="text-center py-20">
@@ -495,51 +811,12 @@ export default function BlogPage() {
                         Featured Article
                       </h2>
                     </div>
-                    <article
-                      className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer"
-                      onClick={() => openArticle(filteredPosts[0].slug)}
-                    >
-                      <div className="grid md:grid-cols-2 gap-0">
-                        <div className="relative h-64 md:h-full overflow-hidden">
-                          <img
-                            src={filteredPosts[0].featured_image}
-                            alt={filteredPosts[0].title}
-                            className="w-full h-full object-cover"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                        </div>
-                        <div className="p-8 md:p-10 flex flex-col justify-center">
-                          <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium mb-4 w-fit">
-                            <Tag className="h-3 w-3" />
-                            {filteredPosts[0].category_name}
-                          </div>
-                          <h3 className="text-3xl font-bold text-gray-900 mb-4 leading-tight">
-                            {filteredPosts[0].title}
-                          </h3>
-                          <p className="text-gray-600 mb-6 text-lg">
-                            {filteredPosts[0].excerpt}
-                          </p>
-                          <div className="flex items-center justify-between pt-6 border-t">
-                            <div className="flex items-center gap-3">
-                              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-black to-black flex items-center justify-center text-white font-semibold">
-                                {filteredPosts[0].author_name.charAt(0)}
-                              </div>
-                              <div>
-                                <p className="font-medium text-gray-900">
-                                  {filteredPosts[0].author_name}
-                                </p>
-                                <p className="text-sm text-gray-500">
-                                  {formatDate(filteredPosts[0].published_at)}
-                                </p>
-                              </div>
-                            </div>
-                            <span className="text-sm text-gray-500">
-                              {filteredPosts[0].read_time}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </article>
+                    <FeaturedOrCard
+                      post={filteredPosts[0]}
+                      featured
+                      onOpen={openArticle}
+                      formatDate={formatDate}
+                    />
                   </section>
                 )}
 
@@ -551,67 +828,20 @@ export default function BlogPage() {
                       {searchQuery
                         ? "Search Results"
                         : selectedCategory === "all"
-                        ? "Latest Articles"
-                        : `${
-                            CATEGORIES.find((c) => c.slug === selectedCategory)
-                              ?.name
-                          } Articles`}
+                          ? "Latest Articles"
+                          : `${CATEGORIES.find((c) => c.slug === selectedCategory)?.name} Articles`}
                     </h2>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-8">
                     {filteredPosts.map((post) => (
-                      <article
+                      <FeaturedOrCard
                         key={post.id}
-                        className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer"
-                        onClick={() => openArticle(post.slug)}
-                      >
-                        <div className="relative h-48 overflow-hidden">
-                          <img
-                            src={post.featured_image}
-                            alt={post.title}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                          />
-                          <div className="absolute top-4 left-4">
-                            <span className="bg-white/90 backdrop-blur-sm text-gray-900 px-3 py-1 rounded-full text-xs font-semibold">
-                              {post.category_name}
-                            </span>
-                          </div>
-                        </div>
-                        <div className="p-6">
-                          <h3 className="text-xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-blue-600 transition-colors">
-                            {post.title}
-                          </h3>
-                          <p className="text-gray-600 mb-4 line-clamp-2">
-                            {post.excerpt}
-                          </p>
-                          <div className="flex items-center justify-between pt-4 border-t">
-                            <div className="flex items-center gap-2">
-                              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-black to-black flex items-center justify-center text-white text-sm font-semibold">
-                                {post.author_name.charAt(0)}
-                              </div>
-                              <div>
-                                <p className="text-sm font-medium text-gray-900">
-                                  {post.author_name}
-                                </p>
-                                <p className="text-xs text-gray-500">
-                                  {formatDate(post.published_at)}
-                                </p>
-                              </div>
-                            </div>
-                            <span className="text-xs text-gray-500 font-medium">
-                              {post.read_time}
-                            </span>
-                          </div>
-                        </div>
-                      </article>
+                        post={post}
+                        onOpen={openArticle}
+                        formatDate={formatDate}
+                      />
                     ))}
-                  </div>
-
-                  <div className="text-center mt-12">
-                    <button className="bg-slate-900 text-white px-8 py-3 rounded-lg font-medium hover:bg-slate-800 transition-colors shadow-lg">
-                      Load More Articles
-                    </button>
                   </div>
                 </section>
               </>
@@ -629,7 +859,6 @@ export default function BlogPage() {
               Get repair tips, refurbishment deals, and product arrivals
               delivered to your inbox.
             </p>
-
             <div className="flex gap-4 max-w-md mx-auto bg-white">
               <input
                 type="email"
@@ -650,7 +879,7 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Article Modal / Reader */}
+      {/* Article Modal / Reader — hardcoded posts only */}
       {openSlug && (
         <div className="fixed inset-0 z-50 flex items-start justify-center p-6 overflow-auto bg-black/60">
           <div className="bg-white w-full max-w-4xl rounded-xl shadow-xl overflow-hidden">
@@ -671,7 +900,6 @@ export default function BlogPage() {
                 <X className="h-5 w-5" />
               </button>
             </div>
-
             <div className="p-8 prose max-w-none">
               <div
                 dangerouslySetInnerHTML={{
@@ -681,7 +909,6 @@ export default function BlogPage() {
                 }}
               />
             </div>
-
             <div className="p-6 border-t text-right">
               <button
                 onClick={closeArticle}
@@ -694,5 +921,108 @@ export default function BlogPage() {
         </div>
       )}
     </div>
+  );
+}
+
+// Shared card, used for both the featured slot and the grid — identical
+// markup to your original, just factored out so featured/grid stay in sync
+// and so it can decide modal-vs-navigate per post.
+function FeaturedOrCard({ post, featured, onOpen, formatDate }) {
+  const isHardcoded = Boolean(FULL_ARTICLES[post.slug]);
+  const authorInitial = (post.author_name || "T").charAt(0);
+
+  const inner = featured ? (
+    <div className="grid md:grid-cols-2 gap-0">
+      <div className="relative h-64 md:h-full overflow-hidden">
+        <img
+          src={post.featured_image}
+          alt={post.title}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+      </div>
+      <div className="p-8 md:p-10 flex flex-col justify-center">
+        <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium mb-4 w-fit">
+          <Tag className="h-3 w-3" />
+          {post.category_name}
+        </div>
+        <h3 className="text-3xl font-bold text-gray-900 mb-4 leading-tight">
+          {post.title}
+        </h3>
+        <p className="text-gray-600 mb-6 text-lg">{post.excerpt}</p>
+        <div className="flex items-center justify-between pt-6 border-t">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-black to-black flex items-center justify-center text-white font-semibold">
+              {authorInitial}
+            </div>
+            <div>
+              <p className="font-medium text-gray-900">{post.author_name}</p>
+              <p className="text-sm text-gray-500">
+                {formatDate(post.published_at)}
+              </p>
+            </div>
+          </div>
+          <span className="text-sm text-gray-500">{post.read_time}</span>
+        </div>
+      </div>
+    </div>
+  ) : (
+    <>
+      <div className="relative h-48 overflow-hidden">
+        <img
+          src={post.featured_image}
+          alt={post.title}
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+        />
+        <div className="absolute top-4 left-4">
+          <span className="bg-white/90 backdrop-blur-sm text-gray-900 px-3 py-1 rounded-full text-xs font-semibold">
+            {post.category_name}
+          </span>
+        </div>
+      </div>
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-blue-600 transition-colors">
+          {post.title}
+        </h3>
+        <p className="text-gray-600 mb-4 line-clamp-2">{post.excerpt}</p>
+        <div className="flex items-center justify-between pt-4 border-t">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-black to-black flex items-center justify-center text-white text-sm font-semibold">
+              {authorInitial}
+            </div>
+            <div>
+              <p className="text-sm font-medium text-gray-900">
+                {post.author_name}
+              </p>
+              <p className="text-xs text-gray-500">
+                {formatDate(post.published_at)}
+              </p>
+            </div>
+          </div>
+          <span className="text-xs text-gray-500 font-medium">
+            {post.read_time}
+          </span>
+        </div>
+      </div>
+    </>
+  );
+
+  const wrapperClass = featured
+    ? "bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+    : "bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer";
+
+  // Admin-added posts (no modal content available) go to the real post page
+  if (!isHardcoded) {
+    return (
+      <Link to={`/blog/${post.slug}`} className={wrapperClass + " block"}>
+        {inner}
+      </Link>
+    );
+  }
+
+  return (
+    <article className={wrapperClass} onClick={() => onOpen(post.slug)}>
+      {inner}
+    </article>
   );
 }

@@ -265,7 +265,7 @@ export default function ContactPage() {
                             href="tel:+254710130021"
                             className="hover:text-black"
                           >
-                            0710 130 021
+                            0712007722
                           </a>
                         </p>
                       </div>
@@ -297,11 +297,11 @@ export default function ContactPage() {
                     <div className="space-y-2">
                       <div className="flex justify-between">
                         <span className="text-gray-600">Monday - Friday</span>
-                        <span className="font-medium">9:00 AM - 5:00 PM</span>
+                        <span className="font-medium">9:00 AM - 6:00 PM</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-gray-600">Saturday</span>
-                        <span className="font-medium">10:00 AM - 5:00 PM</span>
+                        <span className="font-medium">10:00 AM - 3:00 PM</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-gray-600">Sunday</span>
