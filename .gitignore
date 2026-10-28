@@ -25,3 +25,10 @@ dist-ssr
 *.env
 db.sqlite3.backup
 
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+*.zip
+*.log
